@@ -1,0 +1,156 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; BAL 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="BAL 1.0 documentation" href="../index.html" />
+    <link rel="next" title="Background" href="background.html" />
+    <link rel="prev" title="Disclaimer" href="disclaim.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="background.html" title="Background"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="disclaim.html" title="Disclaimer"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">BAL 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Fire is a natural feature of the Australian landscape and remains an ever-present threat. Bushfire threat analysis aims to inform the fire authorities and the community of the bushfire hazard in an effort to manage the risk posed to life, property and the environment.</p>
+<p>Bushfire Attack Level (BAL) is a measure of the severity of a building&#8217;s potential exposure to bushfire. It is defined in the Australian Standard AS 3959 (2009)&#8211;<em>Construction of buildings in bushfire-prone areas</em>, to serve as a basis for establishing the requirements for construction, to improve the protection of buildings from bushfire attack. The Standard describes how to compute the bushfire attack level for any location and directly links this to recommendations on the design of existing or planned buildings.</p>
+<p>The BAL toolbox implements the rules described by Method 1 in AS 3959 (2009) by integrating them into a computational code that can be run in the ESRI ArcGIS 10.2 environment.</p>
+<div class="section" id="package-structures">
+<h2>Package structures<a class="headerlink" href="#package-structures" title="Permalink to this headline">¶</a></h2>
+<p>The toolbox name is <strong>BAL.tbx</strong>. This toolbox is associated with a python script, <strong>bal.py</strong>, to derive BAL. The script <strong>bal.py</strong> links to a python script <strong>calculate_bal.py</strong> and a module <strong>Utilities</strong>, which includes supporting dictionaries defined in two python scripts:</p>
+<ul class="simple">
+<li>value_lookup.py;</li>
+<li>bal_database.py.</li>
+</ul>
+<p>There are three more folders:</p>
+<ul class="simple">
+<li><strong>docs</strong>: holding the documentation files.</li>
+<li><strong>tests</strong>: holding the unit tests, scenario tests and their test data.</li>
+<li><strong>examples</strong>: holding the example input and output data.</li>
+</ul>
+</div>
+<div class="section" id="use-limitations">
+<h2>Use limitations<a class="headerlink" href="#use-limitations" title="Permalink to this headline">¶</a></h2>
+<p>The BAL tool developed in Geoscience Australia (GA) has been developed and tested in ArcGIS 10.2. However, GA does not guarantee that the information derived is totally accurate or complete. Therefore, you should not solely rely on this information. Key limitations/approximations include the following:</p>
+<ul class="simple">
+<li>The BAL is produced based on the simplified method (Method 1) in AS 3959 (2009). When the land downslope is more than 20 degrees, more detailed method (Method 2) should be adopted. Method 2 has not been incorporated into the toolbox developed. Instead, a constant value of 200 is provided as BAL for such circumstances.</li>
+<li>Elevation data is a critical input of the tool. Digital Elevation Model (DEM) with finer resolution usually leads to more accurate BAL results. The example data uses a DEM with a resolution of 1 second of arc (approximate 30 m by 30 m grid cell at the equator), the best available national scale elevation dataset at the time of modelling. As with all spatial analyses, the results are sensitive to the input DEM&#8217;s quality, resolution, coverage and currency and should therefore be used with this understanding.</li>
+<li>Vegetation data is another critical input into the tool. Method 1 in AS 3959 (2009) considers the vegetation up to 100 metres from the site of interest. Ideally the vegetation with finer resolution (preferred at metre level) is required to derive sensible BAL analyses. Where finer vegetation data is not available, the alternative coarse vegetation data may lead to inaccurate output BAL.</li>
+<li>The BAL toolbox requires availability of one extension within ArcGIS - <strong>Spatial Analyst</strong>. If the extension is available, its licence will be automatically checked out when needed and checked in when it is not needed any more. Without the licence of <strong>Spatial Analyst</strong>, the tool will fail to run.</li>
+<li>The BAL toolbox is intended to run in the ArcGIS toolbox environment and is not intended to run in a Python script environment.</li>
+<li>This software algorithm adapts to the Method 1 in AS 3959 (2009) by modelling it spatially. Readers are assumed to be familiar with AS 3959 (2009). For the detailed description of the Method 1, please refer to the Standard AS 3959 (2009).</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#package-structures">Package structures</a></li>
+<li><a class="reference internal" href="#use-limitations">Use limitations</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="disclaim.html"
+                        title="previous chapter">Disclaimer</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="background.html"
+                        title="next chapter">Background</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/docs/intro.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="background.html" title="Background"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="disclaim.html" title="Disclaimer"
+             >previous</a> |</li>
+        <li><a href="../index.html">BAL 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Geoscience Australia.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

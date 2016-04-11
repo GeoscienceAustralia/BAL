@@ -1,0 +1,23 @@
+Introduction
+============
+
+Fire is a natural feature of the Australian landscape and remains an ever-present threat. Bushfire threat analysis aims to inform the fire authorities and the community of the bushfire hazard in an effort to manage the risk posed to life, property and the environment.
+
+Bushfire attack level (BAL) is a measure of the severity of a building's potential exposure to bushfire. It is defined in the Australian standard AS 3959 (2009)--Construction of buildings in bushfire-prone areas, to serve as a basis for establishing the requirements for construction, to improve the protection of buildings from bushfire attack. The Standard describes how to compute the bushfire attack level for any location and directly links this to recommendations on the design of existing or planned buildings. 
+
+The BAL toolbox implements the rules described by method 1 in the national standard AS 3959 (2009) by integrating them into a computational code that can be run by non-technical people in an ArcGIS environment. 
+
+
+Package structures
+------------------
+
+The toolbox name is **BAL.tbx** that is associated with a python script **bal.py** to derive bushfire attack level values. The script **bal.py** links to a python script **calculate_bal.py** and a module **Utilities**, which includes supporting dictionaries defined in two python scripts:
+ 
+* value_lookup.py;
+* bal_database.py.
+
+There are two more folders:
+
+**docs**: holding the documentation files.
+
+**tests**: holding the unit tests, scenario tests and their test data.  
