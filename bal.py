@@ -17,12 +17,13 @@ import inspect
 import math
 from os.path import join as pjoin
 import arcpy
-from arcpy.sa import Reclassify, ExtractByMask, Slope, Aspect, Raster
+from arcpy.sa import Reclassify, ExtractByMask, Slope, Aspect
 from calculate_bal import bal_cal
+from utilities.sa_tools import extract_by_mask
 
 __version__ = '1.0'
-
-
+    
+    
 def reclass_veg(veg, dem, output_folder, remap, mask):
     """
     Reclassify the original vegetation into the categories classified as Table
@@ -37,29 +38,34 @@ def reclass_veg(veg, dem, output_folder, remap, mask):
     :return: `file` the reclassified vegetation
     """
 
+#    import pdb
+#    pdb.set_trace()
+    
     arcpy.env.overwriteOutput = True
 
     input_folder = os.path.dirname(veg)
     arcpy.env.workspace = input_folder
 
     veg_r_init = 'veg_r_init'
-    veg_r_proj = 'veg_r_pj'
+    veg_r_proj = pjoin(input_folder,'veg_r_pj')
     veg_class_r = pjoin(output_folder, 'veg_r')
 
     arcpy.AddMessage('Remap the vegetation into classes of 1 ~ 7 ...')
 
     # Derive reclassifed veg...
+
     Reclassify(veg, "Value", remap, "NODATA").save(veg_r_init)
 
     # project as dem and change cell size same as that of dem
     dem_c = arcpy.GetRasterProperties_management(dem, "CELLSIZEX").getOutput(0)
+
     arcpy.ProjectRaster_management(veg_r_init, veg_r_proj, dem, "#", dem_c)
 
     if arcpy.Exists(veg_r_init):
         arcpy.Delete_management(veg_r_init)
 
     # get the AOI
-    ExtractByMask(veg_r_proj, mask).save(veg_class_r)
+    extract_by_mask(veg_r_proj, mask, veg_class_r)
 
     g_list = arcpy.ListRasters('g_g*')
     if len(g_list) != 0:
@@ -94,7 +100,9 @@ def get_slope_aspect(input_dem, output_folder, mask):
     # Derive slope and aspect ...
     Slope(input_dem, "DEGREE", "1").save(dem_slope)
     Aspect(input_dem).save(dem_aspect)
-
+    
+    aspect_rec_init = pjoin(input_folder, 'aspect_r_i')
+    slope_rec_init = pjoin(input_folder, 'slope_r_i')
     aspect_rec = pjoin(output_folder, 'aspect_r')
     slope_rec = pjoin(output_folder, 'slope_r')
 
@@ -102,7 +110,7 @@ def get_slope_aspect(input_dem, output_folder, mask):
     arcpy.AddMessage('Remap the aspect into classes of 1 ~ 9 ...')
     Reclassify(dem_aspect, "Value", "-1 0 9;0 22.5 1;22.5 67.5 2;67.5 112.5 3;\
                112.5 157.5 4;157.5 202.5 5;202.5 247.5 6;247.5 292.5 7;\
-               292.5 337.5 8;337.5 360 1", "NODATA").save('aspect_rec')
+               292.5 337.5 8;337.5 360 1", "NODATA").save(aspect_rec_init)
 
     value_max = arcpy.GetRasterProperties_management(
                 dem_slope, "MAXIMUM").getOutput(0)
@@ -113,10 +121,10 @@ def get_slope_aspect(input_dem, output_folder, mask):
     arcpy.AddMessage('Remap the slope into classes of 1 ~ 6 ...')
 
     # Derive reclassifed slope...
-    Reclassify(dem_slope, "Value", remap, "NODATA").save('slope_rec')
-
-    ExtractByMask('aspect_rec', mask).save(aspect_rec)
-    ExtractByMask('slope_rec', mask).save(slope_rec)
+    Reclassify(dem_slope, "Value", remap, "NODATA").save(slope_rec_init)
+   
+    extract_by_mask(aspect_rec_init, mask, aspect_rec)
+    extract_by_mask(slope_rec_init, mask, slope_rec)
 
     g_list = arcpy.ListRasters('g_g*')
     if len(g_list) != 0:
@@ -126,10 +134,10 @@ def get_slope_aspect(input_dem, output_folder, mask):
         arcpy.Delete_management(dem_slope)
     if arcpy.Exists(dem_aspect):
         arcpy.Delete_management(dem_aspect)
-    if arcpy.Exists('slope_rec'):
-        arcpy.Delete_management('slope_rec')
-    if arcpy.Exists('aspect_rec'):
-        arcpy.Delete_management('aspect_rec')
+    if arcpy.Exists(slope_rec_init):
+        arcpy.Delete_management(slope_rec_init)
+    if arcpy.Exists(aspect_rec_init):
+        arcpy.Delete_management(aspect_rec_init)
 
     return slope_rec, aspect_rec
 
@@ -146,7 +154,10 @@ def find_common_area(veg_class, slope, aspect):
     :return: `file` the slope in common area
     :return: `file` the aspect in common area
     """
-
+    
+#    import pdb
+#    pdb.set_trace()
+    
     output_folder = os.path.dirname(veg_class)
     arcpy.env.overwriteOutput = True
 
@@ -171,10 +182,10 @@ def find_common_area(veg_class, slope, aspect):
     slope_com = pjoin(output_folder, 'slope_c')
     aspect_com = pjoin(output_folder, 'aspect_c')
 
-    ExtractByMask(veg_class, mask_com).save(veg_class_com)
-    ExtractByMask(slope, mask_com).save(slope_com)
-    ExtractByMask(aspect, mask_com).save(aspect_com)
-
+    extract_by_mask(veg_class, mask_com, veg_class_com)
+    extract_by_mask(slope, mask_com, slope_com)
+    extract_by_mask(aspect, mask_com, aspect_com)
+    
     if arcpy.Exists(slope_poly):
         arcpy.Delete_management(slope_poly)
     if arcpy.Exists(veg_class_poly):
@@ -260,9 +271,8 @@ def get_footprint(raster, footprint):
     arcpy.env.overwriteOutput = True
     input_folder = os.path.dirname(raster)
     arcpy.env.workspace = input_folder
-
-    raster_ds = Raster(raster)
-    raster_extent = raster_ds.extent
+    
+    raster_extent = arcpy.Describe(raster).extent
 
     get_extent_mask(raster_extent, footprint)
 

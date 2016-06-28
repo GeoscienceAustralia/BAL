@@ -13,9 +13,7 @@ buildings in bushfire-prone areas.
 """
 
 import arcpy
-from arcpy.sa import Raster, CellStatistics
 import os
-import sys
 import numpy as np
 from utilities import value_lookup, bal_database
 
@@ -31,7 +29,7 @@ def bal_cal(veg_class, slope, aspect, fdi):
     :param aspect: `file` the input aspect
     :param fdi: `int` the input FDI value
     """
-
+    
     output_folder = os.path.dirname(veg_class)
     arcpy.env.overwriteOutput = True
 
@@ -40,38 +38,24 @@ def bal_cal(veg_class, slope, aspect, fdi):
     os.chdir(work_folder)
     arcpy.env.workspace = work_folder
 
-    # open the rasters
-    ds_v = Raster(veg_class)
-    if ds_v is None:
-        arcpy.AddMessage('Could not open {0}'.format(veg_class))
-        sys.exit(1)
-    veg_data = arcpy.RasterToNumPyArray(ds_v, nodata_to_value=-99)
-
-    ds_s = Raster(slope)
-    if ds_s is None:
-        arcpy.AddMessage('Could not open {0}'.format(slope))
-        sys.exit(1)
-    slope_data = arcpy.RasterToNumPyArray(ds_s, nodata_to_value=-99)
-
-    ds_a = Raster(aspect)
-    if ds_a is None:
-        arcpy.AddMessage('Could not open {0}'.format(aspect))
-        sys.exit(1)
-    aspect_data = arcpy.RasterToNumPyArray(ds_a, nodata_to_value=-99)
-
-    # get image size, format, projection
-    pixel_w = ds_v.meanCellWidth
-    pixel_h = ds_v.meanCellHeight
-
-    sref = ds_v.spatialReference
-    lowleft_corner = arcpy.Point(ds_v.extent.XMin, ds_v.extent.YMin)
-
+    # get veg raster size, format, projection, etc
+    desc = arcpy.Describe(veg_class)
+    extent = desc.extent
+    lowleft_corner = arcpy.Point(extent.XMin, extent.YMin)
+    pixel_w = desc.children[0].meanCellWidth
+    pixel_h = desc.children[0].meanCellHeight
+    sref = desc.spatialReference
+    
+    # load the raster into numpy array
+    veg_data = arcpy.RasterToNumPyArray(veg_class, nodata_to_value=-99)
+    slope_data = arcpy.RasterToNumPyArray(slope, nodata_to_value=-99)
+    aspect_data = arcpy.RasterToNumPyArray(aspect, nodata_to_value=-99)
+    
+    # calculate the BAL for each direction in numpy array and append them
+    # into a list
     dire = ['w', 'e', 'n', 's', 'nw', 'ne', 'se', 'sw']
-
     bal_list = []
-
     for one_dir in dire:
-
         outdata = convo(one_dir, veg_data, slope_data, aspect_data,
                         pixel_w, fdi)
 
@@ -85,30 +69,46 @@ def bal_cal(veg_class, slope, aspect, fdi):
 
         arcpy.DefineProjection_management(output_dir, sref)
 
-        del outdata
+        bal_list.append(outdata)
+        
+        del outdata   
 
-        bal_list.append(output_dir)
+    # get maximum BAL from the list
+    max_bal = get_max_bal(bal_list)
+    arcpy.NumPyArrayToRaster(max_bal, lowleft_corner, pixel_w,
+                             pixel_h, value_to_nodata=-99).save('bal_max.img')
+                             
+    arcpy.DefineProjection_management('bal_max.img', sref)                             
+   
+    arcpy.BuildPyramidsandStatistics_management(output_folder, "#",
+                                                "BUILD_PYRAMIDS",
+                                                "CALCULATE_STATISTICS")
 
+    # delete intermediate results
     if arcpy.Exists(veg_class):
         arcpy.Delete_management(veg_class)
     if arcpy.Exists(slope):
         arcpy.Delete_management(slope)
     if arcpy.Exists(aspect):
         arcpy.Delete_management(aspect)
-
-    # get maximum BAL
-    CellStatistics(bal_list, "MAXIMUM", "DATA").save('bal_max.img')
-
-    arcpy.BuildPyramidsandStatistics_management(output_folder, "#",
-                                                "BUILD_PYRAMIDS",
-                                                "CALCULATE_STATISTICS")
-
-    ds_v = None
-    ds_s = None
-    ds_a = None
-
     del veg_data, slope_data, aspect_data
+    del bal_list, max_bal
 
+
+def get_max_bal(bal_list):
+    """
+    get the maximum bal value of all 8 directions.
+    
+    :param bal_list: `list of arrays` the bal value for each of 8 directions
+    
+    :return: :class:`numpy.ndarray` the maximum bal value of 8 directions
+    """
+    
+    stacked_arrays = np.dstack(tuple(bal_list))
+    max_of_stack = stacked_arrays.max(2)
+    
+    return max_of_stack
+    
 
 def get_slope_in_aspect(slope_data, aspect_data, rows, cols, aspect_value):
     """
