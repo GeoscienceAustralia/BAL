@@ -17,9 +17,9 @@ import inspect
 import math
 from os.path import join as pjoin
 import arcpy
-from arcpy.sa import Reclassify, ExtractByMask, Slope, Aspect
+from arcpy.sa import Slope, Aspect
 from calculate_bal import bal_cal
-from utilities.sa_tools import extract_by_mask
+from utilities.sa_tools import extract_by_mask, reclassify
 
 __version__ = '1.0'
     
@@ -37,9 +37,6 @@ def reclass_veg(veg, dem, output_folder, remap, mask):
 
     :return: `file` the reclassified vegetation
     """
-
-#    import pdb
-#    pdb.set_trace()
     
     arcpy.env.overwriteOutput = True
 
@@ -53,8 +50,7 @@ def reclass_veg(veg, dem, output_folder, remap, mask):
     arcpy.AddMessage('Remap the vegetation into classes of 1 ~ 7 ...')
 
     # Derive reclassifed veg...
-
-    Reclassify(veg, "Value", remap, "NODATA").save(veg_r_init)
+    reclassify(veg, remap, veg_r_init)
 
     # project as dem and change cell size same as that of dem
     dem_c = arcpy.GetRasterProperties_management(dem, "CELLSIZEX").getOutput(0)
@@ -94,8 +90,8 @@ def get_slope_aspect(input_dem, output_folder, mask):
     input_folder = os.path.dirname(input_dem)
     arcpy.env.workspace = input_folder
 
-    dem_slope = 'slope'
-    dem_aspect = 'aspect'
+    dem_slope = pjoin(input_folder, 'slope')
+    dem_aspect = pjoin(input_folder,'aspect')
 
     # Derive slope and aspect ...
     Slope(input_dem, "DEGREE", "1").save(dem_slope)
@@ -108,20 +104,27 @@ def get_slope_aspect(input_dem, output_folder, mask):
 
     # Derive reclassifed aspect...
     arcpy.AddMessage('Remap the aspect into classes of 1 ~ 9 ...')
-    Reclassify(dem_aspect, "Value", "-1 0 9;0 22.5 1;22.5 67.5 2;67.5 112.5 3;\
+
+    reclassify(dem_aspect, "-1 0 9;0 22.5 1;22.5 67.5 2;67.5 112.5 3;\
                112.5 157.5 4;157.5 202.5 5;202.5 247.5 6;247.5 292.5 7;\
-               292.5 337.5 8;337.5 360 1", "NODATA").save(aspect_rec_init)
+               292.5 337.5 8;337.5 360 1", aspect_rec_init)
 
     value_max = arcpy.GetRasterProperties_management(
                 dem_slope, "MAXIMUM").getOutput(0)
 
-    remap = "0 0 1;0 5 2;5 10 3;10 15 4;15 20 5;20 " + \
+    if float(value_max) < 20:
+        value_max = 20.0001
+    
+    # remap is minimum inclusive but maxmum exclusive. using .0001 to comform
+    # to the standard minimum is exclusive and maximum is inclusive
+    remap = "0 0 1;0.0001 5 2;5.0001 10 3;10.0001 15 4;\
+            15.0001 20 5;20.0001 " + \
             str(math.ceil(float(value_max))) + " 6"
 
     arcpy.AddMessage('Remap the slope into classes of 1 ~ 6 ...')
 
     # Derive reclassifed slope...
-    Reclassify(dem_slope, "Value", remap, "NODATA").save(slope_rec_init)
+    reclassify(dem_slope, remap, slope_rec_init)
    
     extract_by_mask(aspect_rec_init, mask, aspect_rec)
     extract_by_mask(slope_rec_init, mask, slope_rec)
@@ -155,9 +158,6 @@ def find_common_area(veg_class, slope, aspect):
     :return: `file` the aspect in common area
     """
     
-#    import pdb
-#    pdb.set_trace()
-    
     output_folder = os.path.dirname(veg_class)
     arcpy.env.overwriteOutput = True
 
@@ -167,7 +167,6 @@ def find_common_area(veg_class, slope, aspect):
     arcpy.env.workspace = work_folder
 
     # get the common area of veg and dem
-
     # get the extent of inputs
     slope_poly = "slope_poly.shp"
     veg_class_poly = "veg_class_poly.shp"

@@ -1,15 +1,14 @@
 """
-    Title: test_bal_class.py
+    Title: test_extract_by_mask.py
     Author: Tina Yang, tina.yang@ga.gov.au
-    CreationDate: 2015-07-02
-    Description: Unit testing module for BAL_CLASS dictionary in
-    bal_database.py
+    CreationDate: 2016-06-24
+    Description: Unit testing module for extract_by_mask function in
+    sa_tools.py
 """
 
 import sys
 import os.path
 import unittest
-import numpy as np
 import arcpy
 from inspect import getfile, currentframe
 

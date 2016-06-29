@@ -1,8 +1,8 @@
 """
-    Title: test_all_neighb.py
+    Title: test_get_max_bal.py
     Author: Tina Yang, tina.yang@ga.gov.au
-    CreationDate: 2015-07-02
-    Description: Unit testing for ALL_NEIGHB dictionary in value_lookup.py
+    CreationDate: 2016-05-27
+    Description: Unit testing for get_max_bal function in calculate_bal.py
 """
 
 import sys

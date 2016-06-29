@@ -1,17 +1,22 @@
-# -*- coding: utf-8 -*-
 """
-Created on Thu Jun 09 11:41:15 2016
+:mod:`sa_tools` - some support functions replacing spatial analyst
 
-@author: u89076
+===============================================================
+
+This module includes algorithms that are used to replace spatial analyst 
+functions such as ExtractByMask, Reclassify, Slope and Aspect used within this 
+package.
+
+:moduleauthor: Tina Yang <tina.yang@ga.gov.au>
+
 """
 
 from __future__ import absolute_import 
   
 import numpy as np
-#from osgeo import gdal
-#from osgeo.gdalconst import GA_ReadOnly
 import arcpy
 import os
+
 
 def clip_array(data, x_left, y_upper, pixelwidth, pixelheight, extent):
 
@@ -26,9 +31,6 @@ def clip_array(data, x_left, y_upper, pixelwidth, pixelheight, extent):
     :return: :class:`numpy.ndarray` the clipped array
     """
     
-#    import pdb
-#    pdb.set_trace()
-    
     x_start = int(np.around((extent[0] - x_left)/pixelwidth))
     y_start = int(np.around((y_upper - extent[3])/pixelheight))
 
@@ -41,11 +43,15 @@ def clip_array(data, x_left, y_upper, pixelwidth, pixelheight, extent):
     data_clip = data[y_start:y_end, x_start:x_end]
 
     return data_clip
-    
-    
+        
 
 def extract_by_mask(image_fname, extent_file, out_fname): 
-   
+    """
+    Extract a raster using a feature (shape) file
+    :param image_fname: `file` the input raster
+    :param extent_file: `file` the input extent feature file
+    :return: `file` the output raster
+    """
     
     output_folder = os.path.dirname(image_fname)
     arcpy.env.overwriteOutput = True
@@ -55,12 +61,10 @@ def extract_by_mask(image_fname, extent_file, out_fname):
     os.chdir(work_folder)
     arcpy.env.workspace = work_folder
     
+    # set nodata value
     nodata_value = -99
     
-#    import pdb
-#    pdb.set_trace()   
-    
-    # get the informaiton of the original image     
+    # get the information of the original image     
     desc = arcpy.Describe(image_fname)
     x_min = desc.extent.XMin
     y_min = desc.extent.YMin
@@ -97,8 +101,7 @@ def extract_by_mask(image_fname, extent_file, out_fname):
         effect_ymax = y_max
     else:
         effect_ymax = extent.YMax         
-    
-    
+        
     effect_extent = (effect_xmin, effect_ymin, effect_xmax, effect_ymax)
 
     # get the lowleft corner for positioning the output raster
@@ -112,7 +115,8 @@ def extract_by_mask(image_fname, extent_file, out_fname):
     extent_data_effect = clip_array(extent_data, extent.XMin, extent.YMax, 
                                     pixel_w, pixel_h, effect_extent)                                
        
-    # operate data and data_in_extent, if nodata in either, output is nodata 
+    # operate extent_data_effect and data_in_extent, if nodata in either, 
+    # output is nodata 
     nodata_area = np.where(extent_data_effect == nodata_value)
     data_in_extent[nodata_area] = nodata_value    
     
@@ -123,16 +127,72 @@ def extract_by_mask(image_fname, extent_file, out_fname):
     
        
     del data_in_extent
+    del extent_data_effect
     del data
 
     if arcpy.Exists(ext_raster):
         arcpy.Delete_management(ext_raster)   
  
     
-     
+def reclassify(image_fname, remap, out_fname): 
+    """
+    Reclassify the raster as per the input remap
+    :param image_fname: `file` the input raster
+    :param remap: `str` the info of remap
+    :return: `file` the output raster
+    """
+    
+    output_folder = os.path.dirname(image_fname)
+    arcpy.env.overwriteOutput = True
 
-if __name__ == '__main__':
-    image_fname = r'C:\bal_removeSpatialAnalyst\input\vege_proj.img'
-    out_fname = r'C:\bal_removeSpatialAnalyst\input\plygon_result'
-    extent_file = r'C:\bal_removeSpatialAnalyst\input\expect_mask_others.shp'
-    extract_by_mask(image_fname, extent_file, out_fname)
+    # set directory
+    work_folder = output_folder
+    os.chdir(work_folder)
+    arcpy.env.workspace = work_folder
+    
+    # set nodata value
+    nodata_value = -99
+    
+    # get the information of the original image     
+    desc = arcpy.Describe(image_fname)
+    x_min = desc.extent.XMin
+    y_min = desc.extent.YMin 
+    pixel_w = desc.children[0].meanCellWidth
+    pixel_h = desc.children[0].meanCellHeight
+    sref = desc.spatialReference
+    # get the lowleft corner for positioning the output raster
+    lowleft_corner = arcpy.Point(x_min, y_min)  
+    
+    data = arcpy.RasterToNumPyArray(image_fname, nodata_to_value=nodata_value)
+            
+    remap_list = remap.split(";")
+    
+    for a_map in remap_list:
+        values = a_map.lstrip().split(" ")
+        if len(values) == 2:
+            start_value = float(values[0])
+            end_value = float(values[0])
+            new_value = values[1]
+        else:
+            start_value = float(values[0])
+            end_value = float(values[1])
+            new_value = values[2]
+            
+        # to include the orignal end value , expand the end value a bit
+        end_value += 0.0001
+            
+        if new_value == 'NODATA':
+            new_value = nodata_value
+        else:
+            new_value = int(new_value)
+
+        range_loc = np.where((data >= start_value) & (data < end_value))
+        data[range_loc] = new_value
+        
+    outdata = data.astype(int)    
+    # save the output array into a raster
+    arcpy.NumPyArrayToRaster(outdata, lowleft_corner, pixel_w, pixel_h,
+                             value_to_nodata=nodata_value).save(out_fname)
+    arcpy.DefineProjection_management(out_fname, sref)
+        
+    del data, outdata 

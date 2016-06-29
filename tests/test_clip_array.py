@@ -1,9 +1,8 @@
 """
-    Title: test_bal_class.py
+    Title: test_clip_array.py
     Author: Tina Yang, tina.yang@ga.gov.au
-    CreationDate: 2015-07-02
-    Description: Unit testing module for BAL_CLASS dictionary in
-    bal_database.py
+    CreationDate: 2016-06-23
+    Description: Unit testing module for clip_arry function in sa_tools.py
 """
 
 import sys

@@ -34,13 +34,13 @@ class TestGetSlopeAspect(unittest.TestCase):
         arcpy.CheckOutExtension("spatial")
 
         dem = os.path.join(input_folder, "dem.img")
+        mask = os.path.join(input_folder, "test_mask.shp")
         slope_expect = os.path.join(reference_folder, "expect_s_r")
         aspect_expect = os.path.join(reference_folder, "expect_a_r")
 
         from bal import get_slope_aspect
 
         output_folder = os.path.join(testdata_folder, 'output')
-        mask = dem
 
         slope, aspect = get_slope_aspect(dem, output_folder, mask)
 
