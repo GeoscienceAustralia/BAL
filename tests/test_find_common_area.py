@@ -45,7 +45,7 @@ class TestFindCommonArea(unittest.TestCase):
         parent = os.path.abspath(os.path.join(cmd_folder, os.pardir))
 
         if parent not in sys.path:
-            sys.path.insert(0, parent)       
+            sys.path.insert(0, parent)
 
         veg_expect = os.path.join(reference_folder, "expect_v_c")
         slope_expect = os.path.join(reference_folder, "expect_s_c")

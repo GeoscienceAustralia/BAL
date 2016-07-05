@@ -28,8 +28,8 @@ class TestFindDistClass(unittest.TestCase):
         from calculate_bal import find_dist_class
 
         dist_list = [12.5, 37.5, 62.5, 87.5]
-        dist_limit_list = [[16, 21, 31, 42], 
-                           [11, 15, 22, 31], 
+        dist_limit_list = [[16, 21, 31, 42],
+                           [11, 15, 22, 31],
                            [42, 52, 68, 87]]
 
         result_expect = [1, 4, 5, 5, 2, 5, 5, 5, 1, 1, 3, 5]

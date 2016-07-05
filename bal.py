@@ -17,13 +17,12 @@ import inspect
 import math
 from os.path import join as pjoin
 import arcpy
-from arcpy.sa import Slope, Aspect
 from calculate_bal import bal_cal
-from utilities.sa_tools import extract_by_mask, reclassify
+from utilities.sa_tools import extract_by_mask, reclassify, cal_slope_aspect
 
 __version__ = '1.0'
-    
-    
+
+
 def reclass_veg(veg, dem, output_folder, remap, mask):
     """
     Reclassify the original vegetation into the categories classified as Table
@@ -37,7 +36,7 @@ def reclass_veg(veg, dem, output_folder, remap, mask):
 
     :return: `file` the reclassified vegetation
     """
-    
+
     arcpy.env.overwriteOutput = True
 
     input_folder = os.path.dirname(veg)
@@ -94,9 +93,8 @@ def get_slope_aspect(input_dem, output_folder, mask):
     dem_aspect = pjoin(input_folder,'aspect')
 
     # Derive slope and aspect ...
-    Slope(input_dem, "DEGREE", "1").save(dem_slope)
-    Aspect(input_dem).save(dem_aspect)
-    
+    cal_slope_aspect(input_dem, dem_slope, dem_aspect)
+
     aspect_rec_init = pjoin(input_folder, 'aspect_r_i')
     slope_rec_init = pjoin(input_folder, 'slope_r_i')
     aspect_rec = pjoin(output_folder, 'aspect_r')
@@ -114,7 +112,7 @@ def get_slope_aspect(input_dem, output_folder, mask):
 
     if float(value_max) < 20:
         value_max = 20.0001
-    
+
     # remap is minimum inclusive but maxmum exclusive. using .0001 to comform
     # to the standard minimum is exclusive and maximum is inclusive
     remap = "0 0 1;0.0001 5 2;5.0001 10 3;10.0001 15 4;\
@@ -125,7 +123,7 @@ def get_slope_aspect(input_dem, output_folder, mask):
 
     # Derive reclassifed slope...
     reclassify(dem_slope, remap, slope_rec_init)
-   
+
     extract_by_mask(aspect_rec_init, mask, aspect_rec)
     extract_by_mask(slope_rec_init, mask, slope_rec)
 
@@ -157,7 +155,7 @@ def find_common_area(veg_class, slope, aspect):
     :return: `file` the slope in common area
     :return: `file` the aspect in common area
     """
-    
+
     output_folder = os.path.dirname(veg_class)
     arcpy.env.overwriteOutput = True
 
@@ -184,7 +182,7 @@ def find_common_area(veg_class, slope, aspect):
     extract_by_mask(veg_class, mask_com, veg_class_com)
     extract_by_mask(slope, mask_com, slope_com)
     extract_by_mask(aspect, mask_com, aspect_com)
-    
+
     if arcpy.Exists(slope_poly):
         arcpy.Delete_management(slope_poly)
     if arcpy.Exists(veg_class_poly):
@@ -270,7 +268,7 @@ def get_footprint(raster, footprint):
     arcpy.env.overwriteOutput = True
     input_folder = os.path.dirname(raster)
     arcpy.env.workspace = input_folder
-    
+
     raster_extent = arcpy.Describe(raster).extent
 
     get_extent_mask(raster_extent, footprint)
@@ -342,9 +340,6 @@ def run():
     if cmd_subfolder not in sys.path:
         sys.path.insert(0, cmd_subfolder)
 
-    # check out Spatial Analyst license
-    arcpy.CheckOutExtension("spatial")
-
     # get input parameters from toolbox interface
     dem = arcpy.GetParameterAsText(0)
     veg = arcpy.GetParameterAsText(1)
@@ -367,8 +362,6 @@ def run():
         except Exception as err:
             # Report any exceptions back
             arcpy.AddError(err)
-
-        arcpy.CheckInExtension("spatial")
 
     else:
         arcpy.AddError("To go ahead, the DEM needs to be projected first")

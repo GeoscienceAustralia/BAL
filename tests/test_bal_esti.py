@@ -91,7 +91,7 @@ class TestBalEsti(unittest.TestCase):
                     for dist in dist_list:
                         bal = bal_esti(veg, dist, slope, fdi)
                         result.append(bal)
-                        
+
         self.assertEqual(result, result_expect)
 
 

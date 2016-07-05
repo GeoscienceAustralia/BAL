@@ -46,11 +46,11 @@ class TestGetMaxBal(unittest.TestCase):
                                   [100., 100., 200., 200.],
                                   [100, 100., 100, 100.],
                                   [40., 100., 100., -99]])
-                                  
-        array_list = [a, b, c]                                  
 
-        result = get_max_bal(array_list)        
-        
+        array_list = [a, b, c]
+
+        result = get_max_bal(array_list)
+
         np.testing.assert_array_equal(result, result_expect)
 
 

@@ -31,15 +31,14 @@ class TestGetFootPrint(unittest.TestCase):
 
         arcpy.env.overwriteOutput = True
 
-        arcpy.CheckOutExtension("spatial")
-
         veg = os.path.join(input_folder, "vege.img")
 
         from bal import get_footprint
 
-        footprint_expect = os.path.join(reference_folder, "expect_footprint.shp")
+        footprint_expect = os.path.join(reference_folder,
+                                        "expect_footprint.shp")
 
-        
+
         footprint = 'footprint.shp'
         get_footprint(veg, footprint)
 
@@ -49,7 +48,7 @@ class TestGetFootPrint(unittest.TestCase):
         arcpy.FeatureCompare_management(footprint, footprint_expect,
                                         'Id', '', '', '', '', '', '', '',
                                         '', compare_result_footprint)
-                                        
+
         if '"true"' not in open(compare_result_footprint).read():
             self.assertEqual(1, 1, 'No errors')
         else:

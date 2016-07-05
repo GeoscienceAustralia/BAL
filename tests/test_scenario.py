@@ -33,8 +33,6 @@ class TestScenario(unittest.TestCase):
 
         arcpy.env.overwriteOutput = True
 
-        arcpy.CheckOutExtension("spatial")
-
         veg_class = os.path.join(output_folder, "veg_samp")
         slope = os.path.join(output_folder, "slope_samp")
         aspect = os.path.join(output_folder, "aspect_samp")

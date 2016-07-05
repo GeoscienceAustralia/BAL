@@ -51,8 +51,6 @@ class TestBalCal(unittest.TestCase):
 
         arcpy.env.overwriteOutput = True
 
-        arcpy.CheckOutExtension("spatial")
-
         bal_max_expect = os.path.join(reference_folder, "expect_bal_max.img")
 
         from calculate_bal import bal_cal

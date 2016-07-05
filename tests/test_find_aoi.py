@@ -31,8 +31,6 @@ class TestFindAOI(unittest.TestCase):
 
         arcpy.env.overwriteOutput = True
 
-        arcpy.CheckOutExtension("spatial")
-
         dem = os.path.join(input_folder, "dem.img")
         veg = os.path.join(input_folder, "vege.img")
 

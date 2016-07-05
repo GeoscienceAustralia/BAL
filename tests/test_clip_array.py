@@ -26,7 +26,7 @@ class TestCLIPARRAY(unittest.TestCase):
             sys.path.insert(0, parent)
 
         from utilities.sa_tools import clip_array
-        
+
         pixelwidth = 30
         pixelheight = 30
 
@@ -47,7 +47,7 @@ class TestCLIPARRAY(unittest.TestCase):
 
             data_clip = clip_array(data, x_left, y_upper, pixelwidth,
                                    pixelheight, extent)
-                                       
+
             np.testing.assert_array_equal(expected, data_clip)
 
 

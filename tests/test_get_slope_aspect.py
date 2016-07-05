@@ -31,8 +31,6 @@ class TestGetSlopeAspect(unittest.TestCase):
 
         arcpy.env.overwriteOutput = True
 
-        arcpy.CheckOutExtension("spatial")
-
         dem = os.path.join(input_folder, "dem.img")
         mask = os.path.join(input_folder, "test_mask.shp")
         slope_expect = os.path.join(reference_folder, "expect_s_r")
@@ -49,8 +47,8 @@ class TestGetSlopeAspect(unittest.TestCase):
         compare_result_aspect = os.path.join(output_folder,
                                              "compare_aspect_r.txt")
 
-        arcpy.RasterCompare_management(slope, slope_expect, '', '', '',
-                                       compare_result_slope)
+        arcpy.RasterCompare_management(slope, slope_expect, '', 'Pixel Value',
+                                       '', compare_result_slope)
         if '"true"' not in open(compare_result_slope).read():
             self.assertEqual(1, 1, 'No errors')
         else:

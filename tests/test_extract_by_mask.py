@@ -32,37 +32,37 @@ class TestEXTRACTBYMASK(unittest.TestCase):
             sys.path.insert(0, parent)
 
         from utilities.sa_tools import extract_by_mask
-        
-        arcpy.env.overwriteOutput = True     
 
-        raster = os.path.join(input_folder, "vege_mga.img")        
+        arcpy.env.overwriteOutput = True
+
+        raster = os.path.join(input_folder, "vege_mga.img")
         result = os.path.join(output_folder, "extracted_raster.img")
-        
+
         extent_list = [os.path.join(input_folder, "mask_extent_small.shp"),
                        os.path.join(input_folder, "mask_extent_large.shp")]
-                       
+
         expec_list = [os.path.join(refer_folder, "expect_extracted_small.img"),
-                      os.path.join(refer_folder, "expect_extracted_large.img")]                       
-        
+                      os.path.join(refer_folder, "expect_extracted_large.img")]
+
         index = 0
         for extent in extent_list:
-            
+
             extract_by_mask(raster, extent, result)
-    
+
             compare_result = os.path.join(output_folder, "compare_result.txt")
-    
-            arcpy.RasterCompare_management(result, expec_list[index], '', 
-                                           'Pixel Type', '', compare_result, 
+
+            arcpy.RasterCompare_management(result, expec_list[index], '',
+                                           'Pixel Type', '', compare_result,
                                            '', '', '')
-                                           
+
             if '"true"' not in open(compare_result).read():
                 self.assertEqual(1, 1, 'No errors')
             else:
                 self.assertEqual(1, 0, 'Has errors')
-    
+
             if arcpy.Exists(result):
                 arcpy.Delete_management(result)
-    
+
             os.remove(compare_result)
             os.remove(os.path.join(output_folder, "compare_result.xml"))
 
