@@ -51,11 +51,12 @@ def bal_cal(veg_class, slope, aspect, fdi):
     slope_data = arcpy.RasterToNumPyArray(slope, nodata_to_value=-99)
     aspect_data = arcpy.RasterToNumPyArray(aspect, nodata_to_value=-99)
 
-    # calculate the BAL for each direction in numpy array and append them
-    # into a list
+    # calculate the BAL for each direction in numpy array and get maximum of
+    # 2 direction each time, until get the maximum of all directions
     dire = ['w', 'e', 'n', 's', 'nw', 'ne', 'se', 'sw']
-    bal_list = []
+
     for one_dir in dire:
+        bal_list = []
         outdata = convo(one_dir, veg_data, slope_data, aspect_data,
                         pixel_w, fdi)
 
@@ -69,13 +70,18 @@ def bal_cal(veg_class, slope, aspect, fdi):
 
         arcpy.DefineProjection_management(output_dir, sref)
 
-        bal_list.append(outdata)
+        if one_dir == 'w':
+            bigger = outdata
+            del outdata
+            continue
 
+        bal_list.append(bigger)
+        bal_list.append(outdata)
+        bigger = get_max_bal(bal_list)
         del outdata
 
     # get maximum BAL from the list
-    max_bal = get_max_bal(bal_list)
-    arcpy.NumPyArrayToRaster(max_bal, lowleft_corner, pixel_w,
+    arcpy.NumPyArrayToRaster(bigger, lowleft_corner, pixel_w,
                              pixel_h, value_to_nodata=-99).save('bal_max.img')
 
     arcpy.DefineProjection_management('bal_max.img', sref)
@@ -92,7 +98,7 @@ def bal_cal(veg_class, slope, aspect, fdi):
     if arcpy.Exists(aspect):
         arcpy.Delete_management(aspect)
     del veg_data, slope_data, aspect_data
-    del bal_list, max_bal
+    del bal_list, bigger
 
 
 def get_max_bal(bal_list):
