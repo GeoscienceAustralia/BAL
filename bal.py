@@ -43,7 +43,7 @@ def reclass_veg(veg, dem, output_folder, remap, mask):
     arcpy.env.workspace = input_folder
 
     veg_r_init = 'veg_r_init'
-    veg_r_proj = pjoin(input_folder,'veg_r_pj')
+    veg_r_proj = pjoin(input_folder, 'veg_r_pj')
     veg_class_r = pjoin(output_folder, 'veg_r')
 
     arcpy.AddMessage('Remap the vegetation into classes of 1 ~ 7 ...')
@@ -90,7 +90,7 @@ def get_slope_aspect(input_dem, output_folder, mask):
     arcpy.env.workspace = input_folder
 
     dem_slope = pjoin(input_folder, 'slope')
-    dem_aspect = pjoin(input_folder,'aspect')
+    dem_aspect = pjoin(input_folder, 'aspect')
 
     # Derive slope and aspect ...
     cal_slope_aspect(input_dem, dem_slope, dem_aspect)

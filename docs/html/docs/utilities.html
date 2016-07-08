@@ -88,6 +88,108 @@ AS 3959 (2009) to determine the BAL for an area of interest within Australia.</p
 </tbody>
 </table>
 </div>
+<div class="section" id="module-sa_tools">
+<span id="sa-tools-py"></span><h2>sa_tools.py<a class="headerlink" href="#module-sa_tools" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#module-sa_tools" title="sa_tools"><tt class="xref py py-mod docutils literal"><span class="pre">sa_tools</span></tt></a> - some support functions replacing spatial analyst</p>
+<hr class="docutils" />
+<p>This module includes algorithms that are used to replace spatial analyst
+functions such as ExtractByMask, Reclassify, Slope and Aspect used within this
+package.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">moduleauthor:</th><td class="field-body">Tina Yang &lt;<a class="reference external" href="mailto:tina&#46;yang&#37;&#52;&#48;ga&#46;gov&#46;au">tina<span>&#46;</span>yang<span>&#64;</span>ga<span>&#46;</span>gov<span>&#46;</span>au</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="sa_tools.cal_slope_aspect">
+<tt class="descclassname">sa_tools.</tt><tt class="descname">cal_slope_aspect</tt><big>(</big><em>dem</em>, <em>slope_fname</em>, <em>aspect_fname</em><big>)</big><a class="reference internal" href="../_modules/sa_tools.html#cal_slope_aspect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sa_tools.cal_slope_aspect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the slope from the input dem</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dem</strong> &#8211; <cite>file</cite> the input dem</li>
+<li><strong>slope_fname</strong> &#8211; <cite>file</cite> the output slope</li>
+<li><strong>aspect_fname</strong> &#8211; <cite>file</cite> the output aspect</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sa_tools.clip_array">
+<tt class="descclassname">sa_tools.</tt><tt class="descname">clip_array</tt><big>(</big><em>data</em>, <em>x_left</em>, <em>y_upper</em>, <em>pixelwidth</em>, <em>pixelheight</em>, <em>extent</em><big>)</big><a class="reference internal" href="../_modules/sa_tools.html#clip_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sa_tools.clip_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the clipped area of the input array according to an sub-extent</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> &#8211; <tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt> the input array</li>
+<li><strong>x_left</strong> &#8211; <cite>float</cite> the left-most x projected coordinate</li>
+<li><strong>y_upper</strong> &#8211; <cite>float</cite> the upper-most y projected coordinate</li>
+<li><strong>pixelwidth</strong> &#8211; <cite>float</cite> the pixel width</li>
+<li><strong>pixelheight</strong> &#8211; <cite>float</cite> the pixel height</li>
+<li><strong>extent</strong> &#8211; <cite>tuple</cite> the clipping extent</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt> the clipped array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sa_tools.extract_by_mask">
+<tt class="descclassname">sa_tools.</tt><tt class="descname">extract_by_mask</tt><big>(</big><em>image_fname</em>, <em>extent_file</em>, <em>out_fname</em><big>)</big><a class="reference internal" href="../_modules/sa_tools.html#extract_by_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sa_tools.extract_by_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract a raster using a feature (shape) file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image_fname</strong> &#8211; <cite>file</cite> the input raster</li>
+<li><strong>extent_file</strong> &#8211; <cite>file</cite> the input extent feature file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><cite>file</cite> the output raster</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sa_tools.reclassify">
+<tt class="descclassname">sa_tools.</tt><tt class="descname">reclassify</tt><big>(</big><em>image_fname</em>, <em>remap</em>, <em>out_fname</em><big>)</big><a class="reference internal" href="../_modules/sa_tools.html#reclassify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sa_tools.reclassify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reclassify the raster as per the input remap</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image_fname</strong> &#8211; <cite>file</cite> the input raster</li>
+<li><strong>remap</strong> &#8211; <cite>str</cite> the info of remap</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><cite>file</cite> the output raster</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -102,6 +204,7 @@ AS 3959 (2009) to determine the BAL for an area of interest within Australia.</p
 <li><a class="reference internal" href="#module-__init__">__init__.py</a></li>
 <li><a class="reference internal" href="#module-value_lookup">value_lookup.py</a></li>
 <li><a class="reference internal" href="#module-bal_database">bal_database.py</a></li>
+<li><a class="reference internal" href="#module-sa_tools">sa_tools.py</a></li>
 </ul>
 </li>
 </ul>

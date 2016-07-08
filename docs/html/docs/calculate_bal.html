@@ -62,7 +62,7 @@
 bushfire attack level (BAL)</p>
 <hr class="docutils" />
 <p>This module includes algorithms that are used to calculate BAL as per
-Method 1 in the Australian Standard AS 3959 (2009) &#8211; Construction of 
+Method 1 in the Australian Standard AS 3959 (2009) &#8211; Construction of
 buildings in bushfire-prone areas.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -96,7 +96,7 @@ to determine the bushfire attack level (BAL).</p>
 
 <dl class="function">
 <dt id="calculate_bal.bal_esti">
-<tt class="descclassname">calculate_bal.</tt><tt class="descname">bal_esti</tt><big>(</big><em>veg</em>, <em>dist</em>, <em>slope</em>, <em>fdi</em><big>)</big><a class="headerlink" href="#calculate_bal.bal_esti" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">calculate_bal.</tt><tt class="descname">bal_esti</tt><big>(</big><em>veg</em>, <em>dist</em>, <em>slope</em>, <em>fdi</em><big>)</big><a class="reference internal" href="../_modules/calculate_bal.html#bal_esti"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.bal_esti" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the BAL based on the vegetation class, slope degree and
 horizontal distance from the point of interest (POI).</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -122,7 +122,7 @@ the POI</p>
 <dl class="function">
 <dt id="calculate_bal.convo">
 <tt class="descclassname">calculate_bal.</tt><tt class="descname">convo</tt><big>(</big><em>a_dir</em>, <em>veg_data</em>, <em>slope_data</em>, <em>aspect_data</em>, <em>pixel_width</em>, <em>fdi</em><big>)</big><a class="reference internal" href="../_modules/calculate_bal.html#convo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.convo" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the maximum BAL for the point of interest in one direction by 
+<dd><p>Find the maximum BAL for the point of interest in one direction by
 assessing all neighbours&#8217; BAL values in that direction (up to 100 metres).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -147,8 +147,8 @@ assessing all neighbours&#8217; BAL values in that direction (up to 100 metres).
 
 <dl class="function">
 <dt id="calculate_bal.find_dist_class">
-<tt class="descclassname">calculate_bal.</tt><tt class="descname">find_dist_class</tt><big>(</big><em>dist</em>, <em>dist_limit</em><big>)</big><a class="headerlink" href="#calculate_bal.find_dist_class" title="Permalink to this definition">¶</a></dt>
-<dd><p>Decide the BAL class based on the input distance and the distance 
+<tt class="descclassname">calculate_bal.</tt><tt class="descname">find_dist_class</tt><big>(</big><em>dist</em>, <em>dist_limit</em><big>)</big><a class="reference internal" href="../_modules/calculate_bal.html#find_dist_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.find_dist_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decide the BAL class based on the input distance and the distance
 upper-limit for each BAL class.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -168,8 +168,24 @@ upper-limit for each BAL class.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="calculate_bal.get_max_bal">
+<tt class="descclassname">calculate_bal.</tt><tt class="descname">get_max_bal</tt><big>(</big><em>bal_list</em><big>)</big><a class="reference internal" href="../_modules/calculate_bal.html#get_max_bal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.get_max_bal" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the maximum bal value of all 8 directions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>bal_list</strong> &#8211; <cite>list of arrays</cite> the bal value for each of 8 directions</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt> the maximum bal value of 8 directions</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
 <dt id="calculate_bal.get_slope_in_aspect">
-<tt class="descclassname">calculate_bal.</tt><tt class="descname">get_slope_in_aspect</tt><big>(</big><em>slope_data</em>, <em>aspect_data</em>, <em>rows</em>, <em>cols</em>, <em>aspect_value</em><big>)</big><a class="headerlink" href="#calculate_bal.get_slope_in_aspect" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">calculate_bal.</tt><tt class="descname">get_slope_in_aspect</tt><big>(</big><em>slope_data</em>, <em>aspect_data</em>, <em>rows</em>, <em>cols</em>, <em>aspect_value</em><big>)</big><a class="reference internal" href="../_modules/calculate_bal.html#get_slope_in_aspect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.get_slope_in_aspect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the slope data in a specific aspect.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

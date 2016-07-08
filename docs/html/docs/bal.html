@@ -96,7 +96,7 @@ buildings in bushfire-prone areas.</p>
 
 <dl class="function">
 <dt id="bal.find_aoi">
-<tt class="descclassname">bal.</tt><tt class="descname">find_aoi</tt><big>(</big><em>extent</em>, <em>dem</em>, <em>veg</em><big>)</big><a class="headerlink" href="#bal.find_aoi" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">bal.</tt><tt class="descname">find_aoi</tt><big>(</big><em>extent</em>, <em>dem</em>, <em>veg</em><big>)</big><a class="reference internal" href="../_modules/bal.html#find_aoi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bal.find_aoi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the effective area of interest based on input vegetation map, DEM and
 extent.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -119,8 +119,8 @@ extent.</p>
 
 <dl class="function">
 <dt id="bal.find_common_area">
-<tt class="descclassname">bal.</tt><tt class="descname">find_common_area</tt><big>(</big><em>veg_class</em>, <em>slope</em>, <em>aspect</em><big>)</big><a class="headerlink" href="#bal.find_common_area" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the common area of vegetaion, slope and aspect to calculate BAL.</p>
+<tt class="descclassname">bal.</tt><tt class="descname">find_common_area</tt><big>(</big><em>veg_class</em>, <em>slope</em>, <em>aspect</em><big>)</big><a class="reference internal" href="../_modules/bal.html#find_common_area"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bal.find_common_area" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the common area of vegetation, slope and aspect to calculate BAL.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -147,7 +147,7 @@ extent.</p>
 
 <dl class="function">
 <dt id="bal.get_extent_mask">
-<tt class="descclassname">bal.</tt><tt class="descname">get_extent_mask</tt><big>(</big><em>extent</em>, <em>mask</em><big>)</big><a class="headerlink" href="#bal.get_extent_mask" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">bal.</tt><tt class="descname">get_extent_mask</tt><big>(</big><em>extent</em>, <em>mask</em><big>)</big><a class="reference internal" href="../_modules/bal.html#get_extent_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bal.get_extent_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Derive the mask for the customised input extent.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -156,6 +156,24 @@ extent.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>extent</strong> &#8211; <cite>str</cite> the input extent</li>
 <li><strong>mask</strong> &#8211; <cite>file</cite> the output mask</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="bal.get_footprint">
+<tt class="descclassname">bal.</tt><tt class="descname">get_footprint</tt><big>(</big><em>raster</em>, <em>footprint</em><big>)</big><a class="reference internal" href="../_modules/bal.html#get_footprint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#bal.get_footprint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the footprint of a raster</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>raster</strong> &#8211; <cite>file</cite> the input raster</li>
+<li><strong>footprint</strong> &#8211; <cite>file</cite> the output footprint</li>
 </ul>
 </td>
 </tr>

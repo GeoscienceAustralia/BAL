@@ -36,8 +36,6 @@ The BAL tool developed in Geoscience Australia (GA) has been developed and teste
 
 * Vegetation data is another critical input into the tool. Method 1 in AS 3959 (2009) considers the vegetation up to 100 metres from the site of interest. Ideally the vegetation with finer resolution (preferred at metre level) is required to derive sensible BAL analyses. Where finer vegetation data is not available, the alternative coarse vegetation data may lead to inaccurate output BAL.
 
-* The BAL toolbox requires availability of one extension within ArcGIS - **Spatial Analyst**. If the extension is available, its licence will be automatically checked out when needed and checked in when it is not needed any more. Without the licence of **Spatial Analyst**, the tool will fail to run.
-
 * The BAL toolbox is intended to run in the ArcGIS toolbox environment and is not intended to run in a Python script environment.
 
 * This software algorithm adapts to the Method 1 in AS 3959 (2009) by modelling it spatially. Readers are assumed to be familiar with AS 3959 (2009). For the detailed description of the Method 1, please refer to the Standard AS 3959 (2009).

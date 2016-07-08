@@ -21,16 +21,18 @@ import os
 
 RADIANS_PER_DEGREE = 0.01745329251994329576923690768489
 
-def clip_array(data, x_left, y_upper, pixelwidth, pixelheight, extent):
 
+def clip_array(data, x_left, y_upper, pixelwidth, pixelheight, extent):
     """
     Return the clipped area of the input array according to an sub-extent
+
     :param data: :class:`numpy.ndarray` the input array
     :param x_left: `float` the left-most x projected coordinate
     :param y_upper: `float` the upper-most y projected coordinate
     :param pixelwidth: `float` the pixel width
     :param pixelheight: `float` the pixel height
     :param extent: `tuple` the clipping extent
+
     :return: :class:`numpy.ndarray` the clipped array
     """
 
@@ -51,8 +53,10 @@ def clip_array(data, x_left, y_upper, pixelwidth, pixelheight, extent):
 def extract_by_mask(image_fname, extent_file, out_fname):
     """
     Extract a raster using a feature (shape) file
+
     :param image_fname: `file` the input raster
     :param extent_file: `file` the input extent feature file
+
     :return: `file` the output raster
     """
 
@@ -129,7 +133,6 @@ def extract_by_mask(image_fname, extent_file, out_fname):
                              value_to_nodata=nodata_value).save(out_fname)
     arcpy.DefineProjection_management(out_fname, sref)
 
-
     del data_in_extent
     del extent_data_effect
     del data
@@ -141,8 +144,10 @@ def extract_by_mask(image_fname, extent_file, out_fname):
 def reclassify(image_fname, remap, out_fname):
     """
     Reclassify the raster as per the input remap
+
     :param image_fname: `file` the input raster
     :param remap: `str` the info of remap
+
     :return: `file` the output raster
     """
 
@@ -205,6 +210,7 @@ def reclassify(image_fname, remap, out_fname):
 def cal_slope_aspect(dem, slope_fname, aspect_fname):
     """
     Calculate the slope from the input dem
+
     :param dem: `file` the input dem
     :param slope_fname: `file` the output slope
     :param aspect_fname: `file` the output aspect
