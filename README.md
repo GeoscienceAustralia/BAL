@@ -7,6 +7,8 @@ Dependencies
 ============
 This toolbox is developed and tested within ArcGIS 10.2 that integrates with Python 2.7 and Numpy 1.6.2.
 
+For more information on installation of the toolbox, see [docs/install.rst](https://github.com/GeoscienceAustralia/BAL/blob/master/docs/install.rst), or the [User Guide](https://github.com/GeoscienceAustralia/BAL/blob/master/docs/BAL.pdf).
+
 For detailed instructions on installation of these dependencies, please see the documentation for each individual library.
 
 * [Python](https://www.python.org/)- v2.7 preferred
