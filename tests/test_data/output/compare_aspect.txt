@@ -1,0 +1,18 @@
+Has_error, Identifier, Message, Base_value, Test_value, ObjectID
+"false", "Raster", "Bandcollection counts are the same [1]", " ", " ", -1
+"false", "Raster", "Extents are the same", " ", " ", -1
+"false", "Raster", "Heights are the same [68]", " ", " ", -1
+"false", "Raster", "Widths are the same [84]", " ", " ", -1
+"false", "Raster", "PixelTypes are the same [32 bit floating point]", " ", " ", -1
+"false", "SpatialReference", "Spatial references are the same", " ", " ", -1
+"false", "Raster", "Pixel NoDataMasks are the same", " ", " ", -1
+"false", "RasterDataset", "Bandcollection counts are the same [1]", " ", " ", -1
+"false", "RasterDataset", "Extents are the same", " ", " ", -1
+"false", "RasterDataset", "Heights are the same [68]", " ", " ", -1
+"false", "RasterDataset", "Widths are the same [84]", " ", " ", -1
+"false", "RasterDataset", "PixelTypes are the same [32 bit floating point]", " ", " ", -1
+"false", "SpatialReference", "Spatial references are the same", " ", " ", -1
+"false", "RasterDataset", "NoDataMasks are the same", " ", " ", -1
+"false", "RasterColormap", "Unable to compare colormaps - no Colormaps to compare", " ", " ", -1
+"false", "AttributeTable", "Unable to compare AttributeTables - not available in Base and Tes", " ", " ", -1
+"false", "RasterDataset", "Metadata are the same", " ", " ", -1

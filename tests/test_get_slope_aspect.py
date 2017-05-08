@@ -47,14 +47,14 @@ class TestGetSlopeAspect(unittest.TestCase):
         compare_result_aspect = os.path.join(output_folder,
                                              "compare_aspect_r.txt")
 
-        arcpy.RasterCompare_management(slope, slope_expect, '', 'Pixel Value',
+        arcpy.RasterCompare_management(slope, slope_expect, '', 'Pyramids Exist; Pixel Value',
                                        '', compare_result_slope)
         if '"true"' not in open(compare_result_slope).read():
             self.assertEqual(1, 1, 'No errors')
         else:
             self.assertEqual(1, 0, 'Has errors')
 
-        arcpy.RasterCompare_management(aspect, aspect_expect, '', '', '',
+        arcpy.RasterCompare_management(aspect, aspect_expect, '', 'Pyramids Exist', '',
                                        compare_result_aspect)
         if '"true"' not in open(compare_result_aspect).read():
             self.assertEqual(1, 1, 'No errors')

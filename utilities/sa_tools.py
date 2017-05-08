@@ -14,8 +14,6 @@ package.
 from __future__ import absolute_import
 
 import numpy as np
-from scipy import ndimage
-import numexpr
 import arcpy
 import os
 
@@ -239,25 +237,52 @@ def cal_slope_aspect(dem, slope_fname, aspect_fname):
 
     elevation_array = arcpy.RasterToNumPyArray(dem,
                                                nodata_to_value=nodata_value)
-
     mask = np.where(elevation_array == nodata_value)
 
-    dzdx_array = ndimage.sobel(elevation_array, axis=1) / (8. * pixel_w)
-    dzdy_array = ndimage.sobel(elevation_array, axis=0) / (8. * pixel_h)
+    # Set nodata cells adjacent to valid cells to a matching value.
+    # This is to ensure the slope values (calculated using a centred
+    # difference scheme) near nodata areas remain sensible.
+    nx, ny = elevation_array.shape
+    for i in range(ny):
+        for j in range(nx -1):
+            if (elevation_array[j+1, i] == nodata_value and
+                elevation_array[j, i] != nodata_value):
+                elevation_array[j+1, i] = elevation_array[j, i]
 
-    # Slope
-    hypotenuse_array = np.hypot(dzdx_array, dzdy_array)
-    slope_array = numexpr.evaluate(
-        "arctan(hypotenuse_array) / RADIANS_PER_DEGREE")
+    for i in range(nx):
+        for j in range(ny -1):
+            if (elevation_array[i, j+1] == nodata_value and
+                elevation_array[i, j] != nodata_value):
+                elevation_array[i, j+1] = elevation_array[i, j]
+
+    for i in range(ny):
+        for j in range(nx -1, -1, -1):
+            if (elevation_array[j, i] == nodata_value and
+                elevation_array[j+1, i] != nodata_value):
+                elevation_array[j, i] = elevation_array[j+1, i]
+
+    for i in range(nx):
+        for j in range(ny-1, -1, -1):
+            if (elevation_array[i, j] == nodata_value and
+                elevation_array[i, j+1] != nodata_value):
+                elevation_array[i, j] = elevation_array[i, j+1]
+
+    # Calculate gradient:
+    # See https://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.gradient.html
+    # This is the 1.6 version of numpy.gradient:
+    dzdx, dzdy = np.gradient(elevation_array, pixel_w, pixel_h)
+
+    # Calculate slope:
+    hypotenuse_array = np.hypot(dzdx, dzdy)
+    slope_array = np.arctan(hypotenuse_array) / RADIANS_PER_DEGREE 
     slope_array[mask] = nodata_value
     del hypotenuse_array
 
     # Aspect
     # Convert angles from conventional radians to compass heading 0-360
-    aspect_array = numexpr.evaluate(
-        "(450 - arctan2(dzdy_array, -dzdx_array) / RADIANS_PER_DEGREE) % 360")
+    aspect_array = np.mod((450. - np.arctan2(dzdy, -dzdx)/ RADIANS_PER_DEGREE), 360.)
     aspect_array[mask] = nodata_value
-    del dzdx_array, dzdy_array
+    del dzdx, dzdy
 
     # save the output array into a raster
     arcpy.NumPyArrayToRaster(slope_array, lowleft_corner, pixel_w, pixel_h,
@@ -269,3 +294,4 @@ def cal_slope_aspect(dem, slope_fname, aspect_fname):
     arcpy.DefineProjection_management(aspect_fname, sref)
 
     del elevation_array, slope_array, aspect_array
+

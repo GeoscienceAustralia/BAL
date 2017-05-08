@@ -61,7 +61,7 @@ class TestFindCommonArea(unittest.TestCase):
         compare_result_aspect = os.path.join(output_folder,
                                              "compare_aspect_c.txt")
 
-        arcpy.RasterCompare_management(veg_c, veg_expect, '', '', '',
+        arcpy.RasterCompare_management(veg_c, veg_expect, '', 'Pyramids Exist', '',
                                        compare_result_veg)
         if '"true"' not in open(compare_result_veg).read():
             self.assertEqual(1, 1, 'No errors')

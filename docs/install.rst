@@ -22,7 +22,10 @@ For detailed instructions on installation of these dependencies, please see the 
 
 * `Python <https://www.python.org/>`_ - v2.7 preferred
 * `Numpy <http://www.numpy.org/>`_ - v1.6.2 preferred
+* `Nose <http://nose.readthedocs.io/en/latest/index.html>`_
 * `Arcpy in ArcGIS 10.2 <http://resources.arcgis.com/en/help/main/10.2/index.html#//000v000000v7000000/>`_
+
+.. note:: ArcGIS 10.2 is packaged with a modified version of `Numpy`. In our experience, attempting to update the `Numpy` package will cause the `arcpy` library to fail catastrophically, and usually without reporting any error message. We recommend not trying to upgrade the version of `Numpy` linked to your `ArcGIS` installation.
 
 Setting the environment 
 ----------------------- 
@@ -35,7 +38,7 @@ The Python documentation contains some simple instructions for setting environme
 Testing the installation
 ------------------------
 
-The code includes a suite of unit tests that ensure elements of the code base work as expected. The code should be tested before running the toolbox.
+The code includes a suite of unit tests that ensure elements of the code base work as expected. The code should be tested before running the toolbox. Users will need to install the `Nose <http://nose.readthedocs.io/en/latest/index.html>`_ package to run these tests.
 
 The test suite can be run from the main directory. On Windows, run the ``run_test_all.cmd`` script from the main BAL directory. 
 

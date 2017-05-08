@@ -49,7 +49,7 @@ class TestCalSlopeAspect(unittest.TestCase):
                                              "compare_aspect.txt")
 
         arcpy.RasterCompare_management(slope_result, slope_expect, '',
-                             'Pixel Value; Statistics; Compression Type', '',
+                             'Pyramids Exist; Pixel Value; Statistics; Compression Type', '',
                              compare_result_slope)
         if '"true"' not in open(compare_result_slope).read():
             self.assertEqual(1, 1, 'No errors')
@@ -57,7 +57,7 @@ class TestCalSlopeAspect(unittest.TestCase):
             self.assertEqual(1, 0, 'Has errors')
 
         arcpy.RasterCompare_management(aspect_result, aspect_expect, '',
-                            'Pixel Value; Statistics; Compression Type', '',
+                            'Pyramids Exist; Pixel Value; Statistics; Compression Type', '',
                             compare_result_aspect)
         if '"true"' not in open(compare_result_aspect).read():
             self.assertEqual(1, 1, 'No errors')
