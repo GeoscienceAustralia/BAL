@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Background &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
+        <link rel="up" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/>
+        <link rel="next" title="Installation" href="install.html"/>
+        <link rel="prev" title="Introduction" href="intro.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bushfire Attack Level Toolbox User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#procedure-to-determine-bal">Procedure to determine BAL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1">Step 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2">Step 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3">Step 3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4">Step 4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-5">Step 5</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deriving-and-interpreting-bal">Deriving and interpreting BAL</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setting up the toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html">Running the tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">An Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bal.html">Bushfire Attack Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculate_bal.html">Calculate_bal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Bushfire Attack Level Toolbox Training Workshop</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Bushfire Attack Level Toolbox User Guide</a> &raquo;</li>
+        
+      <li>Background</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/userguide/background.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="background">
+<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
+<p>The algorithm used to calculate the BAL is based on Method 1 in the
+Australian Standard AS 3959 (2009)&#8211;<em>Construction of buildings in
+bushfire-prone areas</em>.</p>
+<p>Method 1 is a simplified procedure that involves five steps to
+determine BAL, and is subject to limitations on the circumstances in
+which it can be used.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method does not apply to the circumstances where the
+effective slope under the classified vegetation is more
+than 20 degrees downslope.</p>
+</div>
+<div class="section" id="procedure-to-determine-bal">
+<h2>Procedure to determine BAL<a class="headerlink" href="#procedure-to-determine-bal" title="Permalink to this headline">¶</a></h2>
+<p>According to the Standard AS 3959 (2009), five steps are involved to
+calculate BAL.</p>
+<div class="section" id="step-1">
+<h3>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h3>
+<p>Select the relevant FDI based on the locations according to Table 2.1
+in the Australian Standard AS 3959 (2009). For example, from Table
+2.1, the FDI for Western Australia is 80.</p>
+<table border="1" class="colwidths-given docutils" id="id2">
+<caption><span class="caption-text">Jurisdictional and regional values for FDI (adapted from
+        Table 2.1, AS 3959, 2009).</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="83%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>State/region</strong></td>
+<td>FDI</td>
+</tr>
+<tr class="row-even"><td><strong>Australian Capital Territory</strong></td>
+<td>100</td>
+</tr>
+<tr class="row-odd"><td><strong>New South Wales</strong></td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="first last loweralpha simple">
+<li>Greater Hunter, Greater Sydney,
+Illawarra/Shoalhaven, Far South Coast, and
+Southern Ranges fire weather districts</li>
+</ol>
+</td>
+<td>100</td>
+</tr>
+<tr class="row-odd"><td><ol class="first last loweralpha simple" start="2">
+<li>NSW alpine areas</li>
+</ol>
+</td>
+<td>50</td>
+</tr>
+<tr class="row-even"><td><ol class="first last loweralpha simple" start="3">
+<li>NSW general (excluding alpine areas, Greater
+Hunter, Greater Sydney, Illawarra/Shoalhaven,
+Far South Coast and Southern Ranges fire
+weather districts)</li>
+</ol>
+</td>
+<td>80</td>
+</tr>
+<tr class="row-odd"><td><strong>Northern Territory</strong></td>
+<td>40</td>
+</tr>
+<tr class="row-even"><td><strong>Queensland</strong></td>
+<td>40</td>
+</tr>
+<tr class="row-odd"><td><strong>South Australia</strong></td>
+<td>80</td>
+</tr>
+<tr class="row-even"><td><strong>Tasmania</strong></td>
+<td>50</td>
+</tr>
+<tr class="row-odd"><td><strong>Victoria</strong></td>
+<td><ul class="first last simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><ol class="first last loweralpha simple">
+<li>Victoria alpine areas</li>
+</ol>
+</td>
+<td>50</td>
+</tr>
+<tr class="row-odd"><td><ol class="first last loweralpha simple" start="2">
+<li>Victoria general (excluding alpine areas)</li>
+</ol>
+</td>
+<td>100</td>
+</tr>
+<tr class="row-even"><td><strong>Western Australia</strong></td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The FDI values may be able to be refined within a
+jurisdiction or region where sufficient climatological data
+is available and in consultation with the relevant
+regulatory authority.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The FDI values were provided by the Australasian Fire and
+Emergency Service Authorities Council (AFAC).</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Alpine and sub-alpine areas are defined as per the National
+Construction Code, Volume 2 <a class="reference internal" href="#nccv2" id="id1">[NCCV2]</a>.</p>
+</div>
+</div>
+<div class="section" id="step-2">
+<h3>Step 2<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h3>
+<p>Classify the input vegetation dataset into seven vegetation types
+defined in Table 2.3 in the Standard AS 3959 (2009). AS 3959 also
+provides indicative illustrations of the range of vegetation types.</p>
+<ul class="simple">
+<li>1: Forest,</li>
+<li>2: Woodland,</li>
+<li>3: Shrubland,</li>
+<li>4: Scrub,</li>
+<li>5: Mallee/Mulga,</li>
+<li>6: Rainforest,</li>
+<li>7: Grassland/Tussock moorland.</li>
+</ul>
+<p>Where there is more than one vegetation type, then the classification
+should be based on that which results in the worst case scenario. When
+used in a spatial framework, the digital classification is likely to
+correspond to the predominant vegetation in a grid cell, which is not
+necessarily the worst case scenario.</p>
+<p>The numbers from 1 to 7 are assigned to these vegetation classes
+respectively for calculating BAL.</p>
+</div>
+<div class="section" id="step-3">
+<h3>Step 3<a class="headerlink" href="#step-3" title="Permalink to this headline">¶</a></h3>
+<p>Calculate the distance of the site from the classified
+vegetation. According to AS 3959 (2009), the vegetation is considered
+when its distance from the site of interest is within 100 metres.</p>
+</div>
+<div class="section" id="step-4">
+<h3>Step 4<a class="headerlink" href="#step-4" title="Permalink to this headline">¶</a></h3>
+<p>Determine the effective slopes (the gradient from each cell) and their
+aspects under the classified vegetation types. If a slope&#8217;s aspect is
+in the same direction as the vegetation from the site, this slope is
+regarded as a downslope that will be further analysed. Otherwise the
+slope is regarded as an upslope.</p>
+<p>When calculating BAL, upslopes and flat lands are treated as a single
+category. For downslopes, the Standard breaks them down into five
+classes:</p>
+<ul class="simple">
+<li>0 &lt; downslope &lt;= 5 degrees</li>
+<li>5 &lt; downslope &lt;= 10 degrees</li>
+<li>10 &lt; downslope &lt;= 15 degrees</li>
+<li>15 &lt; downslope &lt;= 20 degrees</li>
+<li>&gt; 20 degrees (beyond consideration of Method 1)</li>
+</ul>
+</div>
+<div class="section" id="step-5">
+<h3>Step 5<a class="headerlink" href="#step-5" title="Permalink to this headline">¶</a></h3>
+<p>Determine the BAL from an appropriate table defined in AS 3959 (2009)
+based on the input FDI. For example, for Western Australia, the FDI is
+80 and thus Table 2.4.3 is adopted for deriving the BAL.</p>
+</div>
+</div>
+<div class="section" id="deriving-and-interpreting-bal">
+<h2>Deriving and interpreting BAL<a class="headerlink" href="#deriving-and-interpreting-bal" title="Permalink to this headline">¶</a></h2>
+<p>We consider eight cardinal directions: north, northeast, east,
+southeast, south, southwest, west, and northwest.</p>
+<p>For each cardinal direction, we consider the neighbouring cells up to
+100 metres from the site. We calculate the BAL for each neighbouring
+cell with regards to the site based on the neighbouring cell&#8217;s
+vegetation type, upslope or downslope degrees, and its distance to the
+site.</p>
+<p>The BAL falls into a list of (12.5, 19, 29, 40, 100), where 100
+represents Fire Zone (FZ). There is one more circumstances beyond
+Method 1 in AS 3959 (2009).</p>
+<ul class="simple">
+<li>Where the downslope is greater than 20 degrees and there is
+vegetation, a constant value of 200 is given to the BAL.</li>
+</ul>
+<p>The maximum BAL is selected among all neighbouring cells in a given
+cardinal direction to represent the BAL for that direction.</p>
+<p>The final BAL for the site of interest is determined by selecting the
+maximum BAL from all eight cardinal directions.</p>
+<table class="docutils citation" frame="void" id="nccv2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[NCCV2]</a></td><td>National Construction Code, Volume 2. <a class="reference external" href="http://www.abcb.gov.au/Resources/Publications/NCC/NCC-2016-Volume-Two">http://www.abcb.gov.au/Resources/Publications/NCC/NCC-2016-Volume-Two</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="as3959" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[AS3959]</td><td>Construction of buildings in bushfire-prone areas (2009). Standards Australia.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

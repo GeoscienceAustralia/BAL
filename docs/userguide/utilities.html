@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>utilities &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
+        <link rel="up" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/>
+        <link rel="next" title="Bushfire Attack Level Toolbox Training Workshop" href="../training/index.html"/>
+        <link rel="prev" title="Calculate_bal" href="calculate_bal.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bushfire Attack Level Toolbox User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setting up the toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html">Running the tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">An Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bal.html">Bushfire Attack Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculate_bal.html">Calculate_bal</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-__init__">__init__.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-value_lookup">value_lookup.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-bal_database">bal_database.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sa_tools">sa_tools.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Bushfire Attack Level Toolbox Training Workshop</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Bushfire Attack Level Toolbox User Guide</a> &raquo;</li>
+        
+      <li>utilities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/userguide/utilities.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utilities">
+<h1>utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
+<p>These are tools or functions used to support the main computation.</p>
+<div class="section" id="module-__init__">
+<span id="init-py"></span><h2>__init__.py<a class="headerlink" href="#module-__init__" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-value_lookup">
+<span id="value-lookup-py"></span><h2>value_lookup.py<a class="headerlink" href="#module-value_lookup" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#module-value_lookup" title="value_lookup"><code class="xref py py-mod docutils literal"><span class="pre">value_lookup</span></code></a> - helpful dictionaries for calculating the
+bushfire attack level (BAL)</p>
+<hr class="docutils" />
+<p>These dictionaries are helpful to adapt the algorithm spatially to Method 1 
+in AS 3959 (2009).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">moduleauthor:</th><td class="field-body">Tina Yang &lt;<a class="reference external" href="mailto:tina&#46;yang&#37;&#52;&#48;ga&#46;gov&#46;au">tina<span>&#46;</span>yang<span>&#64;</span>ga<span>&#46;</span>gov<span>&#46;</span>au</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-bal_database">
+<span id="bal-database-py"></span><h2>bal_database.py<a class="headerlink" href="#module-bal_database" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#module-bal_database" title="bal_database"><code class="xref py py-mod docutils literal"><span class="pre">bal_database</span></code></a> - relevant dictionaries for calculating the
+bushfire attack level (BAL)</p>
+<hr class="docutils" />
+<p>These dictionaries are translated from tables from 2.4.2 to 2.4.5 in 
+AS 3959 (2009) to determine the BAL for an area of interest within Australia.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">moduleauthor:</th><td class="field-body">Tina Yang &lt;<a class="reference external" href="mailto:tina&#46;yang&#37;&#52;&#48;ga&#46;gov&#46;au">tina<span>&#46;</span>yang<span>&#64;</span>ga<span>&#46;</span>gov<span>&#46;</span>au</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sa_tools">
+<span id="sa-tools-py"></span><h2>sa_tools.py<a class="headerlink" href="#module-sa_tools" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#module-sa_tools" title="sa_tools"><code class="xref py py-mod docutils literal"><span class="pre">sa_tools</span></code></a> - some support functions replacing spatial analyst</p>
+<hr class="docutils" />
+<p>This module includes algorithms that are used to replace spatial analyst
+functions such as ExtractByMask, Reclassify, Slope and Aspect used within this
+package.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">moduleauthor:</th><td class="field-body">Tina Yang &lt;<a class="reference external" href="mailto:tina&#46;yang&#37;&#52;&#48;ga&#46;gov&#46;au">tina<span>&#46;</span>yang<span>&#64;</span>ga<span>&#46;</span>gov<span>&#46;</span>au</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="sa_tools.cal_slope_aspect">
+<code class="descclassname">sa_tools.</code><code class="descname">cal_slope_aspect</code><span class="sig-paren">(</span><em>dem</em>, <em>slope_fname</em>, <em>aspect_fname</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sa_tools.html#cal_slope_aspect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sa_tools.cal_slope_aspect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the slope from the input dem</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dem</strong> &#8211; <cite>file</cite> the input dem</li>
+<li><strong>slope_fname</strong> &#8211; <cite>file</cite> the output slope</li>
+<li><strong>aspect_fname</strong> &#8211; <cite>file</cite> the output aspect</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sa_tools.clip_array">
+<code class="descclassname">sa_tools.</code><code class="descname">clip_array</code><span class="sig-paren">(</span><em>data</em>, <em>x_left</em>, <em>y_upper</em>, <em>pixelwidth</em>, <em>pixelheight</em>, <em>extent</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sa_tools.html#clip_array"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sa_tools.clip_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the clipped area of the input array according to an sub-extent</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the input array</li>
+<li><strong>x_left</strong> &#8211; <cite>float</cite> the left-most x projected coordinate</li>
+<li><strong>y_upper</strong> &#8211; <cite>float</cite> the upper-most y projected coordinate</li>
+<li><strong>pixelwidth</strong> &#8211; <cite>float</cite> the pixel width</li>
+<li><strong>pixelheight</strong> &#8211; <cite>float</cite> the pixel height</li>
+<li><strong>extent</strong> &#8211; <cite>tuple</cite> the clipping extent</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the clipped array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sa_tools.extract_by_mask">
+<code class="descclassname">sa_tools.</code><code class="descname">extract_by_mask</code><span class="sig-paren">(</span><em>image_fname</em>, <em>extent_file</em>, <em>out_fname</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sa_tools.html#extract_by_mask"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sa_tools.extract_by_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract a raster using a feature (shape) file</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image_fname</strong> &#8211; <cite>file</cite> the input raster</li>
+<li><strong>extent_file</strong> &#8211; <cite>file</cite> the input extent feature file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><cite>file</cite> the output raster</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="sa_tools.reclassify">
+<code class="descclassname">sa_tools.</code><code class="descname">reclassify</code><span class="sig-paren">(</span><em>image_fname</em>, <em>remap</em>, <em>out_fname</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/sa_tools.html#reclassify"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sa_tools.reclassify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reclassify the raster as per the input remap</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>image_fname</strong> &#8211; <cite>file</cite> the input raster</li>
+<li><strong>remap</strong> &#8211; <cite>str</cite> the info of remap</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><cite>file</cite> the output raster</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../training/index.html" class="btn btn-neutral float-right" title="Bushfire Attack Level Toolbox Training Workshop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="calculate_bal.html" class="btn btn-neutral" title="Calculate_bal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

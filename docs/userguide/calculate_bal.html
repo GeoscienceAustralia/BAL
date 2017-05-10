@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Calculate_bal &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
+        <link rel="up" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/>
+        <link rel="next" title="utilities" href="utilities.html"/>
+        <link rel="prev" title="Bushfire Attack Level" href="bal.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bushfire Attack Level Toolbox User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setting up the toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html">Running the tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">An Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bal.html">Bushfire Attack Level</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Calculate_bal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-calculate_bal">calculate_bal.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Bushfire Attack Level Toolbox Training Workshop</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Bushfire Attack Level Toolbox User Guide</a> &raquo;</li>
+        
+      <li>Calculate_bal</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/userguide/calculate_bal.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="calculate-bal">
+<h1>Calculate_bal<a class="headerlink" href="#calculate-bal" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-calculate_bal">
+<span id="calculate-bal-py"></span><h2>calculate_bal.py<a class="headerlink" href="#module-calculate_bal" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#module-calculate_bal" title="calculate_bal"><code class="xref py py-mod docutils literal"><span class="pre">calculate_bal</span></code></a> - essential part of calculating the
+bushfire attack level (BAL)</p>
+<hr class="docutils" />
+<p>This module includes algorithms that are used to calculate BAL as per
+Method 1 in the Australian Standard AS 3959 (2009) &#8211; Construction of
+buildings in bushfire-prone areas.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">moduleauthor:</th><td class="field-body">Tina Yang &lt;<a class="reference external" href="mailto:tina&#46;yang&#37;&#52;&#48;ga&#46;gov&#46;au">tina<span>&#46;</span>yang<span>&#64;</span>ga<span>&#46;</span>gov<span>&#46;</span>au</a>&gt;</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="calculate_bal.bal_cal">
+<code class="descclassname">calculate_bal.</code><code class="descname">bal_cal</code><span class="sig-paren">(</span><em>veg_class</em>, <em>slope</em>, <em>aspect</em>, <em>fdi</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/calculate_bal.html#bal_cal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.bal_cal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the BAL based on the classified vegetation and the combined
+slope and vegetation according to an appropriate table in AS 3959 (2009)
+to determine the bushfire attack level (BAL).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>veg_class</strong> &#8211; <cite>file</cite> the input classified vegetation</li>
+<li><strong>slope</strong> &#8211; <cite>file</cite> the input slope</li>
+<li><strong>aspect</strong> &#8211; <cite>file</cite> the input aspect</li>
+<li><strong>fdi</strong> &#8211; <cite>int</cite> the input FDI value</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="calculate_bal.bal_esti">
+<code class="descclassname">calculate_bal.</code><code class="descname">bal_esti</code><span class="sig-paren">(</span><em>veg</em>, <em>dist</em>, <em>slope</em>, <em>fdi</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/calculate_bal.html#bal_esti"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.bal_esti" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the BAL based on the vegetation class, slope degree and
+horizontal distance from the point of interest (POI).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>veg</strong> &#8211; <cite>float</cite> the vegetation type</li>
+<li><strong>dist</strong> &#8211; <cite>float</cite> the horizontal distance from POI</li>
+<li><strong>slope</strong> &#8211; <cite>float</cite> the slope value</li>
+<li><strong>fdi</strong> &#8211; <cite>int</cite> the input FDI value</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><cite>float</cite> the output BAL value for this neighbour point regards to
+the POI</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="calculate_bal.convo">
+<code class="descclassname">calculate_bal.</code><code class="descname">convo</code><span class="sig-paren">(</span><em>a_dir</em>, <em>veg_data</em>, <em>slope_data</em>, <em>aspect_data</em>, <em>pixel_width</em>, <em>fdi</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/calculate_bal.html#convo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.convo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the maximum BAL for the point of interest in one direction by
+assessing all neighbours&#8217; BAL values in that direction (up to 100 metres).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a_dir</strong> &#8211; <cite>string</cite> the specific direction</li>
+<li><strong>veg_data</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the classified vegetation values</li>
+<li><strong>slope_data</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the slope values</li>
+<li><strong>aspect_data</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the aspect values</li>
+<li><strong>pixel_width</strong> &#8211; <cite>float</cite> the pixel width of the classified vegetation</li>
+<li><strong>fdi</strong> &#8211; <cite>int</cite> the input FDI value</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the output BAL values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="calculate_bal.find_dist_class">
+<code class="descclassname">calculate_bal.</code><code class="descname">find_dist_class</code><span class="sig-paren">(</span><em>dist</em>, <em>dist_limit</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/calculate_bal.html#find_dist_class"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.find_dist_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decide the BAL class based on the input distance and the distance
+upper-limit for each BAL class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dist</strong> &#8211; <cite>float</cite> the horizontal distance from POI</li>
+<li><strong>dist_limit</strong> &#8211; <cite>list</cite> the upper-limit for each BAL class</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><cite>int</cite> the distance class defined in bal_database.py</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="calculate_bal.get_max_bal">
+<code class="descclassname">calculate_bal.</code><code class="descname">get_max_bal</code><span class="sig-paren">(</span><em>bal_list</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/calculate_bal.html#get_max_bal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.get_max_bal" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the maximum bal value of all 8 directions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>bal_list</strong> &#8211; <cite>list of arrays</cite> the bal value for each of 8 directions</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the maximum bal value of 8 directions</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="calculate_bal.get_slope_in_aspect">
+<code class="descclassname">calculate_bal.</code><code class="descname">get_slope_in_aspect</code><span class="sig-paren">(</span><em>slope_data</em>, <em>aspect_data</em>, <em>rows</em>, <em>cols</em>, <em>aspect_value</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/calculate_bal.html#get_slope_in_aspect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#calculate_bal.get_slope_in_aspect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the slope data in a specific aspect.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>slope_data</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the slope values</li>
+<li><strong>aspect_data</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the aspect values</li>
+<li><strong>rows</strong> &#8211; <cite>int</cite> the row number of the slope_data</li>
+<li><strong>cols</strong> &#8211; <cite>int</cite> the column number of the slope_data</li>
+<li><strong>aspect_value</strong> &#8211; <cite>int</cite> the aspect value</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></code> the slope data in an aspect</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="utilities.html" class="btn btn-neutral float-right" title="utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bal.html" class="btn btn-neutral" title="Bushfire Attack Level" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
