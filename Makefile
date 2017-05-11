@@ -5,7 +5,7 @@
 SPHINXOPTS    =
 SPHINXBUILD   = C:/Python27/ArcGIS10.2/Scripts/sphinx-build.exe
 PAPER         =
-BUILDDIR      = _build
+BUILDDIR      = ../bal-docs/
 
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
