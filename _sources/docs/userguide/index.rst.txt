@@ -16,6 +16,7 @@ Bushfire Attack Level Toolbox User Guide
    setup
    execution
    examples
+   contributing
 
 
 This part is extracted from the source code in-line documentation and
