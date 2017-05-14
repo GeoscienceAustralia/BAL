@@ -143,15 +143,15 @@ southeast, south, southwest, west, and northwest.
 For each cardinal direction, we consider the neighbouring cells up to
 100 metres from the site. We calculate the BAL for each neighbouring
 cell with regards to the site based on the neighbouring cell's
-vegetation type, upslope or downslope degrees, and its distance to the
-site.
+vegetation type, upslope or downslope orientation and grade (slope),
+and its distance to the site.
 
 The BAL falls into a list of (12.5, 19, 29, 40, 100), where 100
 represents Fire Zone (FZ). There is one more circumstances beyond
 Method 1 in AS 3959 (2009).
 
-* Where the downslope is greater than 20 degrees and there is
-  vegetation, a constant value of 200 is given to the BAL.
+.. note:: Where the downslope is greater than 20 degrees and there is
+	  vegetation, a constant value of 200 is given to the BAL.
 
 The maximum BAL is selected among all neighbouring cells in a given
 cardinal direction to represent the BAL for that direction.
