@@ -8,12 +8,13 @@ manage the risk posed to life, property and the environment.
 
 Bushfire Attack Level (BAL) is a measure of the severity of a
 building's potential exposure to bushfire. It is defined in the
-Australian Standard AS 3959 (2009)--*Construction of buildings in
-bushfire-prone areas*, to serve as a basis for establishing the
-requirements for construction, to improve the protection of buildings
-from bushfire attack. The Standard describes how to compute the
-bushfire attack level for any location and directly links this to
-recommendations on the design of existing or planned buildings.
+`Australian Standard AS 3959 (2009)--*Construction of buildings in
+bushfire-prone areas* <http://www.as3959.com.au/>`_, to serve as a 
+basis for establishing the requirements for construction, to improve 
+the protection of buildings from bushfire attack. The Standard 
+describes how to compute the bushfire attack level for any location 
+and directly links this to recommendations on the design of existing 
+or planned buildings.
 
 The BAL toolbox implements the rules described by Method 1 in AS
 3959 (2009) by integrating them into a computational code that can be
@@ -52,7 +53,7 @@ approximations include the following:
 * The BAL is produced based on the simplified method (Method 1) in AS
   3959 (2009). When the land downslope is more than 20 degrees, more
   detailed method (Method 2) should be adopted. Method 2 has not been
-  incorporated into the toolbox developed. Instead, a constant value
+  incorporated into the BAL toolbox. Instead, a constant value
   of 200 is provided as BAL for such circumstances.
 
 * Elevation data is a critical input of the tool. Digital Elevation
@@ -66,22 +67,16 @@ approximations include the following:
 
 * Vegetation data is another critical input into the tool. Method 1 in
   AS 3959 (2009) considers the vegetation up to 100 metres from the
-  site of interest. Ideally the vegetation with finer resolution
+  site of interest. Ideally a vegetation dataset with finer resolution
   (preferred at metre level) is required to derive sensible BAL
   analyses. Where finer vegetation data is not available, the
   alternative coarse vegetation data may lead to inaccurate output
   BAL.
 
-* The BAL toolbox requires availability of one extension within
-  ArcGIS - **Spatial Analyst**. If the extension is available, its
-  licence will be automatically checked out when needed and checked in
-  when it is not needed any more. Without the licence of **Spatial
-  Analyst**, the tool will fail to run.
-
 * The BAL toolbox is intended to run in the ArcGIS toolbox environment
   and is not intended to run in a Python script environment.
 
-* This software algorithm adapts to the Method 1 in AS 3959 (2009) by
+* This software algorithm adapts the Method 1 in AS 3959 (2009) by
   modelling it spatially. Readers are assumed to be familiar with AS
   3959 (2009). For the detailed description of the Method 1, please
   refer to the Standard AS 3959 (2009).

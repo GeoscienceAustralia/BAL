@@ -20,10 +20,10 @@ Bushfire Attack Level Toolbox User Guide
    writing_documentation
 
 
-This part is extracted from the source code in-line documentation and
-included in this document for the completeness of the software
-package. It does not directly instruct users how to use the toolbox to
-calculate the BAL. Instead, it might be useful for software engineers
+The following documentation is extracted from the source code in-line 
+documentation and included in this document for the completeness of the 
+software package. It does not directly instruct users how to use the toolbox 
+to calculate the BAL. Instead, it might be useful for software engineers
 or developers to review the source code and maintain or upgrade it in
 the future.
 
