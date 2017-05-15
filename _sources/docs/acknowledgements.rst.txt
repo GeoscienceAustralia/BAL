@@ -11,16 +11,16 @@ by the Department of Fire and Emergency Services, Western Australia
 .. image:: /docs/images/001_bushfire_crc_logo.jpg
    :width: 200 pt
    :align: left
-   :target: www.bushfirecrc.com
+   :target: http://www.bushfirecrc.com
 
 .. image:: /docs/images/001_dfes_logo.jpg
    :width: 200 pt
    :align: left
-   :target: www.dfes.wa.gov.au
+   :target: http://www.dfes.wa.gov.au
 
 .. image:: /docs/images/geoscience_inline.jpg
    :width: 200 pt
    :align: left
-   :target: www.ga.gov.au
+   :target: http://www.ga.gov.au
    
 
