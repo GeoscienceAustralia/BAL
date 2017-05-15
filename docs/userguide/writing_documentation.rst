@@ -49,7 +49,7 @@ Common tags used in the Documentation:
 Here are some common useful tags
 ::
 
-   |project_name|   is currently a substitution for the Project name (PacSAFE)
+   |project_name|   is currently a substitution for the Project name (Bushfire Attack Level)
    Normally, there are no heading levels assigned to certain characters as the
    structure is determined from the succession of headings. However, for the
    Python documentation, this convention is used which you may follow:
@@ -188,7 +188,7 @@ this procedure:
 Things you have to have to be able to help with documentation:
 
 * A GitHub account
-* A fork of the pacsafe-doc branch (only if you do not have commit access to
+* A fork of the BAL repository (only if you do not have commit access to
   the main repository)
 
 Creating a GitHub account is done by clicking on the :guilabel:`Sign up for free`
@@ -200,7 +200,7 @@ available under :file:`$HOME/dev/python/...`
 Clone your forked github |project_name| documentation by entering following
 command:
 
-:command:`git clone https://github.com/<your username>/pacsafe-doc.git`
+:command:`git clone https://github.com/<your username>/bal.git`
 
 Search for the .rst file you'd like to extend/fix and work on it.
 

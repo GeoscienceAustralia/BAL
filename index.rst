@@ -24,7 +24,7 @@ bushfire-prone areas*.
    docs/disclaim
    docs/userguide/index
    docs/training/index
-   
+   docs/acknowledgements
 
 
 Indices and tables
