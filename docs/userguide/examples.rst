@@ -4,7 +4,6 @@ An Example
 Input
 -----
 
-This is a test of my repo. Hello!
 
 **Input DEM:**
 
