@@ -4,6 +4,8 @@ An Example
 Input
 -----
 
+This is a test of my repo. Hello!
+
 **Input DEM:**
 
 jerram_dem: Esri Grid format, MGA 50, 25 m resolution. See Figure 4.8. The input DEM is located under the **examples\\input** folder.
