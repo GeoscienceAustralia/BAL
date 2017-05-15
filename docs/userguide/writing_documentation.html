@@ -1,0 +1,456 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Writing Documentation &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
+        <link rel="up" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/>
+        <link rel="next" title="Bushfire Attack Level" href="bal.html"/>
+        <link rel="prev" title="Contributing code" href="contributing.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bushfire Attack Level Toolbox User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setting up the toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html">Running the tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">An Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">Contributing code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Writing Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-tags-used-in-the-documentation">Common tags used in the Documentation:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#help-writing-fixing-documentation">Help writing/fixing documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#clone-project-name-documentation">Clone Bushfire Attack Level Toolbox documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bal.html">Bushfire Attack Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculate_bal.html">Calculate_bal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Bushfire Attack Level Toolbox Training Workshop</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Bushfire Attack Level Toolbox User Guide</a> &raquo;</li>
+        
+      <li>Writing Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/userguide/writing_documentation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="writing-documentation">
+<span id="id1"></span><h1>Writing Documentation<a class="headerlink" href="#writing-documentation" title="Permalink to this headline">¶</a></h1>
+<p>The documentation for Bushfire Attack Level Toolbox is written using ReSTructured text (.rst)
+and the Sphinx documentation builder.</p>
+<p>The best way to learn how to write .rst is to look at the source of existing
+documentation - the markup syntax is very simple.
+There are a number of useful tags that you can use to make your documentation
+clear and visually interesting, the more commonly used in this document are
+listed below.
+For a more detailed list, please visit the
+<a class="reference external" href="http://sphinx.pocoo.org/markup/inline.html">Sphinx Inline Markup page</a></p>
+<p>A complete list of supported .rst markup is also available
+<a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#block-quotes">here</a>.</p>
+<p>Following are a few tips for documentation writers:</p>
+<ol class="arabic simple">
+<li>Take a look in the <a class="reference external" href="./lookup_table.html">lookup table</a> to see which terms
+and phrases are used and which you should definitely <strong>not</strong> translate.</li>
+<li>There is a &#8220;Community Edition&#8221; of
+<a class="reference external" href="http://www.jetbrains.com/pycharm/">PyCharm</a> available.
+Consider using this for writing documentation.</li>
+<li>Try to not write more than <strong>80 Characters in one line</strong>.
+That makes the documentation much easier to maintain.</li>
+<li>Try to create a reference anchor for at least every new heading (page).
+If it is useful and important you might also want to put anchors on
+subheadings.</li>
+<li>Try to avoid duplicate target names (anchors).
+Always use unique identifiers.
+If you are not sure - the longer the name the more unlikely it is already used.</li>
+<li>Try to use underscores (_) in filenames and links (anchors) as a separator.</li>
+<li>Try to use dashes (-) in directory names as a separator.</li>
+<li>Try to avoid using tables wherever possible.
+Only use tables if there is really no other way to display the
+documentation.</li>
+<li>If you have to use tables try to avoid using TABS in favour of SPACES.
+TABS only confuse the computer while building documentation and leads to
+unnecessary errors.</li>
+</ol>
+<div class="section" id="common-tags-used-in-the-documentation">
+<span id="common-tags"></span><h2>Common tags used in the Documentation:<a class="headerlink" href="#common-tags-used-in-the-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Here are some common useful tags</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>|project_name|   is currently a substitution for the Project name (PacSAFE)
+Normally, there are no heading levels assigned to certain characters as the
+structure is determined from the succession of headings. However, for the
+Python documentation, this convention is used which you may follow:
+
+# with overline, for parts
+* with overline, for chapters
+
+First two are normaly not used as we usually start with a section.
+
+=, for sections
+-, for subsections
+^, for subsubsections
+&quot;, for paragraphs
+
+Section
+=======
+
+SubSection
+----------
+
+Subsubsection
+.............
+
+Subsubsubsection (if needed)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**bold**
+
+*italics*
+
+`web link&lt;http://foo.org&gt;`_  Link to a named external reference
+
+:ref:`my-reference-label`    points to a reference which has to be
+                             implemented like:
+
+..  _my-reference-label:     The anchor for the :ref: needs to be
+                             in front of a Section.
+Section to cross-reference   Like it is here.
+--------------------------
+
+:ref:`title &lt;my-reference-label&gt;` Same as above except using the Title and
+                                  not the referenced headline.
+
+:doc:`../user-docs/filename` referencing an internal file
+
+:samp:`flood [m]`            A piece of literal text, such as code.
+
+:menuselection:`Plugins --&gt; Manage Plugins`  This is used to mark a complete
+                                             sequence of menu selections,
+                                             including selecting submenus.
+
+:guilabel:`OK`   Labels presented as part of an interactive user interface
+                 should be marked using guilabel.
+
+:kbd:`Control-x Control-f` Mark a sequence of keystrokes.
+
+:command:`rm` (The name of an OS-level command, such as rm.)
+
+:file:`/etc/fstab` to change something
+
+.. note:: Note in a little call out box
+
+.. todo:: Todo item in a call out box
+
+.. warning:: Much like Note but clearly visible
+
+There are more markers available:
+
+.. attention::
+.. caution::
+.. danger::
+.. error::
+.. hint::
+.. important::
+.. tip::
+
+.. table:: table title
+
+============  ================
+  Key         Allowed Values
+============  ================
+units         m
+units         wet/dry
+units         feet
+============  ================
+
++-----------------------+-----------------------+
+| Symbol                | Meaning               |
++=======================+=======================+
+| .. image:: tent.*     | Campground            |
++-----------------------+-----------------------+
+| .. image:: waves.*    | Lake                  |
++-----------------------+-----------------------+
+| .. image:: peak.*     | Mountain              |
++-----------------------+-----------------------+
+
+ figure and images are easily exchangeable when using * instead of jpg or
+ png. In that way the Pictures can be exchanged to a new format without
+ changing the source code.
+
+ .. figure:: picture.*
+    :scale: 50 %
+    :alt: map to buried treasure
+    :figwidth: lenght or percentage of current line width
+    :figclass: text
+
+     This is the caption of the figure (a simple paragraph).
+
+ .. image:: /static/tutorial/001.*
+    :height: 100 px
+    :width: 200 pt
+    :scale: 50 %
+    :alt: alternate text
+    :align: center
+</pre></div>
+</div>
+<p>remark: use pt instead of px because of latex output
+A4 = height ~ 1000pt
+A4 = width ~ 700pt</p>
+</div>
+<div class="section" id="help-writing-fixing-documentation">
+<h2>Help writing/fixing documentation<a class="headerlink" href="#help-writing-fixing-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Helping writing the documentation is an easy task.
+The only thing you need to have is a local copy of the Bushfire Attack Level Toolbox
+documentation branch.</p>
+<div class="section" id="clone-project-name-documentation">
+<h3>Clone Bushfire Attack Level Toolbox documentation<a class="headerlink" href="#clone-project-name-documentation" title="Permalink to this headline">¶</a></h3>
+<p>In order to clone the documentation of Bushfire Attack Level Toolbox you only have to follow
+this procedure:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a one-time process. You do not need to repeat it - it is
+here for reference purposes only.</p>
+</div>
+<p>Things you have to have to be able to help with documentation:</p>
+<ul class="simple">
+<li>A GitHub account</li>
+<li>A fork of the pacsafe-doc branch (only if you do not have commit access to
+the main repository)</li>
+</ul>
+<p>Creating a GitHub account is done by clicking on the <span class="guilabel">Sign up for free</span>
+button on <a class="reference external" href="https://github.com/">https://github.com/</a> and filling out the necessary fields.</p>
+<p>This documentation assumes that you have the whole Bushfire Attack Level Toolbox source
+available under <code class="file docutils literal"><span class="pre">$HOME/dev/python/...</span></code></p>
+<p>Clone your forked github Bushfire Attack Level Toolbox documentation by entering following
+command:</p>
+<p><strong class="command">git clone https://github.com/&lt;your username&gt;/pacsafe-doc.git</strong></p>
+<p>Search for the .rst file you&#8217;d like to extend/fix and work on it.</p>
+<p>Afterwards commit your local changes to your local clone with the command:</p>
+<p><strong class="command">git commit -a -m&quot;fixed a typo&quot;</strong></p>
+<p>After that you have to push your local changes to your github fork with:</p>
+<p><strong class="command">git push</strong></p>
+<p>You can than do a pull request on github to request your changes to be
+reviewed and taken into the official documentation.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bal.html" class="btn btn-neutral float-right" title="Bushfire Attack Level" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="contributing.html" class="btn btn-neutral" title="Contributing code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
