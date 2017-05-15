@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>An Example &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
+        <link rel="up" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/>
+        <link rel="next" title="Contributing code" href="contributing.html"/>
+        <link rel="prev" title="Running the tool" href="execution.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bushfire Attack Level Toolbox User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setting up the toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html">Running the tool</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">An Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input">Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process">Process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">Contributing code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bal.html">Bushfire Attack Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculate_bal.html">Calculate_bal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Bushfire Attack Level Toolbox Training Workshop</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Bushfire Attack Level Toolbox User Guide</a> &raquo;</li>
+        
+      <li>An Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/userguide/examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="an-example">
+<h1>An Example<a class="headerlink" href="#an-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="input">
+<h2>Input<a class="headerlink" href="#input" title="Permalink to this headline">¶</a></h2>
+<p><strong>Input DEM:</strong></p>
+<p>jerram_dem: Esri Grid format, MGA 50, 25 m resolution. See Figure 4.8. The input DEM is located under the <strong>examples\input</strong> folder.</p>
+<div class="align-center figure" id="id1">
+<img alt="Example DEM data at Jerramungup, WA." src="../../_images/dem_example.jpg" />
+<p class="caption"><span class="caption-text">Example DEM data at Jerramungup, WA.</span></p>
+</div>
+<p><strong>Input vegetation:</strong></p>
+<p>jerram_veg: Esri Grid format, GDA 1994 Australia Albers, 100 m resolution. See Figure 4.9. The input vegetation dataset is located under the <strong>examples\input</strong> folder.</p>
+<div class="align-center figure" id="id2">
+<img alt="Example vegetation data at Jerramungup, WA." src="../../_images/veg_example.jpg" />
+<p class="caption"><span class="caption-text">Example vegetation data at Jerramungup, WA.</span></p>
+</div>
+<p><strong>Input vegetation reclassification map:</strong></p>
+<p>There are many classes in the original vegetation. To derive the target vegetation classes described in the Standard (1: Forest, 2: Woodland, 3: Shrubland, 4: Scrub, 5: Mallee/Mulga, 6: Rainforest, 7: Grassland/Tussock moorland.), the remap string is defined as:  &#8220;1 6;2 1;3 1;4 1;5 13 2;14 5;15 18 3;19 22 7;23 4;24 25 NODATA;26 4;27 28 NODATA;29 4;30 1;31 2;32 5;99 NODATA&#8221;.</p>
+<p><strong>Output path:</strong></p>
+<p>The example output path is C:\github\bal\examples\output.</p>
+<p><strong>FDI value:</strong></p>
+<p>Default value 80 is selected.</p>
+<p><strong>Extent:</strong></p>
+<p>Default is selected.</p>
+<p>After all input parameters are defined, the fields in the BAL calculation window are all populated. See Figure 4.10.</p>
+<div class="align-center figure" id="id3">
+<img alt="Example input parameters within BAL calculation window." src="../../_images/example_BAL_calculation.jpg" />
+<p class="caption"><span class="caption-text">Example input parameters within BAL calculation window.</span></p>
+</div>
+</div>
+<div class="section" id="process">
+<h2>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h2>
+<p>After clicking the <strong>OK</strong> button in the above window, the calculation starts running with a progress reporting in a pop-up window. When it finishes successfully, the pop-up window looks like Figure 4.11.</p>
+<div class="align-center figure" id="id4">
+<img alt="Example pop-up window when the calculation finishes." src="../../_images/example_process.jpg" />
+<p class="caption"><span class="caption-text">Example pop-up window when the calculation finishes.</span></p>
+</div>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
+<p>Nine rasters are produced under C:\github\bal\examples\output. Figure 4.12 displays the maximum BAL raster file named as bal_max.img for this example.</p>
+<div class="align-center figure" id="id5">
+<img alt="Example output BAL at Jerramungup, WA." src="../../_images/bal_max.jpg" />
+<p class="caption"><span class="caption-text">Example output BAL at Jerramungup, WA.</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributing code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="execution.html" class="btn btn-neutral" title="Running the tool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

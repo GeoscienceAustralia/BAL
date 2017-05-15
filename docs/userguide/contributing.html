@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Contributing code &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
+        <link rel="up" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/>
+        <link rel="next" title="Bushfire Attack Level" href="bal.html"/>
+        <link rel="prev" title="An Example" href="examples.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bushfire Attack Level Toolbox User Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setting up the toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html">Running the tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">An Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Contributing code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bal.html">Bushfire Attack Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculate_bal.html">Calculate_bal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Bushfire Attack Level Toolbox Training Workshop</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Bushfire Attack Level Toolbox User Guide</a> &raquo;</li>
+        
+      <li>Contributing code</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/userguide/contributing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="contributing-code">
+<span id="contributing"></span><h1>Contributing code<a class="headerlink" href="#contributing-code" title="Permalink to this headline">¶</a></h1>
+<p>The preferred way to contribute to Bushfire Attack Level Toolbox is to fork the
+<a class="reference external" href="http://github.com/GeoscienceAustralia/BAL">main repository</a> on GitHub:</p>
+<ol class="arabic">
+<li><p class="first">Fork the <a class="reference external" href="http://github.com/GeoscienceAustralia/BAL">project repository</a>:
+click on the &#8216;Fork&#8217; button near the top of the page. This creates
+a copy of the code under your account on the GitHub server.</p>
+</li>
+<li><p class="first">Clone this copy to your local disk:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone git@github.com:YourLogin/bal.git
+$ cd tcrm
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a branch to hold your changes:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git checkout -b my-feature
+</pre></div>
+</div>
+<p>and start making changes. Never work in the <code class="docutils literal"><span class="pre">master</span></code> branch!</p>
+</li>
+<li><p class="first">Work on this copy on your computer using Git to do the version
+control. When you&#8217;re done editing, do:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git add modified_files
+$ git commit
+</pre></div>
+</div>
+<p>to record your changes in Git, then push them to GitHub with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git push -u origin my-feature
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Finally, go to the web page of the your fork of the BAL repo,
+and click &#8216;Pull request&#8217; to send your changes to the maintainers for
+review. request. This will send an email to the committers.</p>
+<p>(If any of the above seems like magic to you, then look up the
+<a class="reference external" href="http://git-scm.com/documentation">Git documentation</a> on the web.)</p>
+<p>It is recommended to check that your contribution complies with the
+following rules before submitting a pull request:</p>
+<ul class="simple">
+<li>All public methods should have informative docstrings with sample
+usage presented as doctests when appropriate.</li>
+<li>When adding additional functionality, provide at least one
+example script in the <code class="docutils literal"><span class="pre">examples/</span></code> folder. Have a look at other
+examples for reference. Examples should demonstrate why the new
+functionality is useful in practice.</li>
+<li>At least one paragraph of narrative documentation with links to
+references in the literature (with PDF links when possible) and
+an example.</li>
+</ul>
+<p>You can also check for common programming errors with the following
+tools:</p>
+<ul>
+<li><p class="first">Code with good unittest coverage, check with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ pip install nose coverage
+$ nosetests --with-coverage path/to/tests_for_package
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bal.html" class="btn btn-neutral float-right" title="Bushfire Attack Level" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="examples.html" class="btn btn-neutral" title="An Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

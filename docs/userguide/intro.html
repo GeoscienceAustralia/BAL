@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
+        <link rel="up" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/>
+        <link rel="next" title="Background" href="background.html"/>
+        <link rel="prev" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bushfire Attack Level Toolbox User Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#package-structures">Package structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-limitations">Use limitations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Setting up the toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execution.html">Running the tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">An Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html">Contributing code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bal.html">Bushfire Attack Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="calculate_bal.html">Calculate_bal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utilities.html">utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../training/index.html">Bushfire Attack Level Toolbox Training Workshop</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Bushfire Attack Level Toolbox User Guide</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/userguide/intro.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>Fire is a natural feature of the Australian landscape and remains an
+ever-present threat. Bushfire threat analysis aims to inform the fire
+authorities and the community of the bushfire hazard in an effort to
+manage the risk posed to life, property and the environment.</p>
+<p>Bushfire Attack Level (BAL) is a measure of the severity of a
+building&#8217;s potential exposure to bushfire. It is defined in the
+Australian Standard AS 3959 (2009)&#8211;<em>Construction of buildings in
+bushfire-prone areas</em>, to serve as a basis for establishing the
+requirements for construction, to improve the protection of buildings
+from bushfire attack. The Standard describes how to compute the
+bushfire attack level for any location and directly links this to
+recommendations on the design of existing or planned buildings.</p>
+<p>The BAL toolbox implements the rules described by Method 1 in AS
+3959 (2009) by integrating them into a computational code that can be
+run in the ESRI ArcGIS 10.2 environment.</p>
+<div class="section" id="package-structures">
+<h2>Package structures<a class="headerlink" href="#package-structures" title="Permalink to this headline">¶</a></h2>
+<p>The toolbox name is <strong>BAL.tbx</strong>. This toolbox is associated with a
+python script, <strong>bal.py</strong>, to derive BAL. The script <strong>bal.py</strong> links
+to a python script <strong>calculate_bal.py</strong> and a module <strong>Utilities</strong>,
+which includes supporting dictionaries defined in two python scripts:</p>
+<ul class="simple">
+<li>value_lookup.py;</li>
+<li>bal_database.py.</li>
+</ul>
+<p>There are three more folders:</p>
+<ul class="simple">
+<li><strong>docs</strong>: holding the documentation files.</li>
+<li><strong>tests</strong>: holding the unit tests, scenario tests and their test data.</li>
+<li><strong>examples</strong>: holding the example input and output data.</li>
+</ul>
+</div>
+<div class="section" id="use-limitations">
+<h2>Use limitations<a class="headerlink" href="#use-limitations" title="Permalink to this headline">¶</a></h2>
+<p>The BAL tool developed in Geoscience Australia (GA) has been developed
+and tested in ArcGIS 10.2. However, GA does not guarantee that the
+information derived is totally accurate or complete. Therefore, you
+should not solely rely on this information. Key limitations and
+approximations include the following:</p>
+<ul class="simple">
+<li>The BAL is produced based on the simplified method (Method 1) in AS
+3959 (2009). When the land downslope is more than 20 degrees, more
+detailed method (Method 2) should be adopted. Method 2 has not been
+incorporated into the toolbox developed. Instead, a constant value
+of 200 is provided as BAL for such circumstances.</li>
+<li>Elevation data is a critical input of the tool. Digital Elevation
+Model (DEM) with finer resolution usually leads to more accurate BAL
+results. The example data uses a DEM with a resolution of 1 second
+of arc (approximate 30 m by 30 m grid cell at the equator), the best
+available national scale elevation dataset at the time of
+modelling. As with all spatial analyses, the results are sensitive
+to the input DEM&#8217;s quality, resolution, coverage and currency and
+should therefore be used with this understanding.</li>
+<li>Vegetation data is another critical input into the tool. Method 1 in
+AS 3959 (2009) considers the vegetation up to 100 metres from the
+site of interest. Ideally the vegetation with finer resolution
+(preferred at metre level) is required to derive sensible BAL
+analyses. Where finer vegetation data is not available, the
+alternative coarse vegetation data may lead to inaccurate output
+BAL.</li>
+<li>The BAL toolbox requires availability of one extension within
+ArcGIS - <strong>Spatial Analyst</strong>. If the extension is available, its
+licence will be automatically checked out when needed and checked in
+when it is not needed any more. Without the licence of <strong>Spatial
+Analyst</strong>, the tool will fail to run.</li>
+<li>The BAL toolbox is intended to run in the ArcGIS toolbox environment
+and is not intended to run in a Python script environment.</li>
+<li>This software algorithm adapts to the Method 1 in AS 3959 (2009) by
+modelling it spatially. Readers are assumed to be familiar with AS
+3959 (2009). For the detailed description of the Method 1, please
+refer to the Standard AS 3959 (2009).</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="background.html" class="btn btn-neutral float-right" title="Background" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Bushfire Attack Level Toolbox User Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

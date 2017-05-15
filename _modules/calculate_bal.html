@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>calculate_bal &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/userguide/index.html">Bushfire Attack Level Toolbox User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/training/index.html">Bushfire Attack Level Toolbox Training Workshop</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>calculate_bal</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for calculate_bal</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:mod:`calculate_bal` - essential part of calculating the</span>
+<span class="sd">bushfire attack level (BAL)</span>
+
+<span class="sd">===============================================================</span>
+
+<span class="sd">This module includes algorithms that are used to calculate BAL as per</span>
+<span class="sd">Method 1 in the Australian Standard AS 3959 (2009) -- Construction of</span>
+<span class="sd">buildings in bushfire-prone areas.</span>
+
+<span class="sd">:moduleauthor: Tina Yang &lt;tina.yang@ga.gov.au&gt;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">utilities</span> <span class="k">import</span> <span class="n">value_lookup</span><span class="p">,</span> <span class="n">bal_database</span>
+
+
+<div class="viewcode-block" id="bal_cal"><a class="viewcode-back" href="../docs/userguide/calculate_bal.html#calculate_bal.bal_cal">[docs]</a><span class="k">def</span> <span class="nf">bal_cal</span><span class="p">(</span><span class="n">veg_class</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">aspect</span><span class="p">,</span> <span class="n">fdi</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the BAL based on the classified vegetation and the combined</span>
+<span class="sd">    slope and vegetation according to an appropriate table in AS 3959 (2009)</span>
+<span class="sd">    to determine the bushfire attack level (BAL).</span>
+
+<span class="sd">    :param veg_class: `file` the input classified vegetation</span>
+<span class="sd">    :param slope: `file` the input slope</span>
+<span class="sd">    :param aspect: `file` the input aspect</span>
+<span class="sd">    :param fdi: `int` the input FDI value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">output_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">veg_class</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># set directory</span>
+    <span class="n">work_folder</span> <span class="o">=</span> <span class="n">output_folder</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">work_folder</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">work_folder</span>
+
+    <span class="c1"># get veg raster size, format, projection, etc</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">veg_class</span><span class="p">)</span>
+    <span class="n">extent</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">extent</span>
+    <span class="n">lowleft_corner</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">extent</span><span class="o">.</span><span class="n">XMin</span><span class="p">,</span> <span class="n">extent</span><span class="o">.</span><span class="n">YMin</span><span class="p">)</span>
+    <span class="n">pixel_w</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">meanCellWidth</span>
+    <span class="n">pixel_h</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">meanCellHeight</span>
+    <span class="n">sref</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">spatialReference</span>
+
+    <span class="c1"># load the raster into numpy array</span>
+    <span class="n">veg_data</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">RasterToNumPyArray</span><span class="p">(</span><span class="n">veg_class</span><span class="p">,</span> <span class="n">nodata_to_value</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span>
+    <span class="n">slope_data</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">RasterToNumPyArray</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">nodata_to_value</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span>
+    <span class="n">aspect_data</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">RasterToNumPyArray</span><span class="p">(</span><span class="n">aspect</span><span class="p">,</span> <span class="n">nodata_to_value</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span>
+
+    <span class="c1"># calculate the BAL for each direction in numpy array and get maximum of</span>
+    <span class="c1"># 2 direction each time, until get the maximum of all directions</span>
+    <span class="n">dire</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;nw&#39;</span><span class="p">,</span> <span class="s1">&#39;ne&#39;</span><span class="p">,</span> <span class="s1">&#39;se&#39;</span><span class="p">,</span> <span class="s1">&#39;sw&#39;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">one_dir</span> <span class="ow">in</span> <span class="n">dire</span><span class="p">:</span>
+        <span class="n">bal_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">outdata</span> <span class="o">=</span> <span class="n">convo</span><span class="p">(</span><span class="n">one_dir</span><span class="p">,</span> <span class="n">veg_data</span><span class="p">,</span> <span class="n">slope_data</span><span class="p">,</span> <span class="n">aspect_data</span><span class="p">,</span>
+                        <span class="n">pixel_w</span><span class="p">,</span> <span class="n">fdi</span><span class="p">)</span>
+
+        <span class="n">output_dir</span> <span class="o">=</span> <span class="s1">&#39;bal_&#39;</span> <span class="o">+</span> <span class="n">one_dir</span> <span class="o">+</span> <span class="s1">&#39;.img&#39;</span>
+
+        <span class="k">if</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">output_dir</span><span class="p">):</span>
+            <span class="n">arcpy</span><span class="o">.</span><span class="n">Delete_management</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+
+        <span class="n">arcpy</span><span class="o">.</span><span class="n">NumPyArrayToRaster</span><span class="p">(</span><span class="n">outdata</span><span class="p">,</span> <span class="n">lowleft_corner</span><span class="p">,</span> <span class="n">pixel_w</span><span class="p">,</span>
+                                 <span class="n">pixel_h</span><span class="p">,</span> <span class="n">value_to_nodata</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+
+        <span class="n">arcpy</span><span class="o">.</span><span class="n">DefineProjection_management</span><span class="p">(</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">sref</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">one_dir</span> <span class="o">==</span> <span class="s1">&#39;w&#39;</span><span class="p">:</span>
+            <span class="n">bigger</span> <span class="o">=</span> <span class="n">outdata</span>
+            <span class="k">del</span> <span class="n">outdata</span>
+            <span class="k">continue</span>
+
+        <span class="n">bal_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bigger</span><span class="p">)</span>
+        <span class="n">bal_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outdata</span><span class="p">)</span>
+        <span class="n">bigger</span> <span class="o">=</span> <span class="n">get_max_bal</span><span class="p">(</span><span class="n">bal_list</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">outdata</span>
+
+    <span class="c1"># get maximum BAL from the list</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">NumPyArrayToRaster</span><span class="p">(</span><span class="n">bigger</span><span class="p">,</span> <span class="n">lowleft_corner</span><span class="p">,</span> <span class="n">pixel_w</span><span class="p">,</span>
+                             <span class="n">pixel_h</span><span class="p">,</span> <span class="n">value_to_nodata</span><span class="o">=-</span><span class="mi">99</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;bal_max.img&#39;</span><span class="p">)</span>
+
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">DefineProjection_management</span><span class="p">(</span><span class="s1">&#39;bal_max.img&#39;</span><span class="p">,</span> <span class="n">sref</span><span class="p">)</span>
+
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">BuildPyramidsandStatistics_management</span><span class="p">(</span><span class="n">output_folder</span><span class="p">,</span> <span class="s2">&quot;#&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;BUILD_PYRAMIDS&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;CALCULATE_STATISTICS&quot;</span><span class="p">)</span>
+
+    <span class="c1"># delete intermediate results</span>
+    <span class="k">if</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">veg_class</span><span class="p">):</span>
+        <span class="n">arcpy</span><span class="o">.</span><span class="n">Delete_management</span><span class="p">(</span><span class="n">veg_class</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">slope</span><span class="p">):</span>
+        <span class="n">arcpy</span><span class="o">.</span><span class="n">Delete_management</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">aspect</span><span class="p">):</span>
+        <span class="n">arcpy</span><span class="o">.</span><span class="n">Delete_management</span><span class="p">(</span><span class="n">aspect</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">veg_data</span><span class="p">,</span> <span class="n">slope_data</span><span class="p">,</span> <span class="n">aspect_data</span>
+    <span class="k">del</span> <span class="n">bal_list</span><span class="p">,</span> <span class="n">bigger</span></div>
+
+
+<div class="viewcode-block" id="get_max_bal"><a class="viewcode-back" href="../docs/userguide/calculate_bal.html#calculate_bal.get_max_bal">[docs]</a><span class="k">def</span> <span class="nf">get_max_bal</span><span class="p">(</span><span class="n">bal_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    get the maximum bal value of all 8 directions.</span>
+
+<span class="sd">    :param bal_list: `list of arrays` the bal value for each of 8 directions</span>
+
+<span class="sd">    :return: :class:`numpy.ndarray` the maximum bal value of 8 directions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">stacked_arrays</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">bal_list</span><span class="p">))</span>
+    <span class="n">max_of_stack</span> <span class="o">=</span> <span class="n">stacked_arrays</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">max_of_stack</span></div>
+
+
+<div class="viewcode-block" id="get_slope_in_aspect"><a class="viewcode-back" href="../docs/userguide/calculate_bal.html#calculate_bal.get_slope_in_aspect">[docs]</a><span class="k">def</span> <span class="nf">get_slope_in_aspect</span><span class="p">(</span><span class="n">slope_data</span><span class="p">,</span> <span class="n">aspect_data</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">aspect_value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the slope data in a specific aspect.</span>
+
+<span class="sd">    :param slope_data: :class:`numpy.ndarray` the slope values</span>
+<span class="sd">    :param aspect_data: :class:`numpy.ndarray` the aspect values</span>
+<span class="sd">    :param rows: `int` the row number of the slope_data</span>
+<span class="sd">    :param cols: `int` the column number of the slope_data</span>
+<span class="sd">    :param aspect_value: `int` the aspect value</span>
+
+<span class="sd">    :return: :class:`numpy.ndarray` the slope data in an aspect</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">slope_in_aspect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="c1"># -1 means upslope</span>
+    <span class="n">slope_in_aspect</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># if the original slope is nodata, the slope_in_aspect should be nodata</span>
+    <span class="n">nodata_location</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">slope_data</span> <span class="o">==</span> <span class="o">-</span><span class="mi">99</span><span class="p">)</span>
+    <span class="n">slope_in_aspect</span><span class="p">[</span><span class="n">nodata_location</span><span class="p">]</span> <span class="o">=</span> <span class="n">slope_data</span><span class="p">[</span><span class="n">nodata_location</span><span class="p">]</span>
+
+    <span class="n">same_aspect_location</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">aspect_data</span> <span class="o">==</span> <span class="n">aspect_value</span><span class="p">)</span>
+    <span class="n">slope_in_aspect</span><span class="p">[</span><span class="n">same_aspect_location</span><span class="p">]</span> <span class="o">=</span> <span class="n">slope_data</span><span class="p">[</span><span class="n">same_aspect_location</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">slope_in_aspect</span></div>
+
+
+<div class="viewcode-block" id="convo"><a class="viewcode-back" href="../docs/userguide/calculate_bal.html#calculate_bal.convo">[docs]</a><span class="k">def</span> <span class="nf">convo</span><span class="p">(</span><span class="n">a_dir</span><span class="p">,</span> <span class="n">veg_data</span><span class="p">,</span> <span class="n">slope_data</span><span class="p">,</span> <span class="n">aspect_data</span><span class="p">,</span> <span class="n">pixel_width</span><span class="p">,</span> <span class="n">fdi</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the maximum BAL for the point of interest in one direction by</span>
+<span class="sd">    assessing all neighbours&#39; BAL values in that direction (up to 100 metres).</span>
+
+<span class="sd">    :param a_dir: `string` the specific direction</span>
+<span class="sd">    :param veg_data: :class:`numpy.ndarray` the classified vegetation values</span>
+<span class="sd">    :param slope_data: :class:`numpy.ndarray` the slope values</span>
+<span class="sd">    :param aspect_data: :class:`numpy.ndarray` the aspect values</span>
+<span class="sd">    :param pixel_width: `float` the pixel width of the classified vegetation</span>
+<span class="sd">    :param fdi: `int` the input FDI value</span>
+
+<span class="sd">    :return: :class:`numpy.ndarray` the output BAL values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">dire_aspect</span> <span class="o">=</span> <span class="n">value_lookup</span><span class="o">.</span><span class="n">DIRE_ASPECT</span>
+    <span class="n">aspect_value</span> <span class="o">=</span> <span class="n">dire_aspect</span><span class="p">[</span><span class="n">a_dir</span><span class="p">]</span>
+
+    <span class="c1"># dire_width is the cell span length at the specific direction</span>
+    <span class="k">if</span> <span class="n">a_dir</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">]:</span>
+        <span class="n">dire_width</span> <span class="o">=</span> <span class="n">pixel_width</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dire_width</span> <span class="o">=</span> <span class="n">pixel_width</span> <span class="o">*</span> <span class="mf">1.414</span>
+
+    <span class="n">filter_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">100.0</span> <span class="o">/</span> <span class="n">dire_width</span><span class="p">))</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="n">veg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="n">veg_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">slope_in_aspect</span> <span class="o">=</span> <span class="n">get_slope_in_aspect</span><span class="p">(</span><span class="n">slope_data</span><span class="p">,</span> <span class="n">aspect_data</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span>
+                                          <span class="n">aspect_value</span><span class="p">)</span>
+
+    <span class="n">outdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+
+            <span class="c1"># for pixels whose neighbour amount is less than defined value.</span>
+            <span class="c1"># e.g here for 25m resolution, it is 4 for hori and vert and 3</span>
+            <span class="c1"># for diagnoal direction</span>
+            <span class="n">all_neighb_dir</span> <span class="o">=</span> <span class="n">value_lookup</span><span class="o">.</span><span class="n">ALL_NEIGHB</span><span class="p">[</span><span class="n">a_dir</span><span class="p">](</span><span class="n">i</span><span class="p">,</span> <span class="n">jj</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">all_neighb_dir</span> <span class="o">&lt;</span> <span class="n">filter_width</span><span class="p">:</span>
+                <span class="n">max_neighb_dir</span> <span class="o">=</span> <span class="n">all_neighb_dir</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">max_neighb_dir</span> <span class="o">=</span> <span class="n">filter_width</span>
+
+            <span class="n">slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">max_neighb_dir</span><span class="p">)</span>
+            <span class="n">veg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">max_neighb_dir</span><span class="p">)</span>
+            <span class="n">bal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">max_neighb_dir</span><span class="p">)</span>
+            <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">max_neighb_dir</span><span class="p">)</span>
+
+            <span class="c1"># if max_neighb_dir is 0, it means no neighbours at this direction</span>
+            <span class="c1"># so no loop is acted as follows. then the output is nodata</span>
+            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_neighb_dir</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="c1"># get neighbour point location</span>
+                <span class="n">point_row</span> <span class="o">=</span> <span class="n">value_lookup</span><span class="o">.</span><span class="n">POINT_R</span><span class="p">[</span><span class="n">a_dir</span><span class="p">](</span><span class="n">i</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+                <span class="n">point_col</span> <span class="o">=</span> <span class="n">value_lookup</span><span class="o">.</span><span class="n">POINT_C</span><span class="p">[</span><span class="n">a_dir</span><span class="p">](</span><span class="n">jj</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+                <span class="c1"># get neighbour point distance, slope, veg data</span>
+                <span class="n">dist</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dire_width</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dire_width</span>
+                <span class="n">slope</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">slope_in_aspect</span><span class="p">[</span><span class="n">point_row</span><span class="p">,</span> <span class="n">point_col</span><span class="p">]</span>
+                <span class="n">veg</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">veg_data</span><span class="p">[</span><span class="n">point_row</span><span class="p">,</span> <span class="n">point_col</span><span class="p">]</span>
+
+                <span class="c1"># calcualte bal for the neighbour point</span>
+                <span class="n">bal</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">bal_esti</span><span class="p">(</span><span class="n">veg</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span>
+                                      <span class="n">dist</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">slope</span><span class="p">[</span><span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">fdi</span><span class="p">)</span>
+
+            <span class="c1"># get the calculated pixel value</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">bal</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">outdata</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">jj</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">bal</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># the boundary data</span>
+                <span class="n">outdata</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">jj</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+
+    <span class="k">return</span> <span class="n">outdata</span></div>
+
+
+<div class="viewcode-block" id="find_dist_class"><a class="viewcode-back" href="../docs/userguide/calculate_bal.html#calculate_bal.find_dist_class">[docs]</a><span class="k">def</span> <span class="nf">find_dist_class</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">dist_limit</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decide the BAL class based on the input distance and the distance</span>
+<span class="sd">    upper-limit for each BAL class.</span>
+
+<span class="sd">    :param dist: `float` the horizontal distance from POI</span>
+<span class="sd">    :param dist_limit: `list` the upper-limit for each BAL class</span>
+
+<span class="sd">    :return: `int` the distance class defined in bal_database.py</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">dist_limit</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">dist_class</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">dist_limit</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">dist_class</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">dist_limit</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="n">dist_class</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">elif</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">dist_limit</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span>
+        <span class="n">dist_class</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">dist_class</span> <span class="o">=</span> <span class="mi">5</span>
+
+    <span class="k">return</span> <span class="n">dist_class</span></div>
+
+
+<div class="viewcode-block" id="bal_esti"><a class="viewcode-back" href="../docs/userguide/calculate_bal.html#calculate_bal.bal_esti">[docs]</a><span class="k">def</span> <span class="nf">bal_esti</span><span class="p">(</span><span class="n">veg</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">fdi</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the BAL based on the vegetation class, slope degree and</span>
+<span class="sd">    horizontal distance from the point of interest (POI).</span>
+
+<span class="sd">    :param veg: `float` the vegetation type</span>
+<span class="sd">    :param dist: `float` the horizontal distance from POI</span>
+<span class="sd">    :param slope: `float` the slope value</span>
+<span class="sd">    :param fdi: `int` the input FDI value</span>
+
+<span class="sd">    :return: `float` the output BAL value for this neighbour point regards to</span>
+<span class="sd">             the POI</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># nodata area</span>
+    <span class="k">if</span> <span class="n">slope</span> <span class="o">==</span> <span class="o">-</span><span class="mi">99</span><span class="p">:</span>
+        <span class="n">bal</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+
+    <span class="c1"># downslope &gt; 20 degree</span>
+    <span class="k">elif</span> <span class="n">slope</span> <span class="o">==</span> <span class="n">bal_database</span><span class="o">.</span><span class="n">SLOPE</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">veg</span> <span class="o">==</span> <span class="o">-</span><span class="mi">99</span><span class="p">:</span>
+            <span class="n">bal</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">bal</span> <span class="o">=</span> <span class="mi">200</span>
+
+    <span class="c1"># flat land (0 degree) or upslopes</span>
+    <span class="k">elif</span> <span class="n">slope</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">bal_database</span><span class="o">.</span><span class="n">SLOPE</span><span class="p">[</span><span class="mi">0</span><span class="p">]]:</span>
+        <span class="k">if</span> <span class="n">veg</span> <span class="o">==</span> <span class="o">-</span><span class="mi">99</span><span class="p">:</span>
+            <span class="n">bal</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d_limit</span> <span class="o">=</span> <span class="n">bal_database</span><span class="o">.</span><span class="n">DIST_LIMIT_UPSLOPE</span><span class="p">[</span><span class="n">fdi</span><span class="p">][</span><span class="n">veg</span><span class="p">]</span>
+            <span class="n">dist_class</span> <span class="o">=</span> <span class="n">find_dist_class</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">d_limit</span><span class="p">)</span>
+            <span class="n">bal</span> <span class="o">=</span> <span class="n">bal_database</span><span class="o">.</span><span class="n">BAL_CLASS</span><span class="p">[</span><span class="n">dist_class</span><span class="p">]</span>
+
+    <span class="c1"># 0 &lt; downslope &lt;= 20 degree</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">veg</span> <span class="o">==</span> <span class="o">-</span><span class="mi">99</span><span class="p">:</span>
+            <span class="n">bal</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">d_limit</span> <span class="o">=</span> <span class="n">bal_database</span><span class="o">.</span><span class="n">DIST_LIMIT_DOWNSLOPE</span><span class="p">[</span><span class="n">fdi</span><span class="p">][(</span><span class="n">slope</span><span class="p">,</span> <span class="n">veg</span><span class="p">)]</span>
+            <span class="n">dist_class</span> <span class="o">=</span> <span class="n">find_dist_class</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">d_limit</span><span class="p">)</span>
+            <span class="n">bal</span> <span class="o">=</span> <span class="n">bal_database</span><span class="o">.</span><span class="n">BAL_CLASS</span><span class="p">[</span><span class="n">dist_class</span><span class="p">]</span>
+
+    <span class="c1"># if fdi is not 50, if it is grassland, distance is consdiered up to 50m,</span>
+    <span class="c1"># update bal to nodata</span>
+    <span class="k">if</span> <span class="n">fdi</span> <span class="o">!=</span> <span class="mi">50</span> <span class="ow">and</span> <span class="n">veg</span> <span class="o">==</span> <span class="n">bal_database</span><span class="o">.</span><span class="n">VEG_CLASS</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">:</span>
+            <span class="n">bal</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+
+    <span class="k">return</span> <span class="n">bal</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

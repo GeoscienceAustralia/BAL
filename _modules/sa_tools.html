@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sa_tools &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../index.html"/>
+        <link rel="up" title="Module code" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../docs/disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/userguide/index.html">Bushfire Attack Level Toolbox User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/training/index.html">Bushfire Attack Level Toolbox Training Workshop</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>sa_tools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sa_tools</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">:mod:`sa_tools` - some support functions replacing spatial analyst</span>
+
+<span class="sd">===============================================================</span>
+
+<span class="sd">This module includes algorithms that are used to replace spatial analyst</span>
+<span class="sd">functions such as ExtractByMask, Reclassify, Slope and Aspect used within this</span>
+<span class="sd">package.</span>
+
+<span class="sd">:moduleauthor: Tina Yang &lt;tina.yang@ga.gov.au&gt;</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">arcpy</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">RADIANS_PER_DEGREE</span> <span class="o">=</span> <span class="mf">0.01745329251994329576923690768489</span>
+
+
+<div class="viewcode-block" id="clip_array"><a class="viewcode-back" href="../docs/userguide/utilities.html#sa_tools.clip_array">[docs]</a><span class="k">def</span> <span class="nf">clip_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x_left</span><span class="p">,</span> <span class="n">y_upper</span><span class="p">,</span> <span class="n">pixelwidth</span><span class="p">,</span> <span class="n">pixelheight</span><span class="p">,</span> <span class="n">extent</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the clipped area of the input array according to an sub-extent</span>
+
+<span class="sd">    :param data: :class:`numpy.ndarray` the input array</span>
+<span class="sd">    :param x_left: `float` the left-most x projected coordinate</span>
+<span class="sd">    :param y_upper: `float` the upper-most y projected coordinate</span>
+<span class="sd">    :param pixelwidth: `float` the pixel width</span>
+<span class="sd">    :param pixelheight: `float` the pixel height</span>
+<span class="sd">    :param extent: `tuple` the clipping extent</span>
+
+<span class="sd">    :return: :class:`numpy.ndarray` the clipped array</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">x_start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">((</span><span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_left</span><span class="p">)</span><span class="o">/</span><span class="n">pixelwidth</span><span class="p">))</span>
+    <span class="n">y_start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">((</span><span class="n">y_upper</span> <span class="o">-</span> <span class="n">extent</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">/</span><span class="n">pixelheight</span><span class="p">))</span>
+
+    <span class="n">cols</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">((</span><span class="n">extent</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">pixelwidth</span><span class="p">))</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">((</span><span class="n">extent</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="n">pixelheight</span><span class="p">))</span>
+
+    <span class="n">x_end</span> <span class="o">=</span> <span class="n">x_start</span> <span class="o">+</span> <span class="n">cols</span>
+    <span class="n">y_end</span> <span class="o">=</span> <span class="n">y_start</span> <span class="o">+</span> <span class="n">rows</span>
+
+    <span class="n">data_clip</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">y_start</span><span class="p">:</span><span class="n">y_end</span><span class="p">,</span> <span class="n">x_start</span><span class="p">:</span><span class="n">x_end</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">data_clip</span></div>
+
+
+<div class="viewcode-block" id="extract_by_mask"><a class="viewcode-back" href="../docs/userguide/utilities.html#sa_tools.extract_by_mask">[docs]</a><span class="k">def</span> <span class="nf">extract_by_mask</span><span class="p">(</span><span class="n">image_fname</span><span class="p">,</span> <span class="n">extent_file</span><span class="p">,</span> <span class="n">out_fname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Extract a raster using a feature (shape) file</span>
+
+<span class="sd">    :param image_fname: `file` the input raster</span>
+<span class="sd">    :param extent_file: `file` the input extent feature file</span>
+
+<span class="sd">    :return: `file` the output raster</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">output_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">image_fname</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># set directory</span>
+    <span class="n">work_folder</span> <span class="o">=</span> <span class="n">output_folder</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">work_folder</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">work_folder</span>
+
+    <span class="c1"># set nodata value</span>
+    <span class="n">nodata_value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+
+    <span class="c1"># get the information of the original image</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">image_fname</span><span class="p">)</span>
+    <span class="n">x_min</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">XMin</span>
+    <span class="n">y_min</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">YMin</span>
+    <span class="n">x_max</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">XMax</span>
+    <span class="n">y_max</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">YMax</span>
+    <span class="n">pixel_w</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">meanCellWidth</span>
+    <span class="n">pixel_h</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">meanCellHeight</span>
+    <span class="n">sref</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">spatialReference</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">RasterToNumPyArray</span><span class="p">(</span><span class="n">image_fname</span><span class="p">,</span> <span class="n">nodata_to_value</span><span class="o">=</span><span class="n">nodata_value</span><span class="p">)</span>
+
+    <span class="c1"># rasterise the shapefile and then extract into numpy array</span>
+    <span class="n">ext_raster</span> <span class="o">=</span> <span class="s2">&quot;ext_raster&quot;</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">FeatureToRaster_conversion</span><span class="p">(</span><span class="n">extent_file</span><span class="p">,</span> <span class="s2">&quot;FID&quot;</span><span class="p">,</span> <span class="n">ext_raster</span><span class="p">,</span> <span class="n">pixel_w</span><span class="p">)</span>
+    <span class="n">extent_data</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">RasterToNumPyArray</span><span class="p">(</span><span class="n">ext_raster</span><span class="p">,</span>
+                                           <span class="n">nodata_to_value</span><span class="o">=</span><span class="n">nodata_value</span><span class="p">)</span>
+
+    <span class="c1"># decide the effective extent to extract the raster</span>
+    <span class="n">extent</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">extent_file</span><span class="p">)</span><span class="o">.</span><span class="n">extent</span>
+    <span class="k">if</span> <span class="n">extent</span><span class="o">.</span><span class="n">XMin</span> <span class="o">&lt;</span> <span class="n">x_min</span><span class="p">:</span>
+        <span class="n">effect_xmin</span> <span class="o">=</span> <span class="n">x_min</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">effect_xmin</span> <span class="o">=</span> <span class="n">extent</span><span class="o">.</span><span class="n">XMin</span>
+
+    <span class="k">if</span> <span class="n">extent</span><span class="o">.</span><span class="n">YMin</span> <span class="o">&lt;</span> <span class="n">y_min</span><span class="p">:</span>
+        <span class="n">effect_ymin</span> <span class="o">=</span> <span class="n">y_min</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">effect_ymin</span> <span class="o">=</span> <span class="n">extent</span><span class="o">.</span><span class="n">YMin</span>
+
+    <span class="k">if</span> <span class="n">extent</span><span class="o">.</span><span class="n">XMax</span> <span class="o">&gt;</span> <span class="n">x_max</span><span class="p">:</span>
+        <span class="n">effect_xmax</span> <span class="o">=</span> <span class="n">x_max</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">effect_xmax</span> <span class="o">=</span> <span class="n">extent</span><span class="o">.</span><span class="n">XMax</span>
+
+    <span class="k">if</span> <span class="n">extent</span><span class="o">.</span><span class="n">YMax</span> <span class="o">&gt;</span> <span class="n">y_max</span><span class="p">:</span>
+        <span class="n">effect_ymax</span> <span class="o">=</span> <span class="n">y_max</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">effect_ymax</span> <span class="o">=</span> <span class="n">extent</span><span class="o">.</span><span class="n">YMax</span>
+
+    <span class="n">effect_extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">effect_xmin</span><span class="p">,</span> <span class="n">effect_ymin</span><span class="p">,</span> <span class="n">effect_xmax</span><span class="p">,</span> <span class="n">effect_ymax</span><span class="p">)</span>
+
+    <span class="c1"># get the lowleft corner for positioning the output raster</span>
+    <span class="n">lowleft_corner</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">effect_xmin</span><span class="p">,</span> <span class="n">effect_ymin</span><span class="p">)</span>
+
+    <span class="c1"># extract the effective extent of interest from original image data</span>
+    <span class="n">data_in_extent</span> <span class="o">=</span> <span class="n">clip_array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">pixel_w</span><span class="p">,</span> <span class="n">pixel_h</span><span class="p">,</span>
+                                <span class="n">effect_extent</span><span class="p">)</span>
+
+    <span class="c1"># extract the effective extent of interest from original extent data</span>
+    <span class="n">extent_data_effect</span> <span class="o">=</span> <span class="n">clip_array</span><span class="p">(</span><span class="n">extent_data</span><span class="p">,</span> <span class="n">extent</span><span class="o">.</span><span class="n">XMin</span><span class="p">,</span> <span class="n">extent</span><span class="o">.</span><span class="n">YMax</span><span class="p">,</span>
+                                    <span class="n">pixel_w</span><span class="p">,</span> <span class="n">pixel_h</span><span class="p">,</span> <span class="n">effect_extent</span><span class="p">)</span>
+
+    <span class="c1"># operate extent_data_effect and data_in_extent, if nodata in either,</span>
+    <span class="c1"># output is nodata</span>
+    <span class="n">nodata_area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">extent_data_effect</span> <span class="o">==</span> <span class="n">nodata_value</span><span class="p">)</span>
+    <span class="n">data_in_extent</span><span class="p">[</span><span class="n">nodata_area</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodata_value</span>
+
+    <span class="c1"># save the output array into a raster</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">NumPyArrayToRaster</span><span class="p">(</span><span class="n">data_in_extent</span><span class="p">,</span> <span class="n">lowleft_corner</span><span class="p">,</span> <span class="n">pixel_w</span><span class="p">,</span> <span class="n">pixel_h</span><span class="p">,</span>
+                             <span class="n">value_to_nodata</span><span class="o">=</span><span class="n">nodata_value</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">out_fname</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">DefineProjection_management</span><span class="p">(</span><span class="n">out_fname</span><span class="p">,</span> <span class="n">sref</span><span class="p">)</span>
+
+    <span class="k">del</span> <span class="n">data_in_extent</span>
+    <span class="k">del</span> <span class="n">extent_data_effect</span>
+    <span class="k">del</span> <span class="n">data</span>
+
+    <span class="k">if</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">ext_raster</span><span class="p">):</span>
+        <span class="n">arcpy</span><span class="o">.</span><span class="n">Delete_management</span><span class="p">(</span><span class="n">ext_raster</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="reclassify"><a class="viewcode-back" href="../docs/userguide/utilities.html#sa_tools.reclassify">[docs]</a><span class="k">def</span> <span class="nf">reclassify</span><span class="p">(</span><span class="n">image_fname</span><span class="p">,</span> <span class="n">remap</span><span class="p">,</span> <span class="n">out_fname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reclassify the raster as per the input remap</span>
+
+<span class="sd">    :param image_fname: `file` the input raster</span>
+<span class="sd">    :param remap: `str` the info of remap</span>
+
+<span class="sd">    :return: `file` the output raster</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">output_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">image_fname</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># set directory</span>
+    <span class="n">work_folder</span> <span class="o">=</span> <span class="n">output_folder</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">work_folder</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">work_folder</span>
+
+    <span class="c1"># set nodata value</span>
+    <span class="n">nodata_value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+
+    <span class="c1"># get the information of the original image</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">image_fname</span><span class="p">)</span>
+    <span class="n">x_min</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">XMin</span>
+    <span class="n">y_min</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">YMin</span>
+    <span class="n">pixel_w</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">meanCellWidth</span>
+    <span class="n">pixel_h</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">meanCellHeight</span>
+    <span class="n">sref</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">spatialReference</span>
+    <span class="c1"># get the lowleft corner for positioning the output raster</span>
+    <span class="n">lowleft_corner</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">y_min</span><span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">RasterToNumPyArray</span><span class="p">(</span><span class="n">image_fname</span><span class="p">,</span> <span class="n">nodata_to_value</span><span class="o">=</span><span class="n">nodata_value</span><span class="p">)</span>
+
+    <span class="n">remap_list</span> <span class="o">=</span> <span class="n">remap</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">a_map</span> <span class="ow">in</span> <span class="n">remap_list</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">a_map</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">start_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">end_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">new_value</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">start_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">end_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">new_value</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="c1"># to include the orignal end value , expand the end value a bit</span>
+        <span class="n">end_value</span> <span class="o">+=</span> <span class="mf">0.0001</span>
+
+        <span class="k">if</span> <span class="n">new_value</span> <span class="o">==</span> <span class="s1">&#39;NODATA&#39;</span><span class="p">:</span>
+            <span class="n">new_value</span> <span class="o">=</span> <span class="n">nodata_value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
+
+        <span class="n">range_loc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">data</span> <span class="o">&gt;=</span> <span class="n">start_value</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span> <span class="o">&lt;</span> <span class="n">end_value</span><span class="p">))</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">range_loc</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_value</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="c1"># save the output array into a raster</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">NumPyArrayToRaster</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">lowleft_corner</span><span class="p">,</span> <span class="n">pixel_w</span><span class="p">,</span> <span class="n">pixel_h</span><span class="p">,</span>
+                             <span class="n">value_to_nodata</span><span class="o">=</span><span class="n">nodata_value</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">out_fname</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">DefineProjection_management</span><span class="p">(</span><span class="n">out_fname</span><span class="p">,</span> <span class="n">sref</span><span class="p">)</span>
+
+    <span class="k">del</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="cal_slope_aspect"><a class="viewcode-back" href="../docs/userguide/utilities.html#sa_tools.cal_slope_aspect">[docs]</a><span class="k">def</span> <span class="nf">cal_slope_aspect</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">slope_fname</span><span class="p">,</span> <span class="n">aspect_fname</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the slope from the input dem</span>
+
+<span class="sd">    :param dem: `file` the input dem</span>
+<span class="sd">    :param slope_fname: `file` the output slope</span>
+<span class="sd">    :param aspect_fname: `file` the output aspect</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">output_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># set directory</span>
+    <span class="n">work_folder</span> <span class="o">=</span> <span class="n">output_folder</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">work_folder</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">work_folder</span>
+
+    <span class="c1"># set nodata value</span>
+    <span class="n">nodata_value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+
+    <span class="c1"># get the information of the original image</span>
+    <span class="n">desc</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Describe</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+    <span class="n">x_min</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">XMin</span>
+    <span class="n">y_min</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">extent</span><span class="o">.</span><span class="n">YMin</span>
+    <span class="n">pixel_w</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">meanCellWidth</span>
+    <span class="n">pixel_h</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">meanCellHeight</span>
+    <span class="n">sref</span> <span class="o">=</span> <span class="n">desc</span><span class="o">.</span><span class="n">spatialReference</span>
+    <span class="c1"># get the lowleft corner for positioning the output raster</span>
+    <span class="n">lowleft_corner</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">y_min</span><span class="p">)</span>
+
+    <span class="n">elevation_array</span> <span class="o">=</span> <span class="n">arcpy</span><span class="o">.</span><span class="n">RasterToNumPyArray</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span>
+                                               <span class="n">nodata_to_value</span><span class="o">=</span><span class="n">nodata_value</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">elevation_array</span> <span class="o">==</span> <span class="n">nodata_value</span><span class="p">)</span>
+
+    <span class="c1"># Set nodata cells adjacent to valid cells to a matching value.</span>
+    <span class="c1"># This is to ensure the slope values (calculated using a centred</span>
+    <span class="c1"># difference scheme) near nodata areas remain sensible.</span>
+    <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">elevation_array</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">elevation_array</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">nodata_value</span> <span class="ow">and</span>
+                <span class="n">elevation_array</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">nodata_value</span><span class="p">):</span>
+                <span class="n">elevation_array</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">elevation_array</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">elevation_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">nodata_value</span> <span class="ow">and</span>
+                <span class="n">elevation_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="n">nodata_value</span><span class="p">):</span>
+                <span class="n">elevation_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">elevation_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">elevation_array</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">nodata_value</span> <span class="ow">and</span>
+                <span class="n">elevation_array</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">nodata_value</span><span class="p">):</span>
+                <span class="n">elevation_array</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">elevation_array</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nx</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">elevation_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">nodata_value</span> <span class="ow">and</span>
+                <span class="n">elevation_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">nodata_value</span><span class="p">):</span>
+                <span class="n">elevation_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">elevation_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Calculate gradient:</span>
+    <span class="c1"># See https://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.gradient.html</span>
+    <span class="c1"># This is the 1.6 version of numpy.gradient:</span>
+    <span class="n">dzdx</span><span class="p">,</span> <span class="n">dzdy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">elevation_array</span><span class="p">,</span> <span class="n">pixel_w</span><span class="p">,</span> <span class="n">pixel_h</span><span class="p">)</span>
+
+    <span class="c1"># Calculate slope:</span>
+    <span class="n">hypotenuse_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">dzdx</span><span class="p">,</span> <span class="n">dzdy</span><span class="p">)</span>
+    <span class="n">slope_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">hypotenuse_array</span><span class="p">)</span> <span class="o">/</span> <span class="n">RADIANS_PER_DEGREE</span> 
+    <span class="n">slope_array</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodata_value</span>
+    <span class="k">del</span> <span class="n">hypotenuse_array</span>
+
+    <span class="c1"># Aspect</span>
+    <span class="c1"># Convert angles from conventional radians to compass heading 0-360</span>
+    <span class="n">aspect_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">((</span><span class="mf">450.</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">dzdy</span><span class="p">,</span> <span class="o">-</span><span class="n">dzdx</span><span class="p">)</span><span class="o">/</span> <span class="n">RADIANS_PER_DEGREE</span><span class="p">),</span> <span class="mf">360.</span><span class="p">)</span>
+    <span class="n">aspect_array</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodata_value</span>
+    <span class="k">del</span> <span class="n">dzdx</span><span class="p">,</span> <span class="n">dzdy</span>
+
+    <span class="c1"># save the output array into a raster</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">NumPyArrayToRaster</span><span class="p">(</span><span class="n">slope_array</span><span class="p">,</span> <span class="n">lowleft_corner</span><span class="p">,</span> <span class="n">pixel_w</span><span class="p">,</span> <span class="n">pixel_h</span><span class="p">,</span>
+                             <span class="n">value_to_nodata</span><span class="o">=</span><span class="n">nodata_value</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">slope_fname</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">DefineProjection_management</span><span class="p">(</span><span class="n">slope_fname</span><span class="p">,</span> <span class="n">sref</span><span class="p">)</span>
+
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">NumPyArrayToRaster</span><span class="p">(</span><span class="n">aspect_array</span><span class="p">,</span> <span class="n">lowleft_corner</span><span class="p">,</span> <span class="n">pixel_w</span><span class="p">,</span> <span class="n">pixel_h</span><span class="p">,</span>
+                             <span class="n">value_to_nodata</span><span class="o">=</span><span class="n">nodata_value</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">aspect_fname</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">DefineProjection_management</span><span class="p">(</span><span class="n">aspect_fname</span><span class="p">,</span> <span class="n">sref</span><span class="p">)</span>
+
+    <span class="k">del</span> <span class="n">elevation_array</span><span class="p">,</span> <span class="n">slope_array</span><span class="p">,</span> <span class="n">aspect_array</span></div>
+
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
