@@ -19,23 +19,6 @@ you will have stored all the files at folder C:\\bal.
 Dependencies
 ------------
 
-This toolbox is developed and tested within ArcGIS 10.2 that
-integrates with Python 2.7 and Numpy 1.6.2. It is not recommended to
-install an independent version of Python for use in ArcGIS. Using a
-different version of Python may lead to compatibility issues.
-
-However, if necessary, there are several ways to obtain the required
-libraries -- using Python's recommended tool `pip
-<https://pip.readthedocs.org/en/latest/>`_, installing a distribution
-such as `Python(x,y) package <http://python-xy.github.io/>`_ (for
-Windows environments), or installing the libraries from source or
-binary installers (pre-compiled binary Windows installer versions for
-all the libraries (both 32-bit and 64-bit) can be obtained `here
-<http://www.lfd.uci.edu/~gohlke/pythonlibs/>`_).
-
-For detailed instructions on installation of these dependencies,
-please see the documentation for each individual library.
-
 * `Python <https://www.python.org/>`_ - v2.7 preferred
 * `Numpy <http://www.numpy.org/>`_ - v1.6.2 preferred
 * `Arcpy in ArcGIS 10.2 <http://resources.arcgis.com/en/help/main/10.2/index.html#//000v000000v7000000/>`_
