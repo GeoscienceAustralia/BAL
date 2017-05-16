@@ -79,7 +79,7 @@ approximations include the following:
 * This software algorithm adapts the Method 1 in AS 3959 (2009) by
   modelling it spatially. Readers are assumed to be familiar with AS
   3959 (2009). For the detailed description of the Method 1, please
-  refer to the Standard AS 3959 (2009).
+  refer to the `Standard AS 3959 (2009) <http://www.as3959.com.au/>`_.
 
 
 
