@@ -23,13 +23,13 @@ Step 1
 ++++++
 
 Select the relevant Fire Danger Index (FDI) based on the locations according 
-to `Table 2.1 <https://law.resource.org/pub/au/ibr/as.3959.2009.pdf>_` in the 
+to `Table 2.1 <https://law.resource.org/pub/au/ibr/as.3959.2009.pdf>`_ in the 
 Australian Standard AS 3959 (2009). For example, from Table 2.1, the FDI for 
 Western Australia is 80.
 
 .. table:: Jurisdictional and regional values for FDI (adapted from
            Table 2.1, `AS 3959, 2009 
-           <https://law.resource.org/pub/au/ibr/as.3959.2009.pdf>_`).
+           <https://law.resource.org/pub/au/ibr/as.3959.2009.pdf>`_).
    :widths: 50, 10
 
    +----------------------------------------------------+---------+
@@ -85,7 +85,7 @@ Step 2
 
 Classify the input vegetation dataset into seven vegetation types
 defined in Table 2.3 in the Standard AS 3959 (2009). See `AS 3959 
-<https://law.resource.org/pub/au/ibr/as.3959.2009.pdf_`> for 
+<https://law.resource.org/pub/au/ibr/as.3959.2009.pdf>`_ for 
 indicative illustrations and detailed descriptions of the range of 
 vegetation types. 
 
