@@ -47,10 +47,10 @@ Western Australia is 80.
    | (b) NSW alpine areas                               |   50    |
    +----------------------------------------------------+---------+
    | (c) NSW general (excluding alpine areas, Greater   |         |
-   |     Hunter, Greater Sydney, Illawarra/Shoalhaven,  |   80    |
-   |                                                    |         |
-   |     Far South Coast and Southern Ranges fire       |         |
-   |     weather districts)                             |         |
+   |     Hunter, Greater Sydney,                        |         |
+   |                                                    |   80    |
+   |     Illawarra/Shoalhaven,Far South Coast and       |         |
+   |     Southern Ranges fire weather districts)        |         |
    +----------------------------------------------------+---------+
    | **Northern Territory**                             |   40    |
    +----------------------------------------------------+---------+
