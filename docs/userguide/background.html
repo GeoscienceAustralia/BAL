@@ -193,29 +193,31 @@
   <div class="section" id="background">
 <h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
 <p>The algorithm used to calculate the BAL is based on Method 1 in the
-Australian Standard AS 3959 (2009)&#8211;<em>Construction of buildings in
-bushfire-prone areas</em>.</p>
-<p>Method 1 is a simplified procedure that involves five steps to
-determine BAL, and is subject to limitations on the circumstances in
-which it can be used.</p>
+<a class="reference external" href="http://www.as3959.com.au/">Australian Standard AS 3959 (2009)&#8211;*Construction of buildings in
+bushfire-prone areas*</a>. Method 1 is a
+simplified procedure that involves five steps to determine BAL, and
+is subject to limitations on the circumstances in which it can be used.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This method does not apply to the circumstances where the
-effective slope under the classified vegetation is more
-than 20 degrees downslope.</p>
+<p class="last">This method is not valid where the effective slope under the
+classified vegetation is more than 20 degrees downslope. Within
+the BAL toolbox, where the slope is greater than 20 degrees a
+constant value of 200 is used for the BAL.</p>
 </div>
 <div class="section" id="procedure-to-determine-bal">
 <h2>Procedure to determine BAL<a class="headerlink" href="#procedure-to-determine-bal" title="Permalink to this headline">¶</a></h2>
-<p>According to the Standard AS 3959 (2009), five steps are involved to
-calculate BAL.</p>
+<p>According to the Standard AS 3959 (2009), the calculation of BAL involves
+five steps.</p>
 <div class="section" id="step-1">
 <h3>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h3>
-<p>Select the relevant FDI based on the locations according to Table 2.1
-in the Australian Standard AS 3959 (2009). For example, from Table
-2.1, the FDI for Western Australia is 80.</p>
+<p>Select the relevant Fire Danger Index (FDI) based on the locations according
+to <cite>Table 2.1 &lt;https://law.resource.org/pub/au/ibr/as.3959.2009.pdf&gt;_</cite> in the
+Australian Standard AS 3959 (2009). For example, from Table 2.1, the FDI for
+Western Australia is 80.</p>
 <table border="1" class="colwidths-given docutils" id="id2">
 <caption><span class="caption-text">Jurisdictional and regional values for FDI (adapted from
-        Table 2.1, AS 3959, 2009).</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+        Table 2.1, <cite>AS 3959, 2009
+        &lt;https://law.resource.org/pub/au/ibr/as.3959.2009.pdf&gt;_</cite>).</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="83%" />
 <col width="17%" />
@@ -236,7 +238,8 @@ in the Australian Standard AS 3959 (2009). For example, from Table
 <tr class="row-even"><td><ol class="first last loweralpha simple">
 <li>Greater Hunter, Greater Sydney,
 Illawarra/Shoalhaven, Far South Coast, and
-Southern Ranges fire weather districts</li>
+Southern Ranges
+&lt;br&gt;fire weather districts</li>
 </ol>
 </td>
 <td>100</td>
@@ -250,7 +253,7 @@ Southern Ranges fire weather districts</li>
 <tr class="row-even"><td><ol class="first last loweralpha simple" start="3">
 <li>NSW general (excluding alpine areas, Greater
 Hunter, Greater Sydney, Illawarra/Shoalhaven,
-Far South Coast and Southern Ranges fire
+Far South &lt;br&gt; Coast and Southern Ranges fire
 weather districts)</li>
 </ol>
 </td>
@@ -312,8 +315,10 @@ Construction Code, Volume 2 <a class="reference internal" href="#nccv2" id="id1"
 <div class="section" id="step-2">
 <h3>Step 2<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h3>
 <p>Classify the input vegetation dataset into seven vegetation types
-defined in Table 2.3 in the Standard AS 3959 (2009). AS 3959 also
-provides indicative illustrations of the range of vegetation types.</p>
+defined in Table 2.3 in the Standard AS 3959 (2009). See <cite>AS 3959
+&lt;https://law.resource.org/pub/au/ibr/as.3959.2009.pdf_</cite>&gt; for
+indicative illustrations and detailed descriptions of the range of
+vegetation types.</p>
 <ul class="simple">
 <li>1: Forest,</li>
 <li>2: Woodland,</li>
@@ -323,28 +328,40 @@ provides indicative illustrations of the range of vegetation types.</p>
 <li>6: Rainforest,</li>
 <li>7: Grassland/Tussock moorland.</li>
 </ul>
-<p>Where there is more than one vegetation type, then the classification
-should be based on that which results in the worst case scenario. When
-used in a spatial framework, the digital classification is likely to
-correspond to the predominant vegetation in a grid cell, which is not
-necessarily the worst case scenario.</p>
+<p>Where there is more than one vegetation type, the classification
+should be based on the vegetation type that results in the worst case
+scenario.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Classificatied vegetation datasets are likely to be classified
+according to the predominant vegetation in a grid cell,
+which is not necessarily the worst case scenario.</p>
+</div>
 <p>The numbers from 1 to 7 are assigned to these vegetation classes
 respectively for calculating BAL.</p>
 </div>
 <div class="section" id="step-3">
 <h3>Step 3<a class="headerlink" href="#step-3" title="Permalink to this headline">¶</a></h3>
-<p>Calculate the distance of the site from the classified
-vegetation. According to AS 3959 (2009), the vegetation is considered
-when its distance from the site of interest is within 100 metres.</p>
+<p>Calculate the distance of the site from the classified vegetation.
+According to AS 3959 (2009), the vegetation is only considered
+when its distance from the site of interest is <strong>less than 100 metres</strong>.
+Within the BAL toolbox, this is done spatially for each grid point
+located within 100 metres of vegetation.</p>
 </div>
 <div class="section" id="step-4">
 <h3>Step 4<a class="headerlink" href="#step-4" title="Permalink to this headline">¶</a></h3>
-<p>Determine the effective slopes (the gradient from each cell) and their
-aspects under the classified vegetation types. If a slope&#8217;s aspect is
-in the same direction as the vegetation from the site, this slope is
+<p>Determine the effective slope (the gradient from each cell) and aspect
+under the classified vegetation. Here, &#8216;slope&#8217; refers to the slope
+under the classified vegetation in relation to the building - not the slope
+between the vegetation and the building. Where the slope of the land under
+the vegetation is downhill from the edge nearest the building, this slope is
 regarded as a downslope that will be further analysed. Otherwise the
 slope is regarded as an upslope.</p>
-<p>When calculating BAL, upslopes and flat lands are treated as a single
+<div class="align-center figure" id="id3">
+<img alt="Determination of slope." src="../../_images/Slope_determination.JPG" />
+<p class="caption"><span class="caption-text">Determination of effective slope. Figure 2.2 from AS 3959 (2009).</span></p>
+</div>
+<p>When calculating BAL, upslopes and flat land is treated as a single
 category. For downslopes, the Standard breaks them down into five
 classes:</p>
 <ul class="simple">
@@ -360,20 +377,22 @@ classes:</p>
 <p>Determine the BAL from an appropriate table defined in AS 3959 (2009)
 based on the input FDI. For example, for Western Australia, the FDI is
 80 and thus Table 2.4.3 is adopted for deriving the BAL.</p>
+<p>Within the BAL toolbox, these tables are included within the Python code,
+and are automatically referenced based on the user&#8217;s inputs.</p>
 </div>
 </div>
 <div class="section" id="deriving-and-interpreting-bal">
 <h2>Deriving and interpreting BAL<a class="headerlink" href="#deriving-and-interpreting-bal" title="Permalink to this headline">¶</a></h2>
 <p>We consider eight cardinal directions: north, northeast, east,
-southeast, south, southwest, west, and northwest.</p>
-<p>For each cardinal direction, we consider the neighbouring cells up to
-100 metres from the site. We calculate the BAL for each neighbouring
-cell with regards to the site based on the neighbouring cell&#8217;s
-vegetation type, upslope or downslope orientation and grade (slope),
-and its distance to the site.</p>
-<p>The BAL falls into a list of (12.5, 19, 29, 40, 100), where 100
-represents Fire Zone (FZ). There is one more circumstances beyond
-Method 1 in AS 3959 (2009).</p>
+southeast, south, southwest, west, and northwest. For each cardinal
+direction, we consider the neighbouring cells up to 100 metres from
+the site. We calculate the BAL for each neighbouring cell with regards
+to the site based on the neighbouring cell&#8217;s:
+* vegetation type
+* upslope or downslope orientation and grade (slope)
+* its distance to the site</p>
+<p>The final calculated BAL falls into one of the following categories:
+12.5, 19, 29, 40, 100, where 100 represents Fire Zone (FZ).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Where the downslope is greater than 20 degrees and there is
@@ -383,16 +402,16 @@ vegetation, a constant value of 200 is given to the BAL.</p>
 cardinal direction to represent the BAL for that direction.</p>
 <p>The final BAL for the site of interest is determined by selecting the
 maximum BAL from all eight cardinal directions.</p>
+<p>The final BAL values correspond to a predicted level of exposure during
+a bushfire, and are associated with an accompanying construction code.</p>
+<div class="align-center figure" id="id4">
+<img alt="BAL interpretation." src="../../_images/BAL_table.JPG" />
+<p class="caption"><span class="caption-text">BAL and corresponding exposure and construction codes. Table 3.1 from AS 3959 (2009).</span></p>
+</div>
 <table class="docutils citation" frame="void" id="nccv2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[NCCV2]</a></td><td>National Construction Code, Volume 2. <a class="reference external" href="http://www.abcb.gov.au/Resources/Publications/NCC/NCC-2016-Volume-Two">http://www.abcb.gov.au/Resources/Publications/NCC/NCC-2016-Volume-Two</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="as3959" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[AS3959]</td><td>Construction of buildings in bushfire-prone areas (2009). Standards Australia.</td></tr>
 </tbody>
 </table>
 </div>
