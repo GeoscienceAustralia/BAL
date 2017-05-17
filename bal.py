@@ -20,7 +20,7 @@ import arcpy
 from calculate_bal import bal_cal
 from utilities.sa_tools import extract_by_mask, reclassify, cal_slope_aspect
 
-__version__ = '1.0'
+__version__ = '2.1'
 
 
 def reclass_veg(veg, dem, output_folder, remap, mask):
