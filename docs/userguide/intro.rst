@@ -9,9 +9,10 @@ manage the risk posed to life, property and the environment.
 Bushfire Attack Level (BAL) is a measure of the severity of a
 building's potential exposure to bushfire. It is defined in the
 `Australian Standard AS 3959 (2009)--*Construction of buildings in
-bushfire-prone areas* <http://www.as3959.com.au/>`_, to serve as a 
-basis for establishing the requirements for construction, to improve 
-the protection of buildings from bushfire attack. The Standard 
+bushfire-prone areas* 
+<https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_, 
+to serve as a basis for establishing the requirements for construction, 
+to improve the protection of buildings from bushfire attack. The Standard 
 describes how to compute the bushfire attack level for any location 
 and directly links this to recommendations on the design of existing 
 or planned buildings.
@@ -79,7 +80,8 @@ approximations include the following:
 * This software algorithm adapts the Method 1 in AS 3959 (2009) by
   modelling it spatially. Readers are assumed to be familiar with AS
   3959 (2009). For the detailed description of the Method 1, please
-  refer to the `Standard AS 3959 (2009) <http://www.as3959.com.au/>`_.
+  refer to the `Standard AS 3959 (2009) 
+  <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_.
 
 
 

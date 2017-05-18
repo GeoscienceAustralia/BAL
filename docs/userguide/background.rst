@@ -3,8 +3,8 @@ Background
 
 The algorithm used to calculate the BAL is based on Method 1 in the
 `Australian Standard AS 3959 (2009)--*Construction of buildings in
-bushfire-prone areas* <http://www.as3959.com.au/>`_. Method 1 is a 
-simplified procedure that involves five steps to determine BAL, and 
+bushfire-prone areas* <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_. 
+Method 1 is a simplified procedure that involves five steps to determine BAL, and 
 is subject to limitations on the circumstances in which it can be used.
 
 .. warning:: This method is not valid where the effective slope under the 
