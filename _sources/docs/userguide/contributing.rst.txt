@@ -21,7 +21,7 @@ The preferred way to contribute to |project_name| is to fork the
 
    and start making changes. Never work in the ``master`` branch!
 
-4. Work on this copy on your computer using Git to do the version
+4. Work on this copy on your computer using Git to manage version
    control. When you're done editing, do::
 
           $ git add modified_files
@@ -33,7 +33,7 @@ The preferred way to contribute to |project_name| is to fork the
 
 Finally, go to the web page of the your fork of the BAL repo,
 and click 'Pull request' to send your changes to the maintainers for
-review. request. This will send an email to the committers.
+review. This will send an email to the code managers.
 
 (If any of the above seems like magic to you, then look up the 
 `Git documentation <http://git-scm.com/documentation>`_ on the web.)
@@ -56,7 +56,7 @@ following rules before submitting a pull request:
 You can also check for common programming errors with the following
 tools:
 
--  Code with good unittest coverage, check with::
+-  Check your code complies with good unittest coverage::
 
           $ pip install nose coverage
           $ nosetests --with-coverage path/to/tests_for_package

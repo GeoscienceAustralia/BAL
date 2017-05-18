@@ -193,13 +193,13 @@ and the Sphinx documentation builder.</p>
 <p>The best way to learn how to write .rst is to look at the source of existing
 documentation - the markup syntax is very simple.
 There are a number of useful tags that you can use to make your documentation
-clear and visually interesting, the more commonly used in this document are
+clear and visually interesting, those more commonly used in this document are
 listed below.
 For a more detailed list, please visit the
-<a class="reference external" href="http://sphinx.pocoo.org/markup/inline.html">Sphinx Inline Markup page</a></p>
+<a class="reference external" href="http://sphinx.pocoo.org/markup/inline.html">Sphinx Inline Markup page</a>.</p>
 <p>A complete list of supported .rst markup is also available
 <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#block-quotes">here</a>.</p>
-<p>Following are a few tips for documentation writers:</p>
+<p>Here are a few tips for documentation writers:</p>
 <ol class="arabic simple">
 <li>Take a look in the <a class="reference external" href="./lookup_table.html">lookup table</a> to see which terms
 and phrases are used and which you should definitely <strong>not</strong> translate.</li>
@@ -225,11 +225,11 @@ unnecessary errors.</li>
 </ol>
 <div class="section" id="common-tags-used-in-the-documentation">
 <span id="common-tags"></span><h2>Common tags used in the Documentation:<a class="headerlink" href="#common-tags-used-in-the-documentation" title="Permalink to this headline">¶</a></h2>
-<p>Here are some common useful tags</p>
+<p>Here are some useful tags</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>|project_name|   is currently a substitution for the Project name (Bushfire Attack Level)
 Normally, there are no heading levels assigned to certain characters as the
 structure is determined from the succession of headings. However, for the
-Python documentation, this convention is used which you may follow:
+Python documentation, this convention is used, which you may follow:
 
 # with overline, for parts
 * with overline, for chapters
@@ -344,24 +344,22 @@ units         feet
 </pre></div>
 </div>
 <p>remark: use pt instead of px because of latex output
-A4 = height ~ 1000pt
-A4 = width ~ 700pt</p>
+* A4 = height ~ 1000pt
+* A4 = width ~ 700pt</p>
 </div>
 <div class="section" id="help-writing-fixing-documentation">
 <h2>Help writing/fixing documentation<a class="headerlink" href="#help-writing-fixing-documentation" title="Permalink to this headline">¶</a></h2>
-<p>Helping writing the documentation is an easy task.
+<p>Helping to write the documentation is an easy task.
 The only thing you need to have is a local copy of the Bushfire Attack Level Toolbox
 documentation branch.</p>
 <div class="section" id="clone-project-name-documentation">
 <h3>Clone Bushfire Attack Level Toolbox documentation<a class="headerlink" href="#clone-project-name-documentation" title="Permalink to this headline">¶</a></h3>
-<p>In order to clone the documentation of Bushfire Attack Level Toolbox you only have to follow
-this procedure:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This is a one-time process. You do not need to repeat it - it is
 here for reference purposes only.</p>
 </div>
-<p>Things you have to have to be able to help with documentation:</p>
+<p>In order to help with documentation, you need:</p>
 <ul class="simple">
 <li>A GitHub account</li>
 <li>A fork of the BAL repository (only if you do not have commit access to
@@ -369,18 +367,29 @@ the main repository)</li>
 </ul>
 <p>Creating a GitHub account is done by clicking on the <span class="guilabel">Sign up for free</span>
 button on <a class="reference external" href="https://github.com/">https://github.com/</a> and filling out the necessary fields.</p>
-<p>This documentation assumes that you have the whole Bushfire Attack Level Toolbox source
+<p>Cloning the documentation of Bushfire Attack Level Toolbox is easy; you only have to follow
+this procedure:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation assumes that you have the whole Bushfire Attack Level Toolbox source
 available under <code class="file docutils literal"><span class="pre">$HOME/dev/python/...</span></code></p>
+</div>
 <p>Clone your forked github Bushfire Attack Level Toolbox documentation by entering following
 command:</p>
-<p><strong class="command">git clone https://github.com/&lt;your username&gt;/bal.git</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;your username&gt;/bal.git
+</pre></div>
+</div>
 <p>Search for the .rst file you&#8217;d like to extend/fix and work on it.</p>
 <p>Afterwards commit your local changes to your local clone with the command:</p>
-<p><strong class="command">git commit -a -m&quot;fixed a typo&quot;</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git commit -a -m &quot;fixed a typo&quot;
+</pre></div>
+</div>
 <p>After that you have to push your local changes to your github fork with:</p>
-<p><strong class="command">git push</strong></p>
-<p>You can than do a pull request on github to request your changes to be
-reviewed and taken into the official documentation.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$git push
+</pre></div>
+</div>
+<p>You can then do a pull request on github to request your changes be
+reviewed and added into the official documentation.</p>
 </div>
 </div>
 </div>
