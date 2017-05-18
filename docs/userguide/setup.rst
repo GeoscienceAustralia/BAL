@@ -18,7 +18,7 @@ Follow the steps below to add the toolbox into ArcGIS 10.2:
      :alt: ArcToolbox window.
      :figclass: align-center
 
-     The ArcToolbox window.
+     Figure 4.1 The ArcToolbox window.
 
 * Right click **ArcToolbox** at the top of the window, see Figure 4.2.
  
@@ -27,7 +27,7 @@ Follow the steps below to add the toolbox into ArcGIS 10.2:
      :alt: Right click ArcToolbox in the ArcToolbox window.
      :figclass: align-center
 
-     Right click **ArcToolbox** in the ArcToolbox window.
+     Figure 4.2 Right click **ArcToolbox** in the ArcToolbox window.
 
 * Select **Add Toolbox...**, a dialog box is open. See Figure 4.3.
  
@@ -36,7 +36,7 @@ Follow the steps below to add the toolbox into ArcGIS 10.2:
      :alt: addtoolbox dialog window.
      :figclass: align-center
 
-     The **Add Toolbox** dialog window.
+     Figure 4.3 The **Add Toolbox** dialog window.
 
 * In the dialog box, navigate to the location of the package, for example C:\\bal, you will find the **BAL.tbx**. See Figure 4.3.
 
@@ -48,6 +48,6 @@ Follow the steps below to add the toolbox into ArcGIS 10.2:
      :alt: Bal toolbox is added.
      :figclass: align-center
 
-     The **Bal** toolbox is added.
+     Figure 4.4 The **Bal** toolbox is added.
 
  
