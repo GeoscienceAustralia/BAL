@@ -210,7 +210,7 @@ Afterwards commit your local changes to your local clone with the command::
 
 After that you have to push your local changes to your github fork with::
 
-         $git push
+         $ git push
 
 You can then do a pull request on github to request your changes be
 reviewed and added into the official documentation.
