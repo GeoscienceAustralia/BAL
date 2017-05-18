@@ -9,15 +9,15 @@ and the Sphinx documentation builder.
 The best way to learn how to write .rst is to look at the source of existing
 documentation - the markup syntax is very simple.
 There are a number of useful tags that you can use to make your documentation
-clear and visually interesting, the more commonly used in this document are
+clear and visually interesting, those more commonly used in this document are
 listed below.
 For a more detailed list, please visit the
-`Sphinx Inline Markup page <http://sphinx.pocoo.org/markup/inline.html>`_
+`Sphinx Inline Markup page <http://sphinx.pocoo.org/markup/inline.html>`_.
 
 A complete list of supported .rst markup is also available
 `here <http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#block-quotes>`_.
 
-Following are a few tips for documentation writers:
+Here are a few tips for documentation writers:
 
 1. Take a look in the `lookup table <./lookup_table.html>`_ to see which terms
    and phrases are used and which you should definitely **not** translate.
@@ -46,13 +46,13 @@ Following are a few tips for documentation writers:
 Common tags used in the Documentation:
 --------------------------------------
 
-Here are some common useful tags
+Here are some useful tags
 ::
 
    |project_name|   is currently a substitution for the Project name (Bushfire Attack Level)
    Normally, there are no heading levels assigned to certain characters as the
    structure is determined from the succession of headings. However, for the
-   Python documentation, this convention is used which you may follow:
+   Python documentation, this convention is used, which you may follow:
 
    # with overline, for parts
    * with overline, for chapters
@@ -166,26 +166,23 @@ Here are some common useful tags
        :align: center
 
 remark: use pt instead of px because of latex output
-A4 = height ~ 1000pt
-A4 = width ~ 700pt
+* A4 = height ~ 1000pt
+* A4 = width ~ 700pt
 
 Help writing/fixing documentation
 ---------------------------------
 
-Helping writing the documentation is an easy task.
+Helping to write the documentation is an easy task.
 The only thing you need to have is a local copy of the |project_name|
 documentation branch.
 
 Clone |project_name| documentation
 ..................................
 
-In order to clone the documentation of |project_name| you only have to follow
-this procedure:
-
 .. note:: This is a one-time process. You do not need to repeat it - it is
-   here for reference purposes only.
-
-Things you have to have to be able to help with documentation:
+          here for reference purposes only.
+  
+In order to help with documentation, you need:
 
 * A GitHub account
 * A fork of the BAL repository (only if you do not have commit access to
@@ -194,23 +191,26 @@ Things you have to have to be able to help with documentation:
 Creating a GitHub account is done by clicking on the :guilabel:`Sign up for free`
 button on https://github.com/ and filling out the necessary fields.
 
-This documentation assumes that you have the whole |project_name| source
-available under :file:`$HOME/dev/python/...`
+Cloning the documentation of |project_name| is easy; you only have to follow
+this procedure:
+
+.. note:: This documentation assumes that you have the whole |project_name| source
+          available under :file:`$HOME/dev/python/...`
 
 Clone your forked github |project_name| documentation by entering following
-command:
+command::
 
-:command:`git clone https://github.com/<your username>/bal.git`
+         $ git clone https://github.com/<your username>/bal.git
 
 Search for the .rst file you'd like to extend/fix and work on it.
 
-Afterwards commit your local changes to your local clone with the command:
+Afterwards commit your local changes to your local clone with the command::
 
-:command:`git commit -a -m"fixed a typo"`
+         $ git commit -a -m "fixed a typo"
 
-After that you have to push your local changes to your github fork with:
+After that you have to push your local changes to your github fork with::
 
-:command:`git push`
+         $git push
 
-You can than do a pull request on github to request your changes to be
-reviewed and taken into the official documentation.
+You can then do a pull request on github to request your changes be
+reviewed and added into the official documentation.
