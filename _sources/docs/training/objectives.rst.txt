@@ -14,7 +14,7 @@ Target audience
 ---------------
 
 * Officers supporting bushfire planning and management activities
-* 
+* Officers responsible for vulnerable infrastructure assets
 
 Prerequisites
 -------------

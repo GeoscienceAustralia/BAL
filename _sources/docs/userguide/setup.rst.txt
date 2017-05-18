@@ -38,10 +38,12 @@ Follow the steps below to add the toolbox into ArcGIS 10.2:
 
      Figure 4.3 The **Add Toolbox** dialog window.
 
-* In the dialog box, navigate to the location of the package, for example C:\\bal, you will find the **BAL.tbx**. See Figure 4.3.
+* In the dialog box, navigate to the location of the package, for 
+example C:\\bal, you will find the **BAL.tbx**. See Figure 4.3.
 
 
-* Select **BAL.tbx** and click **Open**, a new toolbox called **BAL** is added to the ArcToolbox. See Figure 4.4.
+* Select **BAL.tbx** and click **Open**, a new toolbox called **BAL** 
+is added to the ArcToolbox. See Figure 4.4.
  
 .. figure:: /docs/images/BAL_toolbox.jpg
      :align: center

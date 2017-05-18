@@ -3,8 +3,8 @@ Background
 
 The algorithm used to calculate the BAL is based on Method 1 in the
 `Australian Standard AS 3959 (2009)--*Construction of buildings in
-bushfire-prone areas* <http://www.as3959.com.au/>`_. Method 1 is a 
-simplified procedure that involves five steps to determine BAL, and 
+bushfire-prone areas* <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_. 
+Method 1 is a simplified procedure that involves five steps to determine BAL, and 
 is subject to limitations on the circumstances in which it can be used.
 
 .. warning:: This method is not valid where the effective slope under the 
@@ -23,13 +23,13 @@ Step 1
 ++++++
 
 Select the relevant Fire Danger Index (FDI) based on the locations according 
-to `Table 2.1 <https://law.resource.org/pub/au/ibr/as.3959.2009.pdf>`_ in the 
-Australian Standard AS 3959 (2009). For example, from Table 2.1, the FDI for 
+to `Table 2.1 <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_
+in the Australian Standard AS 3959 (2009). For example, from Table 2.1, the FDI for 
 Western Australia is 80.
 
 .. table:: Jurisdictional and regional values for FDI (adapted from
            Table 2.1, `AS 3959, 2009 
-           <https://law.resource.org/pub/au/ibr/as.3959.2009.pdf>`_).
+           <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_).
    :widths: 50, 10
 
    +----------------------------------------------------+---------+
@@ -85,8 +85,8 @@ Step 2
 
 Classify the input vegetation dataset into seven vegetation types
 defined in Table 2.3 in the Standard AS 3959 (2009). See `AS 3959 
-<https://law.resource.org/pub/au/ibr/as.3959.2009.pdf>`_ for 
-indicative illustrations and detailed descriptions of the range of 
+<https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_ 
+for indicative illustrations and detailed descriptions of the range of 
 vegetation types. 
 
 * 1: Forest, 

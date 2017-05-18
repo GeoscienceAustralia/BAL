@@ -185,7 +185,8 @@
             
   <div class="section" id="running-the-tool">
 <span id="execution"></span><h1>Running the tool<a class="headerlink" href="#running-the-tool" title="Permalink to this headline">¶</a></h1>
-<p>To calculate the BAL,  we use the <strong>BAL calculation</strong> tool within the <strong>BAL</strong> toolbox installed in ArcGIS 10.2.</p>
+<p>To calculate the BAL,  we use the <strong>BAL calculation</strong> tool within the <strong>BAL</strong>
+toolbox installed in ArcGIS 10.2.</p>
 <p>Select the <strong>BAL calculation</strong> tool within the <strong>BAL</strong> toolbox, see Figure 5.1.</p>
 <div class="align-center figure" id="id1">
 <img alt="Select the tool **BAL calculation**." src="../../_images/select_bal.jpg" />
@@ -208,18 +209,13 @@ western part of Western Australia. More information about
 GDA94 / MGA zone 50 can be found <a class="reference external" href="http://spatialreference.org/ref/epsg/gda94-mga-zone-50/">here</a>.</div></blockquote>
 <p><strong>Input vegetation raster:</strong></p>
 <blockquote>
-<div><blockquote>
-<div>Open your input vegetation dataset from a specific location.</div></blockquote>
-<dl class="docutils">
-<dt>The vegetation dataset can be in either a</dt>
-<dd>geographical or a projected coordinate system. It will be
+<div>Open your input vegetation dataset from a specific location.
+The vegetation dataset can be in either a
+geographical or a projected coordinate system. It will be
 reprojected to the same projection and same resolution as DEM
-by the BAL tool.</dd>
-</dl>
-</div></blockquote>
+by the BAL tool.</div></blockquote>
 <p><strong>Vegetation reclassification:</strong></p>
 <blockquote>
-<div><blockquote>
 <div><p>Reclassify the input vegetation classes into those defined in
 the Australian Standard AS 3959 (2009). There are seven
 classes defined in the Standard. In this tool, we give each
@@ -233,19 +229,16 @@ class a unique number, i.e.:</p>
 <li>6: Rainforest,</li>
 <li>7: Grassland/Tussock moorland.</li>
 </ul>
-<p>The reclassification process needs to be considered by the user,</p>
-</div></blockquote>
-<p>and will vary according to the input vegetation dataset.</p>
+<p>The reclassification process needs to be considered by the user,
+and will vary according to the input vegetation dataset.</p>
 <p>A sample reclassification map is entered for the example data.
 The reclassification map needs to be changed by the users according
 to their own input vegetation data.</p>
 </div></blockquote>
 <p><strong>Output path:</strong></p>
 <blockquote>
-<div><blockquote>
-<div>Define the output location. Note that this is asking for a folder to</div></blockquote>
-<p>write the output to, not a file name.</p>
-</div></blockquote>
+<div>Define the output location. Note that this is asking for a folder to
+write the output to, not a file name.</div></blockquote>
 <p><strong>FDI value:</strong></p>
 <blockquote>
 <div><p>The input Fire Danger Index (FDI) value has four choices (100,
@@ -274,15 +267,16 @@ you have consistent coverage of DEM and vegetation data within
 the area of interest.</div></blockquote>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<ul class="simple">
-<li>There is a limitation in raster file name length and file path</li>
-</ul>
-<p class="last">length in ArcGIS. For a raster name in ESRI Grid format, the maximum
+<p class="last">There is a limitation in raster file name length and file path
+length in ArcGIS. For a raster name in ESRI Grid format, the maximum
 number of characters is 13 and for full path name, the maximum
 number of character is 128. For more information, <a class="reference external" href="http://resources.arcgis.com/EN/HELP/MAIN/10.2/index.html#//018700000009000000">click here</a>. In
 addition, as tested, each folder name&#8217;s length should be restricted
-to at most eight characters.
-* The script requires that the input DEM and vegetation dataset are in
+to at most eight characters.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The script requires that the input DEM and vegetation dataset are in
 the same location. The tool will fail to run when the input DEM and
 vegetation datasets are not in the same folder.</p>
 </div>
