@@ -54,7 +54,7 @@ on the circumstances in which it can be used.
 .. warning:: This method is not valid where the effective slope under the 
              classified vegetation is more than 20 degrees downslope. Within 
              the BAL toolbox, where the slope is greater than 20 degrees, a 
-             constant value of 200 is used for the BAL.
+             constant value of 200 is assigned to the BAL.
 
 There are five steps in determining the BAL based on method 1 in AS 3959--2009. 
 
