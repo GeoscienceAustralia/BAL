@@ -6,7 +6,8 @@
 Running the tool
 ================
 
-To calculate the BAL,  we use the **BAL calculation** tool within the **BAL** toolbox installed in ArcGIS 10.2.
+To calculate the BAL,  we use the **BAL calculation** tool within the **BAL** 
+toolbox installed in ArcGIS 10.2.
 
 Select the **BAL calculation** tool within the **BAL** toolbox, see Figure 5.1.
 
