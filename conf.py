@@ -126,6 +126,7 @@ rst_epilog = """
 .. _Department of Fire and Emergency Services (WA): http://www.dfes.wa.gov.au/
 .. |github| replace:: github_
 .. _github: https://github.com/GeoscienceAustralia/BAL
+.. |folder_icon| image:: /docs/images/001_arcgis_folder_icon.png
 
 """
 

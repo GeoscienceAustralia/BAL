@@ -60,3 +60,29 @@ Input fields
 Input digital elevation model
 .............................
 
+The first input field is the digital elevation model. Click the folder
+icon button (|folder_icon|) to browse to the location of the required
+DEM raster file. The DEM should be in a projected coordinate system,
+with a linear unit of metres. Additional information can be found in
+the :ref:`dem_projection` section.
+
+.. figure:: /docs/images/001_bal_input_dem.png
+   :align: center
+   :alt: DEM input field
+   :figclass: align-center
+
+   Digital Elevation Model input field.
+
+.. _vegetation_input:
+
+Input classified vegetation raster
+..................................
+
+
+
+.. figure:: /docs/images/001_bal_input_vegetation.png
+   :align: center
+   :alt: Classified vegetation input field
+   :figclass: align-center
+
+   Classified vegetation raster input field.

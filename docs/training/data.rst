@@ -41,6 +41,24 @@ Any `raster format supported by ESRI ArcGIS 10.2
 can be used in |project_name|. 32-bit floating point data in either
 GeoTIFF or the native ESRI Grid format is recommended.
 
+.. _dem_projection:
+
+Projection
+..........
+
+The input DEM must be presented in a projected coordinate system, with
+a linear unit of metres. Projected coordinate systems such as
+Universal Transverse Mercator (UTM), or the Map Grid of Australia
+(MGA) are suitable for projecting elevation data for use in the
+|project_name|.
+
+.. warning:: The |project_name| will fail to execute if the input DEM
+             is in a geographic coordinate system.
+
+For the southern Western Australian region, the `GDA94/MGA Zone 50
+<http://spatialreference.org/ref/epsg/gda94-mga-zone-50/>`_ projection
+would be an appropriate choice of projected coordinate system.
+
 Vegetation data
 ---------------
 
@@ -123,3 +141,19 @@ classified vegetation to the required classes. By default, the mapping
 matches the numerical values from NVIS to the required AS 3959--2009
 values.
 
+Projection
+..........
+
+The input classified vegetation dataset must be presented in a
+projected coordinate system, with a linear unit of metres. Projected
+coordinate systems such as Universal Transverse Mercator (UTM), or the
+Map Grid of Australia (MGA) are suitable for projecting elevation data
+for use in the |project_name|.
+
+.. warning:: The |project_name| will fail to execute if the input
+             vegetation classification data is in a geographic
+             coordinate system.
+
+For the southern Western Australian region, the `GDA94/MGA Zone 50
+<http://spatialreference.org/ref/epsg/gda94-mga-zone-50/>`_ projection
+would be an appropriate choice of projected coordinate system.
