@@ -12,15 +12,15 @@ Unzipping the toolbox
 ---------------------
 
 The software package is delivered as a compressed zip file. Unzip the
-toolbox into a location on your computer, for example C:\\bal. Then
-you will have stored all the files at folder C:\\bal.
+toolbox into a location on your computer, for example :file:`C:\\bal`. Then
+you will have stored all the files at folder :file:`C:\\bal`.
 
 
 Dependencies
 ------------
 
-* `Python <https://www.python.org/>`_ - v2.7 preferred
-* `Numpy <http://www.numpy.org/>`_ - v1.6.2 preferred
+* `Python <https://www.python.org/>`_ - v2.7 
+* `Numpy <http://www.numpy.org/>`_ - v1.6.2
 * `Arcpy in ArcGIS 10.2 <http://resources.arcgis.com/en/help/main/10.2/index.html#//000v000000v7000000/>`_
 
 .. warning:: ArcGIS 10.2 is packaged with a modified version of
@@ -63,3 +63,7 @@ The test suite can be run from the main directory. On Windows, run the
 :command:`run_test_all.cmd` script from the main BAL directory.
 
 
+If the test suite fails, there will be a message indicating which
+test failed and a description of the failure. If you receive this, copy
+the description and create a ticket on the |project_name| `Issue
+Tracker <https://github.com/GeoscienceAustralia/BAL/issues>`_. 

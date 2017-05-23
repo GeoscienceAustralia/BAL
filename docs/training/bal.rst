@@ -204,7 +204,7 @@ Distance to vegetation
 The distance to from the site to the classified vegetation is measured
 in the *horizontal plane*.
 
-.. figure:: /images/001_bal_vegetation_distance.png
+.. figure:: /docs/images/001_bal_vegetation_distance.png
    :align: center
    :width: 300 pt
  
@@ -235,7 +235,7 @@ classified vegetation nearest the site, then the slope is considered
 vegetation is **uphill** from the edge of the classified vegetation
 nearest the site, then the slope is considered **upslope**.
 
-.. figure:: /images/001_bal_effective_slope.png
+.. figure:: /docs/images/001_bal_effective_slope.png
    :align: center
    :width: 300 pt
 
