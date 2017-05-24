@@ -1,4 +1,4 @@
-.. whatisbal:
+.. _whatisbal:
 
 What is the Bushfire Attack Level
 =================================
@@ -147,6 +147,7 @@ al.* (1980) [1]_.
           Construction Code, Volume 2 [NCCV2]_.
 
 
+.. _classified_vegetation:
 
 Vegetation classification
 -------------------------
