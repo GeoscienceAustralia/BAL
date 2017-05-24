@@ -9,23 +9,27 @@ Running the tool
 To calculate the BAL,  we use the **BAL calculation** tool within the **BAL** 
 toolbox installed in ArcGIS 10.2.
 
-Select the **BAL calculation** tool within the **BAL** toolbox, see Figure 5.1.
+Select the **BAL calculation** tool within the **BAL** toolbox, see :numref:`select_bal`. 
+
+.. _select_bal:
 
 .. figure:: /docs/images/select_bal.jpg
      :align: center
      :alt: Select the tool **BAL calculation**.
      :figclass: align-center
 
-     Figure 5.1 Select the tool **BAL calculation**.
+     Select the tool **BAL calculation**.
 
-Then the **BAL calculation** window is open, see Figure 5.2.
+Then the **BAL calculation** window is open, see :numref:`bal_window`.
+
+.. _bal_window:
 
 .. figure:: /docs/images/BAL_calculation_window.jpg
      :align: center 
      :alt: The **BAL calculation** window.
      :figclass: align-center
 
-     Figure 5.2 The **BAL calculation** window.
+     The **BAL calculation** window.Figure 5.1.
 
 Parameters within the tool
 ==========================
@@ -78,8 +82,8 @@ Parameters within the tool
 **FDI value:**
      
 	The input Fire Danger Index (FDI) value has four choices (100,
-	80, 50, 40) based on the locations, which are specified in the
-	Australian Standard AS 3959 (2009).
+	80, 50, 40) based on the locations, which are specified in 
+	AS 3959--2009.
 
 	* **100**: Australian Capital Territory (ACT), part of New South
           Wales (NSW) (Greater Hunter, Greater Sydney,
@@ -92,8 +96,8 @@ Parameters within the tool
 	* **40**: Northern Territory (NT), and Queensland (Qld).
       
 	Select the FDI value from a suite of values (100, 80, 50,
-	40). It is optional. The default value of 80 is
-	applicable in Western Australia.
+	40). The default value of 80 is applicable in Western
+	Australia.
 
 **Extent:**
           
@@ -121,13 +125,15 @@ Output
 A suite of rasters are produced and stored in the output folder. They
 represent the BAL for the area computed in each of eight cardinal
 directions (E, S, W, N, NE, NW, SE and SW) and the maximum BAL of all
-directions. Figure 5.3 is an example output.
+directions. :numref:`bal_output` is an example output.
+
+.. _bal_output:
 
 .. figure:: /docs/images/BAL_output.jpg
      :align: center
      :alt: An example BAL output window.
      :figclass: align-center
 
-     Figure 5.3 An example BAL output window.
+     An example BAL output window.
 
 

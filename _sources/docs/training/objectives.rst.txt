@@ -14,13 +14,16 @@ Target audience
 ---------------
 
 * Officers supporting bushfire planning and management activities
-* Officers responsible for vulnerable infrastructure assets
+* Officers responsible for managing vulnerable infrastructure assets
 
 Prerequisites
 -------------
 
 * An understanding of Geographic Information Systems;
+* An understanding of bushfire hazards and the impacts on assets;
 * A computer with:
 
   * Windows (XP, 7, 8, 10)
-  * ArcGIS 10.2 or later
+  * ArcGIS 10.2 or later, including the Python extensions
+  * Internet access (to download the toolbox)
+

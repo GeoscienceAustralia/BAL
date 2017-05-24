@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data requirements &mdash; Bushfire Attack Level Toolbox</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
+        <link rel="up" title="Bushfire Attack Level Toolbox Training Workshop" href="index.html"/>
+        <link rel="next" title="Installing the Bushfire Attack Level Toolbox" href="install.html"/>
+        <link rel="prev" title="What is the Bushfire Attack Level" href="bal.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Bushfire Attack Level Toolbox
+          
+
+          
+            
+            <img src="../../_static/geoscience_inline.jpg" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../disclaim.html">Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userguide/index.html">Bushfire Attack Level Toolbox User Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bushfire Attack Level Toolbox Training Workshop</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#contents">Contents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="objectives.html">Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="agenda.html">Workshop agenda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bal.html">What is the Bushfire Attack Level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bal.html#how-do-we-determine-bal">How do we determine BAL</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Data requirements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#digital-elvation-model">Digital elvation model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vegetation-data">Vegetation data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="install.html">Installing the Bushfire Attack Level Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="execution.html">Runnning the tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bushfire Attack Level Toolbox</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Bushfire Attack Level Toolbox Training Workshop</a> &raquo;</li>
+        
+      <li>Data requirements</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/training/data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-requirements">
+<span id="id1"></span><h1>Data requirements<a class="headerlink" href="#data-requirements" title="Permalink to this headline">¶</a></h1>
+<p>Bushfire Attack Level Toolbox requires only two datasets to determine BAL – a
+classified vegetation dataset and a digital elevation model. With
+these two datasets, it is possible to determine the slope and aspect
+of a site, and the classified vegetation types described in AS
+3959–2009, to enable determination of BAL.</p>
+<div class="section" id="digital-elvation-model">
+<h2>Digital elvation model<a class="headerlink" href="#digital-elvation-model" title="Permalink to this headline">¶</a></h2>
+<p>A digital elevation model (DEM) is a digital model that represents a
+geographic location’s height above mean sea level. DEM’s are developed
+by a wide range of techniques, and widely varying horizontal grid
+resolutions.</p>
+<p>At the national scale, Geoscience Australia has published the
+1-arcsecond Shuttle Radar Topography Mission (SRTM) Digital Elevation
+Models Version 1.0 (see
+<a class="reference external" href="http://www.ga.gov.au/metadata-gateway/metadata/record/gcat_72759">http://www.ga.gov.au/metadata-gateway/metadata/record/gcat_72759</a>),
+which is freely accessible. This DEM has a grid resolution of
+approximately 30 m by 30 m (at the equator). There are also other
+DEM’s available through the <a class="reference external" href="http://www.ga.gov.au/search/index.html#/">Geoscience Australia Data and
+Publications Search portal</a>. Other organisations may
+have higher-resolution and more up-to-date DEMs available for use in
+the Bushfire Attack Level Toolbox.</p>
+<p>For the Bushfire Attack Level Toolbox, it is recommended to use a DEM with a
+horizontal grid resolution comparable to the SRTM DEM, or higher for
+best results.</p>
+<div class="section" id="format">
+<h3>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h3>
+<p>Any <a class="reference external" href="http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/supported-raster-dataset-file-formats.htm">raster format supported by ESRI ArcGIS 10.2</a>
+can be used in Bushfire Attack Level Toolbox. 32-bit floating point data in either
+GeoTIFF or the native ESRI Grid format is recommended.</p>
+</div>
+<div class="section" id="projection">
+<span id="dem-projection"></span><h3>Projection<a class="headerlink" href="#projection" title="Permalink to this headline">¶</a></h3>
+<p>The input DEM must be presented in a projected coordinate system, with
+a linear unit of metres. Projected coordinate systems such as
+Universal Transverse Mercator (UTM), or the Map Grid of Australia
+(MGA) are suitable for projecting elevation data for use in the
+Bushfire Attack Level Toolbox.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Bushfire Attack Level Toolbox will fail to execute if the input DEM
+is in a geographic coordinate system.</p>
+</div>
+<p>For the southern Western Australian region, the <a class="reference external" href="http://spatialreference.org/ref/epsg/gda94-mga-zone-50/">GDA94/MGA Zone 50</a> projection
+would be an appropriate choice of projected coordinate system.</p>
+</div>
+</div>
+<div class="section" id="vegetation-data">
+<h2>Vegetation data<a class="headerlink" href="#vegetation-data" title="Permalink to this headline">¶</a></h2>
+<p>A classified vegetation dataset is required for determination of
+BAL. The availability of classified vegetation datasets is varied, and
+the clssifications used are similarly diverse, depending on the
+application for which they were intended and the methods used to
+derive them.</p>
+<p>For the examples used in this training workshop, we have used the
+<a class="reference external" href="http://www.environment.gov.au/land/native-vegetation/national-vegetation-information-system">National Vegetation Information System (NVIS)</a>,
+which provides information on the extent and distribution of
+vegetation types in Australian landscapes. This data has a horizontal
+resolution of 100 m by 100 m. Other organisations may have
+higher-resolution and more up-to-date classified vegetation datasets
+available for use in the Bushfire Attack Level Toolbox.</p>
+<p>For optimal results, it is recommended to use a classified vegetation
+dataset that is of a comparable resolution to the DEM used.</p>
+<div class="section" id="id2">
+<h3>Format<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Any <a class="reference external" href="http://desktop.arcgis.com/en/arcmap/10.3/manage-data/raster-and-images/supported-raster-dataset-file-formats.htm">raster format supported by ESRI ArcGIS 10.2</a>
+can be used in Bushfire Attack Level Toolbox. Generally, an unsigned integer data
+type will be sufficient to describe the classified vegetation
+type. Either GeoTIFF or the native ESRI Grid format is recommended.</p>
+</div>
+<div class="section" id="classification">
+<h3>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h3>
+<p>The vegetation data needs to represent different classification
+types. Ideally, the data will match the vegetation classes set out in
+AS 3959–2009. These are numbered 1–7 and are defined as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="25%" />
+<col width="65%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Value</td>
+<td>Classification</td>
+<td>Description</td>
+</tr>
+<tr class="row-even"><td>1</td>
+<td>Forest</td>
+<td><p class="first">Tall, open forest, tall woodland, open</p>
+<p class="last">forest, low open forest, pine plantation</p>
+</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Woodland</td>
+<td><p class="first">Woodland, open woodland, low woodland, low</p>
+<p class="last">open woodland, open shrubland</p>
+</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Shrubland</td>
+<td>Closed heath, open heath, low shrubland</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>Scrub</td>
+<td>Closed scrub, open scrub</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Mallee/Mulga</td>
+<td>Tall shrubland</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Rainforest</td>
+<td><p class="first">Tall closed forest, closed forest, low</p>
+<p class="last">closed forest</p>
+</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>Grassland</td>
+<td><p class="first">Low open shrubland, hummock grassland,</p>
+<p>closed tussock grassland, tussock grassland,</p>
+<p>open tussock, sparse open tussock, dense</p>
+<p>sown pasture, sown pasture, open herbfield,</p>
+<p class="last">sparse open herbfield</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The input data must be in this numerical format for the Bushfire Attack Level Toolbox
+to execute correctly. Values other than those listed here will be
+ignored and may produce incorrect BAL values.</p>
+<p>The Bushfire Attack Level Toolbox provides users with the option to map their
+classified vegetation to the required classes. By default, the mapping
+matches the numerical values from NVIS to the required AS 3959–2009
+values.</p>
+</div>
+<div class="section" id="id4">
+<h3>Projection<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The input classified vegetation dataset must be presented in a
+projected coordinate system, with a linear unit of metres. Projected
+coordinate systems such as Universal Transverse Mercator (UTM), or the
+Map Grid of Australia (MGA) are suitable for projecting elevation data
+for use in the Bushfire Attack Level Toolbox.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The Bushfire Attack Level Toolbox will fail to execute if the input
+vegetation classification data is in a geographic
+coordinate system.</p>
+</div>
+<p>For the southern Western Australian region, the <a class="reference external" href="http://spatialreference.org/ref/epsg/gda94-mga-zone-50/">GDA94/MGA Zone 50</a> projection
+would be an appropriate choice of projected coordinate system.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installing the Bushfire Attack Level Toolbox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bal.html" class="btn btn-neutral" title="What is the Bushfire Attack Level" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Geoscience Australia.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

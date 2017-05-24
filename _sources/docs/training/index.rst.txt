@@ -13,6 +13,13 @@ Contents
    agenda
    intro
    bal
+   data
+   install
+   setup
+   execution
+   extraction
+   faqs
+
    
    
 
