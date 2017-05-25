@@ -21,10 +21,10 @@ bushfire-prone areas*.
    :maxdepth: 1
    :caption: Contents
 
-   docs/disclaim
-   docs/userguide/index
-   docs/training/index
-   docs/acknowledgements
+   disclaim
+   userguide/index
+   training/index
+   
 
 
 Indices and tables

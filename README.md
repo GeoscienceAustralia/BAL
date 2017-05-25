@@ -30,6 +30,12 @@ First download the repository into your local computer, e.g. C:\\bal. where you 
 
 * Select **BAL.tbx** and click **Open**, a new toolbox called **BAL** is added to the ArcToolbox. 
 
+Testing the installation
+========================
+
+The code includes a suite of unit tests that ensure elements of the code base work as expected. The code should be tested before running the toolbox. Users will need to install the Nose package to run these tests.
+
+The test suite can be run from the main directory. On Windows, run the run_test_all.cmd script from the main BAL directory.
 
 
 
