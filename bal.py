@@ -292,17 +292,18 @@ def find_aoi(extent, dem, veg):
 
     # set the environment variable and workspace
     arcpy.env.overwriteOutput = True
-    input_folder = os.path.dirname(dem)
-    arcpy.env.workspace = input_folder
+    input_dem_folder = os.path.dirname(dem)
+    input_veg_folder = os.path.dirname(veg)
+    arcpy.env.workspace = input_dem_folder
 
     # derive the effective mask based on the input data
     arcpy.AddMessage('Get the area of interest from the input extent ...')
-    mask = 'mask.shp'
+    mask = pjoin(input_dem_folder, 'mask.shp')
 
     if str(extent) in ['DEFAULT', 'MAXOF', 'MINOF']:
         # get the extent of inputs
-        dem_poly = "dem_poly.shp"
-        veg_poly = "veg_poly.shp"
+        dem_poly = pjoin(input_dem_folder, "dem_poly.shp")
+        veg_poly = pjoin(input_veg_folder, "veg_poly.shp")
         get_footprint(dem, dem_poly)
         get_footprint(veg, veg_poly)
         arcpy.Intersect_analysis([dem_poly, veg_poly], mask)
