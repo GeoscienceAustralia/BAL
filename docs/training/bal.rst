@@ -17,7 +17,7 @@ afforded to building occupants (until the fire front passes) as well
 as to the building itself.
 
 However, improving the design and construction of buildings is only
-one way that property owners can address the damage during a
+one way that property owners can address the damage caused by
 bushfire. Other measures fall within the areas of planning,
 subdivision, siting, landscaping and maintenance.
 
@@ -165,8 +165,8 @@ in a higher BAL.
 
 In general, the land cover datasets often only present the predominant
 vegetation type. Therefore, we cannot always determine the "worst
-case" value of BAL. This would also be borne out by any ground
-validation exercise.
+case" value of BAL. This could also be determined by validation on the 
+ground.
 
 AS 3959--2009 provides a list of exclusions for low threat vegetation
 and non-vegetated areas, where the BAL is classified as LOW. This

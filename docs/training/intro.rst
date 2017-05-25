@@ -69,21 +69,19 @@ As our population grows, people and infrastructure become exposed to
 hazards. It is not enough to simply respond, we must prepare.
 
 To protect the vulnerable we must understand the risks they face and
-managing the impact of natural hazards to avoid disaster.
+manage the impact of natural hazards to avoid disaster.
 
 **How do we ensure Australia's community safety?**
 
-We must recognise the worst case, to plan for the best outcome and
+We must recognise the worst case, plan for the best outcome and
 consider how we develop our unique landscape.  Combining short-term
 response and long term planning, making decisions based on evidence
 specific to Australia's circumstances.
 
-In times of confidence and crisis, Geoscience Australia models and
-measures the hazards that put us in danger.
-
-We identify what parts of Australia are most at risk, and assesses the
-potential financial and social costs facing our environment, our
-industries and the people they support.
+Geoscience Australia models and measures the hazards that put us in 
+danger. We identify what parts of Australia are most at risk, and 
+assesses the potential financial and social costs facing our environment, 
+our industries and the people they support.
 
 We must understand how hazards impact our society, to allow
 communities to prepare for emergencies, to provide advice to prevent

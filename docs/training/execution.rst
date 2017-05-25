@@ -117,11 +117,11 @@ values represent the seven classes set out in AS 3959--2009.
 A different clasified vegetation dataset will necessitate a change to
 the reclassification table. You can add and delete entries using the
 :guilabel:`Add Entry` and :guilabel:`Delete Entries` buttons. You can
-save the existing table using he :guilabel:`Save...` button, or load a
+save the existing table using the :guilabel:`Save...` button, or load a
 pre-existing table using the :guilabel:`Load...` button.
 
 Classifying another vegetation dataset should be done in consultation
-with someone with expertise in vegetation classification. While AS
+with someone with expertise in vegetation classification. AS
 3959--2009 does provide some descriptive information on the vegetation
 types in each of the primary 7 classes and the sub-classes (Table
 2.3).
@@ -185,7 +185,7 @@ the classified vegetation data layers. It is not possible to calculate
 BAL in areas where there is only one input data (i.e. DEM or
 classified vegetation). The :guilabel:`As Specified Below` option
 allows users to manually select an area of interest. This may be a
-subset of the complete coverage of teh DEM and classified
+subset of the complete coverage of the DEM and classified
 vegetation. If the specified region is larger than the intersection of
 the inputs, then the extent of the intersection of the inputs will be
 used.
@@ -200,7 +200,7 @@ Run the toolbox
 
 Once the input datasets have been specified and the other options set,
 you can now click the :guilabel:`OK` button to execute the
-analysis. When the analysis runs, a dialog window will appear and
+analysis. When the analysis runs, a dialogue window will appear and
 start displaying a series of messages.
 
 .. figure:: /docs/images/001_bal_calculation_progress.png
@@ -208,12 +208,12 @@ start displaying a series of messages.
    :alt: BAL calculation progress dialog
    :figclass: align-center
 
-   Progress dialog for the BAL calculation.
+   Progress dialogue for the BAL calculation.
 
 Depending on the extent of the region, and the horizontal resolution
 of the DEM and classified vegetation data, the analysis will take
 anywhere from less than a minute to several hours to execute. When the
-analysis is complete, the BAL calculation dialog will indicate
+analysis is complete, the BAL calculation dialogue will indicate
 successful completion:
 
 .. figure:: /docs/images/001_bal_calculation_log.png
@@ -221,11 +221,11 @@ successful completion:
    :alt: BAL calculation completed
    :figclass: align-center
 
-   Completed dialog for the BAL calculation. Note the final line says
+   Completed dialogue for the BAL calculation. Note the final line says
    "Succeeded at...".
 
 Click the :guilabel:`Close` button in the top right corner to close
-the BAL calculation dialog. You can review the log messages by opening
+the BAL calculation dialogue. You can review the log messages by opening
 the :guilabel:`Results` panel in ArcCatalog:
 :menuselection:`Geoprocessing --> Results --> Current Session --> BAL
 calculation --> Messages`.

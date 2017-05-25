@@ -30,7 +30,7 @@ Then the **BAL calculation** window is open, see :numref:`bal_window`.
      :alt: The **BAL calculation** window.
      :figclass: align-center
 
-     The **BAL calculation** window.Figure 5.1.
+     The **BAL calculation** window.
 
 Parameters within the tool
 ==========================
@@ -94,10 +94,6 @@ Parameters within the tool
           FDI 100), South Australia (SA), and Western Australia (WA).
 	* **50**: NSW alpine areas, Tasmania, and Victoria alpine areas.
 	* **40**: Northern Territory (NT), and Queensland (Qld).
-      
-	Select the FDI value from a suite of values (100, 80, 50,
-	40). The default value of 80 is applicable in Western
-	Australia.
 
 **Extent:**
           
