@@ -456,17 +456,18 @@
 
     <span class="c1"># set the environment variable and workspace</span>
     <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">overwriteOutput</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="n">input_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
-    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">input_folder</span>
+    <span class="n">input_dem_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+    <span class="n">input_veg_folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">veg</span><span class="p">)</span>
+    <span class="n">arcpy</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">workspace</span> <span class="o">=</span> <span class="n">input_dem_folder</span>
 
     <span class="c1"># derive the effective mask based on the input data</span>
     <span class="n">arcpy</span><span class="o">.</span><span class="n">AddMessage</span><span class="p">(</span><span class="s1">&#39;Get the area of interest from the input extent ...&#39;</span><span class="p">)</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="s1">&#39;mask.shp&#39;</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">pjoin</span><span class="p">(</span><span class="n">input_dem_folder</span><span class="p">,</span> <span class="s1">&#39;mask.shp&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">extent</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">,</span> <span class="s1">&#39;MAXOF&#39;</span><span class="p">,</span> <span class="s1">&#39;MINOF&#39;</span><span class="p">]:</span>
         <span class="c1"># get the extent of inputs</span>
-        <span class="n">dem_poly</span> <span class="o">=</span> <span class="s2">&quot;dem_poly.shp&quot;</span>
-        <span class="n">veg_poly</span> <span class="o">=</span> <span class="s2">&quot;veg_poly.shp&quot;</span>
+        <span class="n">dem_poly</span> <span class="o">=</span> <span class="n">pjoin</span><span class="p">(</span><span class="n">input_dem_folder</span><span class="p">,</span> <span class="s2">&quot;dem_poly.shp&quot;</span><span class="p">)</span>
+        <span class="n">veg_poly</span> <span class="o">=</span> <span class="n">pjoin</span><span class="p">(</span><span class="n">input_veg_folder</span><span class="p">,</span> <span class="s2">&quot;veg_poly.shp&quot;</span><span class="p">)</span>
         <span class="n">get_footprint</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">dem_poly</span><span class="p">)</span>
         <span class="n">get_footprint</span><span class="p">(</span><span class="n">veg</span><span class="p">,</span> <span class="n">veg_poly</span><span class="p">)</span>
         <span class="n">arcpy</span><span class="o">.</span><span class="n">Intersect_analysis</span><span class="p">([</span><span class="n">dem_poly</span><span class="p">,</span> <span class="n">veg_poly</span><span class="p">],</span> <span class="n">mask</span><span class="p">)</span>
