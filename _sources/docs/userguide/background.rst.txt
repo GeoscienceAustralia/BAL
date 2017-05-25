@@ -3,9 +3,11 @@ Background
 
 The algorithm used to calculate the BAL is based on Method 1 in the
 `Australian Standard AS 3959 (2009)--*Construction of buildings in
-bushfire-prone areas* <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_. 
-Method 1 is a simplified procedure that involves five steps to determine BAL, and 
-is subject to limitations on the circumstances in which it can be used.
+bushfire-prone areas*
+<https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_.
+Method 1 is a simplified procedure that involves five steps to
+determine BAL, and is subject to limitations on the circumstances in
+which it can be used.
 
 .. warning:: This method is not valid where the effective slope under the 
              classified vegetation is more than 20 degrees downslope. Within 
@@ -22,10 +24,11 @@ five steps.
 Step 1
 ++++++
 
-Select the relevant Fire Danger Index (FDI) based on the locations according 
-to `Table 2.1 <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_
-in the Australian Standard AS 3959 (2009). For example, from Table 2.1, the FDI for 
-Western Australia is 80.
+Select the relevant Fire Danger Index (FDI) based on the locations
+according to `Table 2.1
+<https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_
+in the Australian Standard AS 3959 (2009). For example, from Table
+2.1, the FDI for Western Australia is 80.
 
 .. table:: Jurisdictional and regional values for FDI (adapted from
            Table 2.1, `AS 3959, 2009 
@@ -163,11 +166,12 @@ southeast, south, southwest, west, and northwest. For each cardinal
 direction, we consider the neighbouring cells up to 100 metres from 
 the site. We calculate the BAL for each neighbouring cell with regards 
 to the site based on the neighbouring cell's: 
+
 * vegetation type
 * upslope or downslope orientation and grade (slope)
 * its distance to the site
 
-The final calculated BAL falls into one of the following categories: 
+The calculated BAL falls into one of the following categories: 
 12.5, 19, 29, 40, 100, where 100 represents Fire Zone (FZ). 
 
 .. note:: Where the downslope is greater than 20 degrees and there is

@@ -195,8 +195,9 @@
 <p>The algorithm used to calculate the BAL is based on Method 1 in the
 <a class="reference external" href="https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136">Australian Standard AS 3959 (2009)–*Construction of buildings in
 bushfire-prone areas*</a>.
-Method 1 is a simplified procedure that involves five steps to determine BAL, and
-is subject to limitations on the circumstances in which it can be used.</p>
+Method 1 is a simplified procedure that involves five steps to
+determine BAL, and is subject to limitations on the circumstances in
+which it can be used.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This method is not valid where the effective slope under the
@@ -210,10 +211,10 @@ constant value of 200 is used for the BAL.</p>
 five steps.</p>
 <div class="section" id="step-1">
 <h3>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h3>
-<p>Select the relevant Fire Danger Index (FDI) based on the locations according
-to <a class="reference external" href="https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136">Table 2.1</a>
-in the Australian Standard AS 3959 (2009). For example, from Table 2.1, the FDI for
-Western Australia is 80.</p>
+<p>Select the relevant Fire Danger Index (FDI) based on the locations
+according to <a class="reference external" href="https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136">Table 2.1</a>
+in the Australian Standard AS 3959 (2009). For example, from Table
+2.1, the FDI for Western Australia is 80.</p>
 <table border="1" class="colwidths-given docutils" id="id2">
 <caption><span class="caption-number">Table 1 </span><span class="caption-text">Jurisdictional and regional values for FDI (adapted from
         Table 2.1, <a class="reference external" href="https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136">AS 3959, 2009</a>).</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
@@ -386,11 +387,13 @@ and are automatically referenced based on the user’s inputs.</p>
 southeast, south, southwest, west, and northwest. For each cardinal
 direction, we consider the neighbouring cells up to 100 metres from
 the site. We calculate the BAL for each neighbouring cell with regards
-to the site based on the neighbouring cell’s:
-* vegetation type
-* upslope or downslope orientation and grade (slope)
-* its distance to the site</p>
-<p>The final calculated BAL falls into one of the following categories:
+to the site based on the neighbouring cell’s:</p>
+<ul class="simple">
+<li>vegetation type</li>
+<li>upslope or downslope orientation and grade (slope)</li>
+<li>its distance to the site</li>
+</ul>
+<p>The calculated BAL falls into one of the following categories:
 12.5, 19, 29, 40, 100, where 100 represents Fire Zone (FZ).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

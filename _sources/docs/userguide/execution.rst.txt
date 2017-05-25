@@ -6,10 +6,11 @@
 Running the tool
 ================
 
-To calculate the BAL,  we use the **BAL calculation** tool within the **BAL** 
-toolbox installed in ArcGIS 10.2.
+To calculate the BAL, we use the **BAL calculation** tool within the
+**BAL** toolbox installed in ArcGIS 10.2.
 
-Select the **BAL calculation** tool within the **BAL** toolbox, see :numref:`select_bal`. 
+Select the **BAL calculation** tool within the **BAL** toolbox, see
+:numref:`select_bal`.
 
 .. _select_bal:
 
@@ -36,21 +37,20 @@ Parameters within the tool
 
 **Input DEM raster:**
            
-	Open your input DEM file from a specific location. The DEM is
-	required to be in a projected coordinate system with linear
-	unit metre. For example GDA94 / MGA zone 50 is a projected
-	spatial reference system and is suitable for use in the
-	western part of Western Australia. More information about
-	GDA94 / MGA zone 50 can be found `here
+	Open your input DEM file from a specific location. The DEM
+	**must** be in a projected coordinate system with linear unit
+	metre. For example GDA94 / MGA zone 50 is a projected spatial
+	reference system and is suitable for use in the western part
+	of Western Australia. More information about GDA94 / MGA zone
+	50 can be found `here
 	<http://spatialreference.org/ref/epsg/gda94-mga-zone-50/>`_.
 
 **Input vegetation raster:**
     
-	Open your input vegetation dataset from a specific location. 
-	The vegetation dataset can be in either a
-	geographical or a projected coordinate system. It will be
-	reprojected to the same projection and same resolution as DEM
-	by the BAL tool.
+	Open your input vegetation dataset from a specific location.
+	The vegetation dataset can be in either a geographical or a
+	projected coordinate system. It will be reprojected to the
+	same projection and same resolution as DEM by the BAL tool.
 
 **Vegetation reclassification:** 
           
