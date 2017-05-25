@@ -7,28 +7,30 @@ Input
 
 **Input DEM:**
 
-jerram_dem: Esri Grid format, MGA 50, 25 m resolution. See Figure 6.1. 
+jerram_dem: Esri Grid format, MGA 50, 25 m resolution. See :numref:`dem_input`
 The input DEM is located under the **examples\\input** folder.
 
+.. _dem_input:
 .. figure:: /docs/images/dem_example.jpg
      :align: center
      :alt: Example DEM data at Jerramungup, WA.
      :figclass: align-center
 
-     Figure 6.1 Example DEM data at Jerramungup, WA.
+     Example DEM data at Jerramungup, WA.
 
 **Input vegetation:**
 
 jerram_veg: Esri Grid format, GDA 1994 Australia Albers, 100 m resolution. 
-See Figure 6.2. The input vegetation dataset is located under the 
+See :numref:`veg_input`. The input vegetation dataset is located under the 
 **examples\\input** folder.
  
+.. _veg_input:
 .. figure:: /docs/images/veg_example.jpg
      :align: center
      :alt: Example vegetation data at Jerramungup, WA.
      :figclass: align-center
 
-     Figure 6.2 Example vegetation data at Jerramungup, WA.
+     Example vegetation data at Jerramungup, WA.
 
 
 **Input vegetation reclassification map:**
@@ -54,8 +56,9 @@ Default value 80 is selected.
 Default is selected. 
 
 After all input parameters are defined, the fields in the BAL calculation 
-window are all populated. See Figure 6.3.
+window are all populated. See :numref:`example_bal_calc`.
 
+.. _example_bal_calc:
 .. figure:: /docs/images/example_BAL_calculation.jpg
      :align: center
      :alt: Example input parameters within BAL calculation window.
@@ -68,26 +71,29 @@ Process
 
 After clicking the **OK** button in the above window, the calculation starts 
 running with a progress reporting in a pop-up window. When it finishes 
-successfully, the pop-up window looks like Figure 6.4.
+successfully, the pop-up window looks like :numref:`example_process`.
 
+
+.. _example_process:
 .. figure:: /docs/images/example_process.jpg
      :align: center
      :alt: Example pop-up window when the calculation finishes.
      :figclass: align-center
 
-     Figure 6.4 Example pop-up window when the calculation finishes.
+     Example pop-up window when the calculation finishes.
 
 
 Output
 ------  
 Nine rasters are produced under C:\\github\\bal\\examples\\output. 
-Figure 6.5 displays the maximum BAL raster file named as bal_max.img for this example. 
+:numref:`bal_max` displays the maximum BAL raster file named as bal_max.img for this example. 
 
+.. _bal_max:
 .. figure:: /docs/images/bal_max.jpg
      :align: center
      :alt: Example output BAL at Jerramungup, WA.
      :figclass: align-center
 
-     Figure 6.5 Example output BAL at Jerramungup, WA.
+     Example output BAL at Jerramungup, WA.
 
     

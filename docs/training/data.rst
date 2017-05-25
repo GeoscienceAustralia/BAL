@@ -55,7 +55,7 @@ Universal Transverse Mercator (UTM), or the Map Grid of Australia
 .. warning:: The |project_name| will fail to execute if the input DEM
              is in a geographic coordinate system.
 
-For the southern Western Australian region, the `GDA94/MGA Zone 50
+For the western portion of Western Australia, the `GDA94/MGA Zone 50
 <http://spatialreference.org/ref/epsg/gda94-mga-zone-50/>`_ projection
 would be an appropriate choice of projected coordinate system.
 
@@ -79,6 +79,11 @@ available for use in the |project_name|.
 
 For optimal results, it is recommended to use a classified vegetation
 dataset that is of a comparable resolution to the DEM used.
+
+.. attention:: The classified vegetation raster must be stored in the
+               same directory as the input DEM raster. The BAL
+               calculation script will fail if the rasters are not in
+               the same directory.
 
 Format
 ......
@@ -154,6 +159,6 @@ for use in the |project_name|.
              vegetation classification data is in a geographic
              coordinate system.
 
-For the southern Western Australian region, the `GDA94/MGA Zone 50
+For the western portion of Western Australia, the `GDA94/MGA Zone 50
 <http://spatialreference.org/ref/epsg/gda94-mga-zone-50/>`_ projection
 would be an appropriate choice of projected coordinate system.

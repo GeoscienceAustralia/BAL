@@ -6,9 +6,9 @@ Runnning the tool
 To calculate the BAL,  we use the **BAL calculation** tool within the **BAL** 
 toolbox installed in ArcGIS 10.2.
 
-Select the :menuselection:`BAL --> BAL calculation` tool, see :numref:`select_bal`. 
+Select the :menuselection:`BAL --> BAL calculation` tool, see :numref:`select_bal_training`. 
 
-.. _select_bal:
+.. _select_bal_training:
 
 .. figure:: /docs/images/select_bal.jpg
      :align: center
@@ -17,9 +17,9 @@ Select the :menuselection:`BAL --> BAL calculation` tool, see :numref:`select_ba
 
      Select the tool **BAL calculation**.
 
-Then the **BAL calculation** window is open, see :numref:`bal_window`.
+Then the **BAL calculation** window is open, see :numref:`bal_window_training`.
 
-.. _bal_window:
+.. _bal_window_training:
 
 .. figure:: /docs/images/BAL_calculation_window.jpg
      :align: center 
@@ -150,7 +150,13 @@ results of the BAL analysis.
 FDI value
 .........
 
-The Fire Danger Index (FDI) value used to evaluate BAL is defined in AS 3959--2009, and is based on the jurisdiction (i.e. State or Territory), or a sub-region within jurisdictions, as defined in the National Construction Code, Volume 2 [NCCV2]_. The default value is an FDI of 80, but values of 100, 80, 50 and 40 can be selected. The :guilabel:`Help` sidebar provides the FDI values for different regions, as per AS 3959--2009.
+The Fire Danger Index (FDI) value used to evaluate BAL is defined in
+AS 3959--2009, and is based on the jurisdiction (i.e. State or
+Territory), or a sub-region within jurisdictions, as defined in the
+National Construction Code, Volume 2 [NCCV2]_. The default value is an
+FDI of 80, but values of 100, 80, 50 and 40 can be selected. The
+:guilabel:`Help` sidebar provides the FDI values for different
+regions, as per AS 3959--2009.
 
 .. figure:: /docs/images/001_bal_fdi_value.png
    :align: center
@@ -192,7 +198,10 @@ used.
 Run the toolbox
 ---------------
 
-Once the input datasets have been specified and the other options set, you can now click the :guilabel:`OK` button to execute the analysis. When the analysis runs, a dialog window will appear and start displaying a series of messages. 
+Once the input datasets have been specified and the other options set,
+you can now click the :guilabel:`OK` button to execute the
+analysis. When the analysis runs, a dialog window will appear and
+start displaying a series of messages.
 
 .. figure:: /docs/images/001_bal_calculation_progress.png
    :align: center
@@ -201,7 +210,11 @@ Once the input datasets have been specified and the other options set, you can n
 
    Progress dialog for the BAL calculation.
 
-Depending on the extent of the region, and the horizontal resolution of the DEM and classified vegetation data, the analysis will take anywhere from less than a minute to several hours to execute. When the analysis is complete, the BAL calculation dialog will indicate successful completion:
+Depending on the extent of the region, and the horizontal resolution
+of the DEM and classified vegetation data, the analysis will take
+anywhere from less than a minute to several hours to execute. When the
+analysis is complete, the BAL calculation dialog will indicate
+successful completion:
 
 .. figure:: /docs/images/001_bal_calculation_log.png
    :align: center
