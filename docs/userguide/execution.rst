@@ -114,9 +114,6 @@ Parameters within the tool
           addition, as tested, each folder name's length should be restricted
           to at most eight characters.
 
-.. note:: The script requires that the input DEM and vegetation dataset are in
-          the same location. The tool will fail to run when the input DEM and
-          vegetation datasets are not in the same folder.
 
 
 Output
