@@ -2,8 +2,8 @@ Background
 ============
 
 The algorithm used to calculate the BAL is based on Method 1 in the
-`Australian Standard AS 3959 (2009)--*Construction of buildings in
-bushfire-prone areas*
+`Australian Standard AS 3959 (2009)--**Construction of buildings in
+bushfire-prone areas**
 <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_.
 Method 1 is a simplified procedure that involves five steps to
 determine BAL, and is subject to limitations on the circumstances in
@@ -25,7 +25,7 @@ Step 1
 ++++++
 
 Select the relevant Fire Danger Index (FDI) based on the locations
-according to `Table 2.1
+in `Table 2.1
 <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_
 in the Australian Standard AS 3959 (2009). For example, from Table
 2.1, the FDI for Western Australia is 80.
@@ -104,7 +104,7 @@ Where there is more than one vegetation type, the classification
 should be based on the vegetation type that results in the worst case 
 scenario. 
 
-.. note:: Classificatied vegetation datasets are likely to be classified 
+.. note:: Classified vegetation datasets are likely to be classified 
           according to the predominant vegetation in a grid cell, 
           which is not necessarily the worst case scenario. 
 
@@ -114,7 +114,7 @@ respectively for calculating BAL.
 Step 3
 ++++++
 
-Calculate the distance of the site from the classified vegetation. 
+Calculate the distance between the site of interest, and the classified vegetation. 
 According to AS 3959 (2009), the vegetation is only considered
 when its distance from the site of interest is **less than 100 metres**.
 Within the BAL toolbox, this is done spatially for each grid point 
@@ -164,15 +164,15 @@ Deriving and interpreting BAL
 We consider eight cardinal directions: north, northeast, east,
 southeast, south, southwest, west, and northwest. For each cardinal 
 direction, we consider the neighbouring cells up to 100 metres from 
-the site. We calculate the BAL for each neighbouring cell with regards 
-to the site based on the neighbouring cell's: 
+the site. We calculate the BAL for each cell surrounding the site 
+based on the neighbouring cell's: 
 
 * vegetation type
 * upslope or downslope orientation and grade (slope)
-* its distance to the site
+* distance to the site
 
 The calculated BAL falls into one of the following categories: 
-12.5, 19, 29, 40, 100, where 100 represents Fire Zone (FZ). 
+12.5, 19, 29, 40 or 100, where 100 represents Fire Zone (FZ). 
 
 .. note:: Where the downslope is greater than 20 degrees and there is
 	  vegetation, a constant value of 200 is given to the BAL.

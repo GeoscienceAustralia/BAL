@@ -13,7 +13,7 @@ The preferred way to contribute to |project_name| is to fork the
 2. Clone this copy to your local disk::
 
           $ git clone git@github.com:YourLogin/bal.git
-          $ cd tcrm
+          $ cd bal
 
 3. Create a branch to hold your changes::
 

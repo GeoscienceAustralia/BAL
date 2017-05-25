@@ -19,12 +19,7 @@ A complete list of supported .rst markup is also available
 
 Here are a few tips for documentation writers:
 
-1. Take a look in the `lookup table <./lookup_table.html>`_ to see which terms
-   and phrases are used and which you should definitely **not** translate.
-#. There is a "Community Edition" of
-   `PyCharm <http://www.jetbrains.com/pycharm/>`_ available.
-   Consider using this for writing documentation.
-#. Try to not write more than **80 Characters in one line**.
+1. Try to not write more than **80 Characters in one line**.
    That makes the documentation much easier to maintain.
 #. Try to create a reference anchor for at least every new heading (page).
    If it is useful and important you might also want to put anchors on
@@ -165,9 +160,9 @@ Here are some useful tags
        :alt: alternate text
        :align: center
 
-remark: use pt instead of px because of latex output
-* A4 = height ~ 1000pt
-* A4 = width ~ 700pt
+    remark: use pt instead of px because of latex output
+        * A4 = height ~ 1000pt
+        * A4 = width ~ 700pt
 
 Help writing/fixing documentation
 ---------------------------------
@@ -193,9 +188,6 @@ button on https://github.com/ and filling out the necessary fields.
 
 Cloning the documentation of |project_name| is easy; you only have to follow
 this procedure:
-
-.. note:: This documentation assumes that you have the whole |project_name| source
-          available under :file:`$HOME/dev/python/...`
 
 Clone your forked github |project_name| documentation by entering following
 command::

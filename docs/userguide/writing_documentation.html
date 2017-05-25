@@ -201,11 +201,6 @@ For a more detailed list, please visit the
 <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#block-quotes">here</a>.</p>
 <p>Here are a few tips for documentation writers:</p>
 <ol class="arabic simple">
-<li>Take a look in the <a class="reference external" href="./lookup_table.html">lookup table</a> to see which terms
-and phrases are used and which you should definitely <strong>not</strong> translate.</li>
-<li>There is a “Community Edition” of
-<a class="reference external" href="http://www.jetbrains.com/pycharm/">PyCharm</a> available.
-Consider using this for writing documentation.</li>
 <li>Try to not write more than <strong>80 Characters in one line</strong>.
 That makes the documentation much easier to maintain.</li>
 <li>Try to create a reference anchor for at least every new heading (page).
@@ -341,11 +336,12 @@ units         feet
     :scale: 50 %
     :alt: alternate text
     :align: center
+
+ remark: use pt instead of px because of latex output
+     * A4 = height ~ 1000pt
+     * A4 = width ~ 700pt
 </pre></div>
 </div>
-<p>remark: use pt instead of px because of latex output
-* A4 = height ~ 1000pt
-* A4 = width ~ 700pt</p>
 </div>
 <div class="section" id="help-writing-fixing-documentation">
 <h2>Help writing/fixing documentation<a class="headerlink" href="#help-writing-fixing-documentation" title="Permalink to this headline">¶</a></h2>
@@ -369,17 +365,12 @@ the main repository)</li>
 button on <a class="reference external" href="https://github.com/">https://github.com/</a> and filling out the necessary fields.</p>
 <p>Cloning the documentation of Bushfire Attack Level Toolbox is easy; you only have to follow
 this procedure:</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This documentation assumes that you have the whole Bushfire Attack Level Toolbox source
-available under <code class="file docutils literal"><span class="pre">$HOME/dev/python/...</span></code></p>
-</div>
 <p>Clone your forked github Bushfire Attack Level Toolbox documentation by entering following
 command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/&lt;your username&gt;/bal.git
 </pre></div>
 </div>
-<p>Search for the .rst file you’d like to extend/fix and work on it.</p>
+<p>Search for the .rst file you&#8217;d like to extend/fix and work on it.</p>
 <p>Afterwards commit your local changes to your local clone with the command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ git commit -a -m &quot;fixed a typo&quot;
 </pre></div>

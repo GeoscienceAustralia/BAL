@@ -201,13 +201,13 @@ toolbox installed in ArcGIS 10.2.</p>
 <h2>Getting help from within the toolbox<a class="headerlink" href="#getting-help-from-within-the-toolbox" title="Permalink to this headline">¶</a></h2>
 <p>On the left of the dialog window is the input fields, options and the
 output fields. We will work through these in turn. On the right, help
-content for each of the dialog’s entry fields are displayed. As you
+content for each of the dialog&#8217;s entry fields are displayed. As you
 move to different entry fields the content in this panel will update.</p>
 <p>You can toggle the tool help on and off, by clicking the
 <span class="guilabel">Tool Help</span> button on the lower right corner of the dialog
 window.</p>
 <p>Another way to access the help is via the menus. Right click on the
-<span class="menuselection">BAL calculation</span> script and select “Help”. This will
+<span class="menuselection">BAL calculation</span> script and select &#8220;Help&#8221;. This will
 display the full help menu for the Bushfire Attack Level Toolbox.</p>
 <div class="align-center figure" id="id4">
 <span id="bal-toolbox-help"></span><img alt="Accessing the BAL Toolbox help menu." src="../../_images/001_bal_toolbox_help.png" />
@@ -249,22 +249,22 @@ for calculation of the BAL.</p>
 <img alt="Vegetation reclassification table" src="../../_images/001_bal_input_vegetation_classification.png" />
 <p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Vegetation reclassification table, pre-populated with values to
 reclassify National Vegetation Information System data to AS
-3959–2009 values.</span></p>
+3959&#8211;2009 values.</span></p>
 </div>
 <p>The reclassification table is pre-populated with values matching the
-National Vegetation Information System (NVIS) data. Under the “Old
-values” column, the integer values representing different vegetation
-classes in the NVIS classes. Under the “New Values” column are the
+National Vegetation Information System (NVIS) data. Under the &#8220;Old
+values&#8221; column, the integer values representing different vegetation
+classes in the NVIS classes. Under the &#8220;New Values&#8221; column are the
 integer values to which the NVIS classes will be mapped. These new
-values represent the seven classes set out in AS 3959–2009.</p>
+values represent the seven classes set out in AS 3959&#8211;2009.</p>
 <p>A different clasified vegetation dataset will necessitate a change to
 the reclassification table. You can add and delete entries using the
 <span class="guilabel">Add Entry</span> and <span class="guilabel">Delete Entries</span> buttons. You can
-save the existing table using he <span class="guilabel">Save…</span> button, or load a
-pre-existing table using the <span class="guilabel">Load…</span> button.</p>
+save the existing table using the <span class="guilabel">Save...</span> button, or load a
+pre-existing table using the <span class="guilabel">Load...</span> button.</p>
 <p>Classifying another vegetation dataset should be done in consultation
-with someone with expertise in vegetation classification. While AS
-3959–2009 does provide some descriptive information on the vegetation
+with someone with expertise in vegetation classification. AS
+3959&#8211;2009 does provide some descriptive information on the vegetation
 types in each of the primary 7 classes and the sub-classes (Table
 2.3).</p>
 </div>
@@ -282,19 +282,19 @@ results of the BAL analysis.</p>
 <p class="last">There are some limitations to the name length and file path
 length in ESRI applications. The maximum number of
 characters in the full path name (including file name) is
-128 characters. In testing, each folder name’s length should
+128 characters. In testing, each folder name&#8217;s length should
 be restricted to a maximum of 8 characters.</p>
 </div>
 </div>
 <div class="section" id="fdi-value">
 <h3>FDI value<a class="headerlink" href="#fdi-value" title="Permalink to this headline">¶</a></h3>
 <p>The Fire Danger Index (FDI) value used to evaluate BAL is defined in
-AS 3959–2009, and is based on the jurisdiction (i.e. State or
+AS 3959&#8211;2009, and is based on the jurisdiction (i.e. State or
 Territory), or a sub-region within jurisdictions, as defined in the
 National Construction Code, Volume 2 <a class="reference internal" href="../userguide/background.html#nccv2" id="id1">[NCCV2]</a>. The default value is an
 FDI of 80, but values of 100, 80, 50 and 40 can be selected. The
 <span class="guilabel">Help</span> sidebar provides the FDI values for different
-regions, as per AS 3959–2009.</p>
+regions, as per AS 3959&#8211;2009.</p>
 <div class="align-center figure" id="id9">
 <img alt="BAL toolbox FDI value options" src="../../_images/001_bal_fdi_value.png" />
 <p class="caption"><span class="caption-number">Fig. 30 </span><span class="caption-text">Fire Danger Index (FDI) options menu.</span></p>
@@ -314,7 +314,7 @@ the classified vegetation data layers. It is not possible to calculate
 BAL in areas where there is only one input data (i.e. DEM or
 classified vegetation). The <span class="guilabel">As Specified Below</span> option
 allows users to manually select an area of interest. This may be a
-subset of the complete coverage of teh DEM and classified
+subset of the complete coverage of the DEM and classified
 vegetation. If the specified region is larger than the intersection of
 the inputs, then the extent of the intersection of the inputs will be
 used.</p>
@@ -330,24 +330,24 @@ uses.</p>
 <h2>Run the toolbox<a class="headerlink" href="#run-the-toolbox" title="Permalink to this headline">¶</a></h2>
 <p>Once the input datasets have been specified and the other options set,
 you can now click the <span class="guilabel">OK</span> button to execute the
-analysis. When the analysis runs, a dialog window will appear and
+analysis. When the analysis runs, a dialogue window will appear and
 start displaying a series of messages.</p>
 <div class="align-center figure" id="id11">
 <img alt="BAL calculation progress dialog" src="../../_images/001_bal_calculation_progress.png" />
-<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">Progress dialog for the BAL calculation.</span></p>
+<p class="caption"><span class="caption-number">Fig. 32 </span><span class="caption-text">Progress dialogue for the BAL calculation.</span></p>
 </div>
 <p>Depending on the extent of the region, and the horizontal resolution
 of the DEM and classified vegetation data, the analysis will take
 anywhere from less than a minute to several hours to execute. When the
-analysis is complete, the BAL calculation dialog will indicate
+analysis is complete, the BAL calculation dialogue will indicate
 successful completion:</p>
 <div class="align-center figure" id="id12">
 <img alt="BAL calculation completed" src="../../_images/001_bal_calculation_log.png" />
-<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Completed dialog for the BAL calculation. Note the final line says
-“Succeeded at…”.</span></p>
+<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Completed dialogue for the BAL calculation. Note the final line says
+&#8220;Succeeded at...&#8221;.</span></p>
 </div>
 <p>Click the <span class="guilabel">Close</span> button in the top right corner to close
-the BAL calculation dialog. You can review the log messages by opening
+the BAL calculation dialogue. You can review the log messages by opening
 the <span class="guilabel">Results</span> panel in ArcCatalog:
 <span class="menuselection">Geoprocessing ‣ Results ‣ Current Session ‣ BAL
 calculation ‣ Messages</span>.</p>
