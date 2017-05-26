@@ -3,7 +3,7 @@
 Data requirements
 =================
 
-|project_name| requires only two datasets to determine BAL -- a
+The |project_name| requires only two datasets to determine BAL -- a
 classified vegetation dataset and a digital elevation model. With
 these two datasets, it is possible to determine the slope and aspect
 of a site, and the classified vegetation types described in AS
@@ -14,7 +14,7 @@ Digital elvation model
 
 A digital elevation model (DEM) is a digital model that represents a
 geographic location's height above mean sea level. DEM's are developed
-by a wide range of techniques, and widely varying horizontal grid
+by a wide range of techniques, and have widely varying horizontal grid
 resolutions.
 
 At the national scale, Geoscience Australia has published the
@@ -30,7 +30,7 @@ have higher-resolution and more up-to-date DEMs available for use in
 the |project_name|.
 
 For the |project_name|, it is recommended to use a DEM with a
-horizontal grid resolution comparable to the SRTM DEM, or higher for
+horizontal grid resolution comparable to the SRTM DEM (~ 30m), or higher for
 best results.
 
 Format
@@ -64,7 +64,7 @@ Vegetation data
 
 A classified vegetation dataset is required for determination of
 BAL. The availability of classified vegetation datasets is varied, and
-the clssifications used are similarly diverse, depending on the
+the classifications used are similarly diverse, depending on the
 application for which they were intended and the methods used to
 derive them.
 
@@ -79,11 +79,6 @@ available for use in the |project_name|.
 
 For optimal results, it is recommended to use a classified vegetation
 dataset that is of a comparable resolution to the DEM used.
-
-.. attention:: The classified vegetation raster must be stored in the
-               same directory as the input DEM raster. The BAL
-               calculation script will fail if the rasters are not in
-               the same directory.
 
 Format
 ......
@@ -137,9 +132,9 @@ AS 3959--2009. These are numbered 1--7 and are defined as follows:
 +-------+------------------+----------------------------------------------+
 
 
-The input data must be in this numerical format for the |project_name|
-to execute correctly. Values other than those listed here will be
-ignored and may produce incorrect BAL values.
+.. warning:: The input data must be in this numerical format for the |project_name|
+             to execute correctly. Values other than those listed here will be
+             ignored and may produce incorrect BAL values.
 
 The |project_name| provides users with the option to map their
 classified vegetation to the required classes. By default, the mapping
@@ -155,9 +150,9 @@ coordinate systems such as Universal Transverse Mercator (UTM), or the
 Map Grid of Australia (MGA) are suitable for projecting elevation data
 for use in the |project_name|.
 
-.. warning:: The |project_name| will fail to execute if the input
-             vegetation classification data is in a geographic
-             coordinate system.
+.. note:: The vegetation dataset can be in either a geographical or a 
+          projected coordinate system. It will be reprojected to the same 
+          projection and same resolution as DEM by the BAL tool.
 
 For the western portion of Western Australia, the `GDA94/MGA Zone 50
 <http://spatialreference.org/ref/epsg/gda94-mga-zone-50/>`_ projection

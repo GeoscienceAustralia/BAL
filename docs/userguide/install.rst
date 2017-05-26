@@ -34,7 +34,7 @@ Dependencies
 Setting the environment 
 ------------------------ 
 
-To enable BAL toolbox to run flawlessly, you may need to change some
+To enable the BAL toolbox to run flawlessly, you may need to change some
 environment settings. The important variable to set is the
 ``PYTHONPATH`` variable. This should be set to the path where you have
 extracted the contents of the zip file. A complete discussion on

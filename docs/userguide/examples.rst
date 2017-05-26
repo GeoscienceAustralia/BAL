@@ -70,7 +70,7 @@ Process
 -------
 
 After clicking the **OK** button in the above window, the calculation starts 
-running with a progress reporting in a pop-up window. When it finishes 
+running with the progress displayed in a pop-up window. When it finishes 
 successfully, the pop-up window looks like :numref:`example_process`.
 
 
