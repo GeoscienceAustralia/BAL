@@ -159,7 +159,7 @@ Here are some useful tags
        :scale: 50 %
        :alt: alternate text
        :align: center
-
+       
     remark: use pt instead of px because of latex output
         * A4 = height ~ 1000pt
         * A4 = width ~ 700pt

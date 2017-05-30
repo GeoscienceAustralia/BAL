@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
         <link rel="up" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/>
-        <link rel="next" title="Installation" href="install.html"/>
+        <link rel="next" title="Getting the Bushfire Attack Level Toolbox" href="getting.html"/>
         <link rel="prev" title="Introduction" href="intro.html"/> 
 
   
@@ -111,6 +111,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#deriving-and-interpreting-bal">Deriving and interpreting BAL</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="getting.html">Getting the Bushfire Attack Level Toolbox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup.html">Setting up the toolbox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="execution.html">Running the tool</a></li>
@@ -193,7 +194,7 @@
   <div class="section" id="background">
 <h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
 <p>The algorithm used to calculate the BAL is based on Method 1 in the
-<a class="reference external" href="https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136">Australian Standard AS 3959 (2009)&#8211;**Construction of buildings in
+<a class="reference external" href="https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136">Australian Standard AS 3959 (2009)–**Construction of buildings in
 bushfire-prone areas**</a>.
 Method 1 is a simplified procedure that involves five steps to
 determine BAL, and is subject to limitations on the circumstances in
@@ -351,7 +352,7 @@ located within 100 metres of vegetation.</p>
 <div class="section" id="step-4">
 <h3>Step 4<a class="headerlink" href="#step-4" title="Permalink to this headline">¶</a></h3>
 <p>Determine the effective slope (the gradient from each cell) and aspect
-under the classified vegetation. Here, &#8216;slope&#8217; refers to the slope
+under the classified vegetation. Here, ‘slope’ refers to the slope
 under the classified vegetation in relation to the building - not the slope
 between the vegetation and the building. Where the slope of the land under
 the vegetation is downhill from the edge nearest the building, this slope is
@@ -378,7 +379,7 @@ classes:</p>
 based on the input FDI. For example, for Western Australia, the FDI is
 80 and thus Table 2.4.3 is adopted for deriving the BAL.</p>
 <p>Within the BAL toolbox, these tables are included within the Python code,
-and are automatically referenced based on the user&#8217;s inputs.</p>
+and are automatically referenced based on the user’s inputs.</p>
 </div>
 </div>
 <div class="section" id="deriving-and-interpreting-bal">
@@ -387,7 +388,7 @@ and are automatically referenced based on the user&#8217;s inputs.</p>
 southeast, south, southwest, west, and northwest. For each cardinal
 direction, we consider the neighbouring cells up to 100 metres from
 the site. We calculate the BAL for each cell surrounding the site
-based on the neighbouring cell&#8217;s:</p>
+based on the neighbouring cell’s:</p>
 <ul class="simple">
 <li>vegetation type</li>
 <li>upslope or downslope orientation and grade (slope)</li>
@@ -429,7 +430,7 @@ a bushfire, and are associated with an accompanying construction code.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="getting.html" class="btn btn-neutral float-right" title="Getting the Bushfire Attack Level Toolbox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

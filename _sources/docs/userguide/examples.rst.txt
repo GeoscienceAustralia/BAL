@@ -64,7 +64,7 @@ window are all populated. See :numref:`example_bal_calc`.
      :alt: Example input parameters within BAL calculation window.
      :figclass: align-center
 
-     Example input parameters within BAL calculation window.
+     Figure 6.3 Example input parameters within BAL calculation window.
 
 Process
 -------

@@ -3,8 +3,7 @@ Background
 
 The algorithm used to calculate the BAL is based on Method 1 in the
 `Australian Standard AS 3959 (2009)--**Construction of buildings in
-bushfire-prone areas**
-<https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_.
+bushfire-prone areas** <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_.
 Method 1 is a simplified procedure that involves five steps to
 determine BAL, and is subject to limitations on the circumstances in
 which it can be used.
@@ -25,8 +24,7 @@ Step 1
 ++++++
 
 Select the relevant Fire Danger Index (FDI) based on the locations
-in `Table 2.1
-<https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_
+in `Table 2.1 <https://www.saiglobal.com/online/Script/Details.asp?DocN=AS819920597136>`_
 in the Australian Standard AS 3959 (2009). For example, from Table
 2.1, the FDI for Western Australia is 80.
 

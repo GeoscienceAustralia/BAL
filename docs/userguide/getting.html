@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; Bushfire Attack Level Toolbox</title>
+  <title>Getting the Bushfire Attack Level Toolbox &mdash; Bushfire Attack Level Toolbox</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Bushfire Attack Level Toolbox" href="../../index.html"/>
         <link rel="up" title="Bushfire Attack Level Toolbox User Guide" href="index.html"/>
-        <link rel="next" title="Setting up the toolbox" href="setup.html"/>
-        <link rel="prev" title="Getting the Bushfire Attack Level Toolbox" href="getting.html"/> 
+        <link rel="next" title="Installation" href="install.html"/>
+        <link rel="prev" title="Background" href="background.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -100,17 +100,12 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Bushfire Attack Level Toolbox User Guide</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="background.html">Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting.html">Getting the Bushfire Attack Level Toolbox</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#unzipping-the-toolbox">Unzipping the toolbox</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#setting-the-environment">Setting the environment</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting the Bushfire Attack Level Toolbox</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clone-the-repository">Clone the repository</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#testing-the-installation">Testing the installation</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="setup.html">Setting up the toolbox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="execution.html">Running the tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html">An Example</a></li>
@@ -170,13 +165,13 @@
         
           <li><a href="index.html">Bushfire Attack Level Toolbox User Guide</a> &raquo;</li>
         
-      <li>Installation</li>
+      <li>Getting the Bushfire Attack Level Toolbox</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/docs/userguide/install.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/userguide/getting.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -189,61 +184,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation">
-<span id="id1"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<p>Installing BAL Toolbox is intended to be a simple process, requiring
-only basic understanding of ArcGIS toolbox operations. It has been
-installed and tested on ArcGIS 10.2.</p>
-<div class="section" id="unzipping-the-toolbox">
-<h2>Unzipping the toolbox<a class="headerlink" href="#unzipping-the-toolbox" title="Permalink to this headline">¶</a></h2>
-<p>The software package is delivered as a compressed zip file. Unzip the
-toolbox into a location on your computer, for example <code class="file docutils literal"><span class="pre">C:\bal</span></code>. Then
-you will have stored all the files at folder <code class="file docutils literal"><span class="pre">C:\bal</span></code>.</p>
-</div>
-<div class="section" id="dependencies">
-<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="getting-the-project-name">
+<span id="getting-bal"></span><h1>Getting the Bushfire Attack Level Toolbox<a class="headerlink" href="#getting-the-project-name" title="Permalink to this headline">¶</a></h1>
+<p>There are two ways to get Bushfire Attack Level Toolbox:</p>
+<div class="section" id="download">
+<h2>Download<a class="headerlink" href="#download" title="Permalink to this headline">¶</a></h2>
+<p>For the direct download, select the “Source code (zip)” option on the following links:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://www.python.org/">Python</a> - v2.7</li>
-<li><a class="reference external" href="http://www.numpy.org/">Numpy</a> - v1.6.2</li>
-<li><a class="reference external" href="http://resources.arcgis.com/en/help/main/10.2/index.html#//000v000000v7000000/">Arcpy in ArcGIS 10.2</a></li>
+<li>Latest release from the <a class="reference external" href="https://github.com/GeoscienceAustralia/BAL/releases/latest">github repository</a></li>
+<li>Earlier releases are also <a class="reference external" href="https://github.com/GeoscienceAustralia/BAL/releases">available</a></li>
 </ul>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">ArcGIS 10.2 is packaged with a modified version of
-<code class="docutils literal"><span class="pre">Numpy</span></code>. In our experience, attempting to update the
-<code class="docutils literal"><span class="pre">Numpy</span></code> package will cause the <code class="docutils literal"><span class="pre">arcpy</span></code> package to fail
-catastrophically, and usually without reporting any error
-message. We strongly recommend against trying to upgrade
-the version of <code class="docutils literal"><span class="pre">Numpy</span></code> linked to your <code class="docutils literal"><span class="pre">ArcGIS</span></code>
-installation.</p>
 </div>
+<div class="section" id="clone-the-repository">
+<h2>Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permalink to this headline">¶</a></h2>
+<p>You can also clone the repository, which will enable you to easily
+keep up to date with any updates to the code. Using HTTPS:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/GeoscienceAustralia/bal.git
+</pre></div>
 </div>
-<div class="section" id="setting-the-environment">
-<h2>Setting the environment<a class="headerlink" href="#setting-the-environment" title="Permalink to this headline">¶</a></h2>
-<p>To enable the BAL toolbox to run flawlessly, you may need to change some
-environment settings. The important variable to set is the
-<code class="docutils literal"><span class="pre">PYTHONPATH</span></code> variable. This should be set to the path where you have
-extracted the contents of the zip file. A complete discussion on
-environment variables in Python is given in the <a class="reference external" href="https://docs.python.org/2/using/cmdline.html#environment-variables">Python documentation</a>.</p>
-<div class="section" id="windows">
-<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
-<p>The Python documentation contains some simple instructions for setting
-environment variables on Windows systems <a class="reference external" href="https://docs.python.org/2/using/windows.html">here</a>. See <a class="reference external" href="http://www.computerhope.com/issues/ch000549.htm">this link</a> for setting the
-variables on different Windows systems.</p>
+<p>Using SSH:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone git@github.com:GeoscienceAustralia/bal.git
+</pre></div>
 </div>
-</div>
-<div class="section" id="testing-the-installation">
-<h2>Testing the installation<a class="headerlink" href="#testing-the-installation" title="Permalink to this headline">¶</a></h2>
-<p>The code includes a suite of unit tests that ensure elements of the
-code base work as expected. The code should be tested before running
-the toolbox. Users will need to install the <a class="reference external" href="http://nose.readthedocs.io/en/latest/index.html">Nose</a> package to run
-these tests.</p>
-<p>The test suite can be run from the main directory. On Windows, run the
-<strong class="command">run_test_all.cmd</strong> script from the main BAL directory.</p>
-<p>If the test suite fails, there will be a message indicating which
-test failed and a description of the failure. If you receive this, copy
-the description and create a ticket on the Bushfire Attack Level Toolbox <a class="reference external" href="https://github.com/GeoscienceAustralia/BAL/issues">Issue
-Tracker</a>.</p>
+<p>Note that you will not be able to push changes back to the main
+Bushfire Attack Level Toolbox repository. If you want to make changes, follow the
+guidelines in <a class="reference internal" href="contributing.html#contributing"><span class="std std-ref">Contributing code</span></a>.</p>
 </div>
 </div>
 
@@ -257,10 +222,10 @@ Tracker</a>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="setup.html" class="btn btn-neutral float-right" title="Setting up the toolbox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="getting.html" class="btn btn-neutral" title="Getting the Bushfire Attack Level Toolbox" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="background.html" class="btn btn-neutral" title="Background" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
