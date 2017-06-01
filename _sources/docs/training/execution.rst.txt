@@ -110,7 +110,7 @@ for calculation of the BAL.
 The reclassification table is pre-populated with values matching the
 National Vegetation Information System (NVIS) data. Under the "Old
 values" column, the integer values representing different vegetation
-classes in the NVIS classes. Under the "New Values" column are the
+classes in the NVIS classes. Under the "New values" column are the
 integer values to which the NVIS classes will be mapped. These new
 values represent the seven classes set out in AS 3959--2009.
 

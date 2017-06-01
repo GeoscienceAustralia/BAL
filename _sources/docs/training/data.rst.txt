@@ -144,7 +144,7 @@ values.
 Projection
 ..........
 
-The input classified vegetation dataset must be presented in a
+The input classified vegetation dataset should be presented in a
 projected coordinate system, with a linear unit of metres. Projected
 coordinate systems such as Universal Transverse Mercator (UTM), or the
 Map Grid of Australia (MGA) are suitable for projecting elevation data
