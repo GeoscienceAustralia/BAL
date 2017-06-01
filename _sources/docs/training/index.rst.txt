@@ -3,11 +3,9 @@
 Bushfire Attack Level Toolbox Training Workshop
 ===============================================
 
-Contents
---------
-
 .. toctree::
    :maxdepth: 1
+   :caption: Contents
 
    objectives
    agenda
