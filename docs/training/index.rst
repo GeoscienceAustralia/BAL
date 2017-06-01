@@ -19,5 +19,6 @@ Bushfire Attack Level Toolbox Training Workshop
    faqs
 
    
-   
+This training manual is also available as a `PDF document <http://geoscienceaustralia.github.io/BAL/docs/training/BushfireAttackLevelToolbox.pdf>`_.
+
 
