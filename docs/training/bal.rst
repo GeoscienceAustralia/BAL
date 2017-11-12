@@ -202,7 +202,7 @@ vegetation types (height, foliage cover, habit, etc.).
 Distance to vegetation
 ----------------------
 
-The distance to from the site to the classified vegetation is measured
+The distance to/from the site to the classified vegetation is measured
 in the *horizontal plane*.
 
 .. figure:: /docs/images/001_bal_vegetation_distance.png
@@ -247,7 +247,7 @@ Determine BAL from appropriate table
 ------------------------------------
 
 AS 3959-2009 provides a set of lookup tables, from which we can
-determine the BL based on a combination of the FDI, distance from
+determine the BAL based on a combination of the FDI, distance from
 classified vegetation and effective slope.
 
 

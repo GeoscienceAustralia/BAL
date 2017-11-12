@@ -15,7 +15,7 @@ Testing the installation
                to identify any issues with the installation of the
                |project_name| before using it. Without testing the
                toolbox first, you may obtain results that are
-               inconsistent with the intented application of the
+               inconsistent with the intended application of the
                toolbox.
 
 The code includes a suite of unit tests that ensure elements of the
