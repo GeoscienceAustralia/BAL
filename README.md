@@ -59,9 +59,8 @@ run_test_all.cmd script from the main BAL directory.
 License
 -------
 
-This repository is licensed under Creative Commons 4.0
-International. See the [LICENSE deed](LICENSE) in this repository for
-details.
+This repository is licensed under an Apache Version 2.0 license. See
+the [LICENSE deed](LICENSE) in this repository for details.
 
 
 Contacts
