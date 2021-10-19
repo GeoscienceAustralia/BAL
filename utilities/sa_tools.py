@@ -258,14 +258,14 @@ def cal_slope_aspect(dem, slope_fname, aspect_fname):
     for i in range(ny):
         for j in range(nx -1, -1, -1):
             if (elevation_array[j, i] == nodata_value and
-                elevation_array[j+1, i] != nodata_value):
-                elevation_array[j, i] = elevation_array[j+1, i]
+                elevation_array[j-1, i] != nodata_value):
+                elevation_array[j, i] = elevation_array[j-1, i]
 
     for i in range(nx):
         for j in range(ny-1, -1, -1):
             if (elevation_array[i, j] == nodata_value and
-                elevation_array[i, j+1] != nodata_value):
-                elevation_array[i, j] = elevation_array[i, j+1]
+                elevation_array[i, j-1] != nodata_value):
+                elevation_array[i, j] = elevation_array[i, j-1]
 
     # Calculate gradient:
     # See https://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.gradient.html
