@@ -66,14 +66,5 @@ the [LICENSE deed](LICENSE) in this repository for details.
 
 Contacts
 -------- 
-**Craig Arthur**  
-Geoscience Australia  
-craig.arthur@ga.gov.au  
 
-**Claire Krause**  
-Geoscience Australia  
-claire.krause@ga.gov.au  
-
-**Tina Yang**  
-Geoscience Australia  
-tina.yang@ga.gov.au  
+For assistance with this package, please contact hazards@ga.gov.au
